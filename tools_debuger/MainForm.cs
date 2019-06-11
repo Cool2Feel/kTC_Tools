@@ -7,15 +7,22 @@ using LeafSoft.PartPanel;
 using EASkins;
 using EASkins.Controls;
 using System;
+using PopupTool;
 using System.Drawing;
+using LeafSoft.Units;
+using System.Configuration;
 
 namespace LeafSoft
 {
     public partial class MainForm : MaterialForm
     {
+        #region primary
         private readonly MaterialSkinManager materialSkinManager;
         frmCheck fc = new frmCheck();
         frmBytes fb = new frmBytes();
+        private Popup _pop;
+        private ColorPopup _popControl;
+        #endregion
         public MainForm()
         {
             InitializeComponent();
@@ -27,8 +34,9 @@ namespace LeafSoft
 
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey600, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;           
+            //Console.WriteLine(GID);
+            //materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey600, Primary.BlueGrey900, Primary.BlueGrey100, Accent.LightBlue200, TextShade.WHITE);
         }
         #region 主题背景
         private void materialRaisedButton1_Click(object sender, System.EventArgs e)
@@ -36,11 +44,13 @@ namespace LeafSoft
             materialSkinManager.Theme = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK ? MaterialSkinManager.Themes.LIGHT : MaterialSkinManager.Themes.DARK;
         }
 
-        private int colorSchemeIndex;
+        //private int colorSchemeIndex;
         private void materialRaisedButton2_Click(object sender, System.EventArgs e)
         {
+            _pop.Show(this, materialRaisedButton2.Location.X - 125, materialRaisedButton2.Location.Y + 36);
+            /*
             colorSchemeIndex++;
-            if (colorSchemeIndex > 2) colorSchemeIndex = 0;
+            if (colorSchemeIndex > 3) colorSchemeIndex = 0;
 
             //These are just example color schemes
             switch (colorSchemeIndex)
@@ -54,8 +64,46 @@ namespace LeafSoft
                 case 2:
                     materialSkinManager.ColorScheme = new ColorScheme(Primary.Green600, Primary.Green700, Primary.Green200, Accent.Red100, TextShade.WHITE);
                     break;
+                case 3:
+                    materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey800, Primary.Grey700, Primary.Grey300, Accent.Orange100, TextShade.WHITE);
+                    break;
+            }
+            */
+        }
+
+        public void Change_ColorScheme(int key)
+        {
+            try
+            {
+                switch (key)
+                {
+                    case 0:
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey600, Primary.BlueGrey900, Primary.BlueGrey100, Accent.LightBlue200, TextShade.WHITE);
+                        break;
+                    case 1:
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo500, Primary.Indigo700, Primary.Indigo100, Accent.Pink200, TextShade.WHITE);
+                        break;
+                    case 2:
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Green600, Primary.Green700, Primary.Green200, Accent.Red100, TextShade.WHITE);
+                        break;
+                    case 3:
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey800, Primary.Grey700, Primary.Grey300, Accent.Orange100, TextShade.WHITE);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
             }
         }
+
+        public void ClosePop()
+        {
+            _pop.Close();
+        }
+
         #endregion
         #region 折叠控制
         bool size = false;
@@ -179,6 +227,22 @@ namespace LeafSoft
         {
             new AboutMe().ShowDialog();
         }
+        #endregion
+        #region Load
+        /// <summary>
+        /// 初始化加载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            string key = config.AppSettings.Settings["ColorIndex"].Value;
+            Change_ColorScheme(int.Parse(key));
+            _popControl = new ColorPopup(this);
+            _pop = new Popup(_popControl);
+        }
+
         #endregion
     }
 }

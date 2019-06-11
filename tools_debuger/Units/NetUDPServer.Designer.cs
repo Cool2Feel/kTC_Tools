@@ -131,6 +131,8 @@
             this.cbxLocalIP.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.cbxLocalIP.IntegralHeight = false;
             this.cbxLocalIP.ItemHeight = 20;
+            this.cbxLocalIP.Items.AddRange(new object[] {
+            "192.168.0.1"});
             this.cbxLocalIP.Location = new System.Drawing.Point(50, 2);
             this.cbxLocalIP.Name = "cbxLocalIP";
             this.cbxLocalIP.Size = new System.Drawing.Size(115, 26);

@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.CMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MS_Close = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabData = new System.Windows.Forms.TabControl();
             this.MS_CloseALL = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_CloseOthers = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabData = new System.Windows.Forms.TabControl();
             this.CMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +45,7 @@
             this.MS_CloseOthers});
             this.CMenu.Name = "contextMenuStrip1";
             this.CMenu.ShowImageMargin = false;
-            this.CMenu.Size = new System.Drawing.Size(148, 92);
+            this.CMenu.Size = new System.Drawing.Size(148, 70);
             // 
             // MS_Close
             // 
@@ -53,16 +53,6 @@
             this.MS_Close.Size = new System.Drawing.Size(147, 22);
             this.MS_Close.Text = "关闭";
             this.MS_Close.Click += new System.EventHandler(this.MS_Close_Click);
-            // 
-            // tabData
-            // 
-            this.tabData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabData.Location = new System.Drawing.Point(0, 0);
-            this.tabData.Name = "tabData";
-            this.tabData.SelectedIndex = 0;
-            this.tabData.Size = new System.Drawing.Size(536, 322);
-            this.tabData.TabIndex = 1;
-            this.tabData.DoubleClick += new System.EventHandler(this.tabData_DoubleClick);
             // 
             // MS_CloseALL
             // 
@@ -78,13 +68,23 @@
             this.MS_CloseOthers.Text = "除此之外全部关闭";
             this.MS_CloseOthers.Click += new System.EventHandler(this.MS_CloseOthers_Click);
             // 
+            // tabData
+            // 
+            this.tabData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabData.Location = new System.Drawing.Point(0, 0);
+            this.tabData.Name = "tabData";
+            this.tabData.SelectedIndex = 0;
+            this.tabData.Size = new System.Drawing.Size(536, 290);
+            this.tabData.TabIndex = 1;
+            this.tabData.DoubleClick += new System.EventHandler(this.tabData_DoubleClick);
+            // 
             // TabDataReceive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabData);
             this.Name = "TabDataReceive";
-            this.Size = new System.Drawing.Size(536, 322);
+            this.Size = new System.Drawing.Size(536, 290);
             this.CMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 

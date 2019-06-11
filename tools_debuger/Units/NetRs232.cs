@@ -17,6 +17,7 @@ namespace LeafSoft.Units
         public NetRs232()
         {
             InitializeComponent();
+            drpComList.Items.Clear();
             drpComList.Items.AddRange(SerialPort.GetPortNames());
             if (drpComList.Items.Count > 0)
             {

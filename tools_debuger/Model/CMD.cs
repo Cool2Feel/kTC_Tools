@@ -66,7 +66,8 @@ namespace LeafSoft.Model
         /// </summary>
         public string Text
         {
-            get {
+            get
+            {
                 return _strCMD;
             }
         }

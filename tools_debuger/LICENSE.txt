@@ -1,4 +1,4 @@
-﻿C#超级通信调试工具 Apache2开源协议发布，并提供免费使用。
+﻿C#通信调试工具 Apache2开源协议发布，并提供免费使用。
 版权所有Copyright © 2010-2013 by Maximus Ye(http://www.yyzq.net) All rights reserved。
 
 Apache Licence是著名的非盈利开源组织Apache采用的协议。

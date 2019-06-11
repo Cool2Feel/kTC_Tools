@@ -36,6 +36,7 @@ namespace LeafSoft.Units
             //cbxLocalIP.SelectedIndex = 0;
             if (this.DesignMode == false)
             {
+                cbxLocalIP.Items.Clear();
                 IPHostEntry ipHostEntry = Dns.GetHostEntry(Dns.GetHostName());
                 foreach (IPAddress ip in ipHostEntry.AddressList)
                 {

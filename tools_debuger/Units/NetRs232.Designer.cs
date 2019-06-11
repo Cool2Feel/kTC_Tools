@@ -105,6 +105,8 @@
             this.drpComList.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.drpComList.IntegralHeight = false;
             this.drpComList.ItemHeight = 20;
+            this.drpComList.Items.AddRange(new object[] {
+            "COM1"});
             this.drpComList.Location = new System.Drawing.Point(64, 6);
             this.drpComList.Name = "drpComList";
             this.drpComList.Size = new System.Drawing.Size(89, 26);

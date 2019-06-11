@@ -35,21 +35,23 @@
             this.materialTabSelector2 = new EASkins.Controls.MaterialTabSelector();
             this.materialTabControl1 = new EASkins.Controls.MaterialTabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.comPanel3 = new LeafSoft.PartPanel.ComPanel();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.tcpServerPanel3 = new LeafSoft.PartPanel.TCPServerPanel();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.tcpClientPanel3 = new LeafSoft.PartPanel.TCPClientPanel();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.udpServerPanel3 = new LeafSoft.PartPanel.UDPServerPanel();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.udpClientPanel3 = new LeafSoft.PartPanel.UDPClientPanel();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.pingPanel3 = new LeafSoft.PartPanel.PingPanel();
             this.materialTabSelector1 = new EASkins.Controls.MaterialTabSelector();
             this.naviBar1 = new Guifreaks.NavigationBar.NaviBar(this.components);
             this.naviBand1 = new Guifreaks.NavigationBar.NaviBand(this.components);
             this.naviGroup_calc = new Guifreaks.NavigationBar.NaviGroup(this.components);
             this.materialFlatButton_num = new EASkins.Controls.MaterialFlatButton();
             this.materialFlatButton_crc = new EASkins.Controls.MaterialFlatButton();
-            this.naviBand4 = new Guifreaks.NavigationBar.NaviBand(this.components);
-            this.materialFlatButton3 = new EASkins.Controls.MaterialFlatButton();
-            this.naviBand3 = new Guifreaks.NavigationBar.NaviBand(this.components);
-            this.materialFlatButton2 = new EASkins.Controls.MaterialFlatButton();
             this.naviBand2 = new Guifreaks.NavigationBar.NaviBand(this.components);
             this.naviGroup_new = new Guifreaks.NavigationBar.NaviGroup(this.components);
             this.materialFlatButton_ping = new EASkins.Controls.MaterialFlatButton();
@@ -58,12 +60,10 @@
             this.materialFlatButton_tcpc = new EASkins.Controls.MaterialFlatButton();
             this.materialFlatButton_tcps = new EASkins.Controls.MaterialFlatButton();
             this.materialFlatButton_srai = new EASkins.Controls.MaterialFlatButton();
-            this.comPanel3 = new LeafSoft.PartPanel.ComPanel();
-            this.tcpServerPanel3 = new LeafSoft.PartPanel.TCPServerPanel();
-            this.tcpClientPanel3 = new LeafSoft.PartPanel.TCPClientPanel();
-            this.udpServerPanel3 = new LeafSoft.PartPanel.UDPServerPanel();
-            this.udpClientPanel3 = new LeafSoft.PartPanel.UDPClientPanel();
-            this.pingPanel3 = new LeafSoft.PartPanel.PingPanel();
+            this.naviBand3 = new Guifreaks.NavigationBar.NaviBand(this.components);
+            this.materialFlatButton2 = new EASkins.Controls.MaterialFlatButton();
+            this.naviBand4 = new Guifreaks.NavigationBar.NaviBand(this.components);
+            this.materialFlatButton3 = new EASkins.Controls.MaterialFlatButton();
             this.materialTabControl1.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
@@ -77,14 +77,14 @@
             this.naviBand1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.naviGroup_calc)).BeginInit();
             this.naviGroup_calc.SuspendLayout();
-            this.naviBand4.ClientArea.SuspendLayout();
-            this.naviBand4.SuspendLayout();
-            this.naviBand3.ClientArea.SuspendLayout();
-            this.naviBand3.SuspendLayout();
             this.naviBand2.ClientArea.SuspendLayout();
             this.naviBand2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.naviGroup_new)).BeginInit();
             this.naviGroup_new.SuspendLayout();
+            this.naviBand3.ClientArea.SuspendLayout();
+            this.naviBand3.SuspendLayout();
+            this.naviBand4.ClientArea.SuspendLayout();
+            this.naviBand4.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialRaisedButton2
@@ -167,6 +167,15 @@
             this.tabPage7.TabIndex = 0;
             this.tabPage7.Text = "串口";
             // 
+            // comPanel3
+            // 
+            this.comPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comPanel3.Location = new System.Drawing.Point(3, 3);
+            this.comPanel3.Name = "comPanel3";
+            this.comPanel3.Size = new System.Drawing.Size(701, 460);
+            this.comPanel3.TabIndex = 1;
+            // 
             // tabPage8
             // 
             this.tabPage8.BackColor = System.Drawing.Color.White;
@@ -178,6 +187,15 @@
             this.tabPage8.TabIndex = 1;
             this.tabPage8.Text = "TCP Server";
             // 
+            // tcpServerPanel3
+            // 
+            this.tcpServerPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcpServerPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tcpServerPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tcpServerPanel3.Name = "tcpServerPanel3";
+            this.tcpServerPanel3.Size = new System.Drawing.Size(701, 460);
+            this.tcpServerPanel3.TabIndex = 1;
+            // 
             // tabPage9
             // 
             this.tabPage9.BackColor = System.Drawing.Color.White;
@@ -187,6 +205,15 @@
             this.tabPage9.Size = new System.Drawing.Size(707, 466);
             this.tabPage9.TabIndex = 2;
             this.tabPage9.Text = "TCP Client";
+            // 
+            // tcpClientPanel3
+            // 
+            this.tcpClientPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcpClientPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tcpClientPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tcpClientPanel3.Name = "tcpClientPanel3";
+            this.tcpClientPanel3.Size = new System.Drawing.Size(707, 466);
+            this.tcpClientPanel3.TabIndex = 1;
             // 
             // tabPage10
             // 
@@ -198,6 +225,15 @@
             this.tabPage10.TabIndex = 3;
             this.tabPage10.Text = "UDP Server";
             // 
+            // udpServerPanel3
+            // 
+            this.udpServerPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.udpServerPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.udpServerPanel3.Location = new System.Drawing.Point(0, 0);
+            this.udpServerPanel3.Name = "udpServerPanel3";
+            this.udpServerPanel3.Size = new System.Drawing.Size(707, 466);
+            this.udpServerPanel3.TabIndex = 1;
+            // 
             // tabPage11
             // 
             this.tabPage11.BackColor = System.Drawing.Color.White;
@@ -208,6 +244,15 @@
             this.tabPage11.TabIndex = 4;
             this.tabPage11.Text = "UDP Client";
             // 
+            // udpClientPanel3
+            // 
+            this.udpClientPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.udpClientPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.udpClientPanel3.Location = new System.Drawing.Point(0, 0);
+            this.udpClientPanel3.Name = "udpClientPanel3";
+            this.udpClientPanel3.Size = new System.Drawing.Size(707, 466);
+            this.udpClientPanel3.TabIndex = 1;
+            // 
             // tabPage12
             // 
             this.tabPage12.BackColor = System.Drawing.Color.White;
@@ -217,6 +262,15 @@
             this.tabPage12.Size = new System.Drawing.Size(707, 466);
             this.tabPage12.TabIndex = 5;
             this.tabPage12.Text = "Ping";
+            // 
+            // pingPanel3
+            // 
+            this.pingPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pingPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pingPanel3.Location = new System.Drawing.Point(0, 0);
+            this.pingPanel3.Name = "pingPanel3";
+            this.pingPanel3.Size = new System.Drawing.Size(707, 466);
+            this.pingPanel3.TabIndex = 1;
             // 
             // materialTabSelector1
             // 
@@ -325,81 +379,6 @@
             this.materialFlatButton_crc.UseVisualStyleBackColor = true;
             this.materialFlatButton_crc.Click += new System.EventHandler(this.materialFlatButton_crc_Click);
             // 
-            // naviBand4
-            // 
-            // 
-            // naviBand4.ClientArea
-            // 
-            this.naviBand4.ClientArea.Controls.Add(this.materialFlatButton3);
-            this.naviBand4.ClientArea.Location = new System.Drawing.Point(0, 0);
-            this.naviBand4.ClientArea.Name = "ClientArea";
-            this.naviBand4.ClientArea.Size = new System.Drawing.Size(156, 308);
-            this.naviBand4.ClientArea.TabIndex = 0;
-            this.naviBand4.LargeImage = global::LeafSoft.Properties.Resources.信息;
-            this.naviBand4.LayoutStyle = Guifreaks.NavigationBar.NaviLayoutStyle.Office2007Black;
-            this.naviBand4.Location = new System.Drawing.Point(1, 34);
-            this.naviBand4.Name = "naviBand4";
-            this.naviBand4.Size = new System.Drawing.Size(156, 308);
-            this.naviBand4.SmallImage = global::LeafSoft.Properties.Resources.信息;
-            this.naviBand4.TabIndex = 6;
-            this.naviBand4.Text = "About";
-            this.naviBand4.Click += new System.EventHandler(this.naviBand4_Click);
-            // 
-            // materialFlatButton3
-            // 
-            this.materialFlatButton3.AutoSize = true;
-            this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton3.Depth = 0;
-            this.materialFlatButton3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialFlatButton3.Icon = global::LeafSoft.Properties.Resources.信息;
-            this.materialFlatButton3.Location = new System.Drawing.Point(0, 0);
-            this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton3.MouseState = EASkins.MouseState.HOVER;
-            this.materialFlatButton3.Name = "materialFlatButton3";
-            this.materialFlatButton3.Primary = false;
-            this.materialFlatButton3.Size = new System.Drawing.Size(156, 36);
-            this.materialFlatButton3.TabIndex = 6;
-            this.materialFlatButton3.Text = "ABOUT";
-            this.materialFlatButton3.UseVisualStyleBackColor = true;
-            this.materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_Click);
-            // 
-            // naviBand3
-            // 
-            // 
-            // naviBand3.ClientArea
-            // 
-            this.naviBand3.ClientArea.Controls.Add(this.materialFlatButton2);
-            this.naviBand3.ClientArea.Location = new System.Drawing.Point(0, 0);
-            this.naviBand3.ClientArea.Name = "ClientArea";
-            this.naviBand3.ClientArea.Size = new System.Drawing.Size(156, 308);
-            this.naviBand3.ClientArea.TabIndex = 0;
-            this.naviBand3.LargeImage = global::LeafSoft.Properties.Resources.资讯动态;
-            this.naviBand3.LayoutStyle = Guifreaks.NavigationBar.NaviLayoutStyle.Office2007Black;
-            this.naviBand3.Location = new System.Drawing.Point(1, 34);
-            this.naviBand3.Name = "naviBand3";
-            this.naviBand3.Size = new System.Drawing.Size(156, 308);
-            this.naviBand3.SmallImage = global::LeafSoft.Properties.Resources.资讯动态;
-            this.naviBand3.TabIndex = 4;
-            this.naviBand3.Text = "Monitor";
-            // 
-            // materialFlatButton2
-            // 
-            this.materialFlatButton2.AutoSize = true;
-            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialFlatButton2.Icon = global::LeafSoft.Properties.Resources.monitor_socket;
-            this.materialFlatButton2.Location = new System.Drawing.Point(0, 0);
-            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton2.MouseState = EASkins.MouseState.HOVER;
-            this.materialFlatButton2.Name = "materialFlatButton2";
-            this.materialFlatButton2.Primary = false;
-            this.materialFlatButton2.Size = new System.Drawing.Size(156, 36);
-            this.materialFlatButton2.TabIndex = 6;
-            this.materialFlatButton2.Text = "Socket 监视";
-            this.materialFlatButton2.UseVisualStyleBackColor = true;
-            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
-            // 
             // naviBand2
             // 
             // 
@@ -429,6 +408,7 @@
             this.naviGroup_new.Controls.Add(this.materialFlatButton_tcps);
             this.naviGroup_new.Controls.Add(this.materialFlatButton_srai);
             this.naviGroup_new.Dock = System.Windows.Forms.DockStyle.Top;
+            this.naviGroup_new.Expanded = false;
             this.naviGroup_new.ExpandedHeight = 305;
             this.naviGroup_new.HeaderContextMenuStrip = null;
             this.naviGroup_new.HeaderHeight = 26;
@@ -436,7 +416,7 @@
             this.naviGroup_new.Location = new System.Drawing.Point(0, 0);
             this.naviGroup_new.Name = "naviGroup_new";
             this.naviGroup_new.Padding = new System.Windows.Forms.Padding(1, 28, 1, 1);
-            this.naviGroup_new.Size = new System.Drawing.Size(156, 305);
+            this.naviGroup_new.Size = new System.Drawing.Size(156, 26);
             this.naviGroup_new.TabIndex = 0;
             this.naviGroup_new.Text = "naviGroup1";
             // 
@@ -548,59 +528,81 @@
             this.materialFlatButton_srai.UseVisualStyleBackColor = true;
             this.materialFlatButton_srai.Click += new System.EventHandler(this.materialFlatButton_srai_Click);
             // 
-            // comPanel3
+            // naviBand3
             // 
-            this.comPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comPanel3.Location = new System.Drawing.Point(3, 3);
-            this.comPanel3.Name = "comPanel3";
-            this.comPanel3.Size = new System.Drawing.Size(701, 460);
-            this.comPanel3.TabIndex = 1;
             // 
-            // tcpServerPanel3
+            // naviBand3.ClientArea
             // 
-            this.tcpServerPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tcpServerPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tcpServerPanel3.Location = new System.Drawing.Point(3, 3);
-            this.tcpServerPanel3.Name = "tcpServerPanel3";
-            this.tcpServerPanel3.Size = new System.Drawing.Size(701, 460);
-            this.tcpServerPanel3.TabIndex = 1;
+            this.naviBand3.ClientArea.Controls.Add(this.materialFlatButton2);
+            this.naviBand3.ClientArea.Location = new System.Drawing.Point(0, 0);
+            this.naviBand3.ClientArea.Name = "ClientArea";
+            this.naviBand3.ClientArea.Size = new System.Drawing.Size(156, 308);
+            this.naviBand3.ClientArea.TabIndex = 0;
+            this.naviBand3.LargeImage = global::LeafSoft.Properties.Resources.资讯动态;
+            this.naviBand3.LayoutStyle = Guifreaks.NavigationBar.NaviLayoutStyle.Office2007Black;
+            this.naviBand3.Location = new System.Drawing.Point(1, 34);
+            this.naviBand3.Name = "naviBand3";
+            this.naviBand3.Size = new System.Drawing.Size(156, 308);
+            this.naviBand3.SmallImage = global::LeafSoft.Properties.Resources.资讯动态;
+            this.naviBand3.TabIndex = 4;
+            this.naviBand3.Text = "Monitor";
             // 
-            // tcpClientPanel3
+            // materialFlatButton2
             // 
-            this.tcpClientPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tcpClientPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tcpClientPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tcpClientPanel3.Name = "tcpClientPanel3";
-            this.tcpClientPanel3.Size = new System.Drawing.Size(707, 466);
-            this.tcpClientPanel3.TabIndex = 1;
+            this.materialFlatButton2.AutoSize = true;
+            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton2.Depth = 0;
+            this.materialFlatButton2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.materialFlatButton2.Enabled = false;
+            this.materialFlatButton2.Icon = global::LeafSoft.Properties.Resources.monitor_socket;
+            this.materialFlatButton2.Location = new System.Drawing.Point(0, 0);
+            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton2.MouseState = EASkins.MouseState.HOVER;
+            this.materialFlatButton2.Name = "materialFlatButton2";
+            this.materialFlatButton2.Primary = false;
+            this.materialFlatButton2.Size = new System.Drawing.Size(156, 36);
+            this.materialFlatButton2.TabIndex = 6;
+            this.materialFlatButton2.Text = "Socket 监视";
+            this.materialFlatButton2.UseVisualStyleBackColor = true;
+            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
             // 
-            // udpServerPanel3
+            // naviBand4
             // 
-            this.udpServerPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.udpServerPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.udpServerPanel3.Location = new System.Drawing.Point(0, 0);
-            this.udpServerPanel3.Name = "udpServerPanel3";
-            this.udpServerPanel3.Size = new System.Drawing.Size(707, 466);
-            this.udpServerPanel3.TabIndex = 1;
             // 
-            // udpClientPanel3
+            // naviBand4.ClientArea
             // 
-            this.udpClientPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.udpClientPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.udpClientPanel3.Location = new System.Drawing.Point(0, 0);
-            this.udpClientPanel3.Name = "udpClientPanel3";
-            this.udpClientPanel3.Size = new System.Drawing.Size(707, 466);
-            this.udpClientPanel3.TabIndex = 1;
+            this.naviBand4.ClientArea.Controls.Add(this.materialFlatButton3);
+            this.naviBand4.ClientArea.Location = new System.Drawing.Point(0, 0);
+            this.naviBand4.ClientArea.Name = "ClientArea";
+            this.naviBand4.ClientArea.Size = new System.Drawing.Size(156, 308);
+            this.naviBand4.ClientArea.TabIndex = 0;
+            this.naviBand4.LargeImage = global::LeafSoft.Properties.Resources.信息;
+            this.naviBand4.LayoutStyle = Guifreaks.NavigationBar.NaviLayoutStyle.Office2007Black;
+            this.naviBand4.Location = new System.Drawing.Point(1, 34);
+            this.naviBand4.Name = "naviBand4";
+            this.naviBand4.Size = new System.Drawing.Size(156, 308);
+            this.naviBand4.SmallImage = global::LeafSoft.Properties.Resources.信息;
+            this.naviBand4.TabIndex = 6;
+            this.naviBand4.Text = "About";
+            this.naviBand4.Click += new System.EventHandler(this.naviBand4_Click);
             // 
-            // pingPanel3
+            // materialFlatButton3
             // 
-            this.pingPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pingPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pingPanel3.Location = new System.Drawing.Point(0, 0);
-            this.pingPanel3.Name = "pingPanel3";
-            this.pingPanel3.Size = new System.Drawing.Size(707, 466);
-            this.pingPanel3.TabIndex = 1;
+            this.materialFlatButton3.AutoSize = true;
+            this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton3.Depth = 0;
+            this.materialFlatButton3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.materialFlatButton3.Icon = global::LeafSoft.Properties.Resources.信息;
+            this.materialFlatButton3.Location = new System.Drawing.Point(0, 0);
+            this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton3.MouseState = EASkins.MouseState.HOVER;
+            this.materialFlatButton3.Name = "materialFlatButton3";
+            this.materialFlatButton3.Primary = false;
+            this.materialFlatButton3.Size = new System.Drawing.Size(156, 36);
+            this.materialFlatButton3.TabIndex = 6;
+            this.materialFlatButton3.Text = "ABOUT";
+            this.materialFlatButton3.UseVisualStyleBackColor = true;
+            this.materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_Click);
             // 
             // MainForm
             // 
@@ -616,6 +618,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
@@ -630,17 +633,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.naviGroup_calc)).EndInit();
             this.naviGroup_calc.ResumeLayout(false);
             this.naviGroup_calc.PerformLayout();
-            this.naviBand4.ClientArea.ResumeLayout(false);
-            this.naviBand4.ClientArea.PerformLayout();
-            this.naviBand4.ResumeLayout(false);
-            this.naviBand3.ClientArea.ResumeLayout(false);
-            this.naviBand3.ClientArea.PerformLayout();
-            this.naviBand3.ResumeLayout(false);
             this.naviBand2.ClientArea.ResumeLayout(false);
             this.naviBand2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.naviGroup_new)).EndInit();
             this.naviGroup_new.ResumeLayout(false);
             this.naviGroup_new.PerformLayout();
+            this.naviBand3.ClientArea.ResumeLayout(false);
+            this.naviBand3.ClientArea.PerformLayout();
+            this.naviBand3.ResumeLayout(false);
+            this.naviBand4.ClientArea.ResumeLayout(false);
+            this.naviBand4.ClientArea.PerformLayout();
+            this.naviBand4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

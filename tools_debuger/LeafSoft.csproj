@@ -77,11 +77,17 @@
     <Reference Include="log4net">
       <HintPath>F:\1000_Application_Softwarewc\59_3458\WallControl\bin\x86\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="PopupTool, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\PopupTool.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -169,6 +175,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Units\ColorPopup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Units\ColorPopup.Designer.cs">
+      <DependentUpon>ColorPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="Units\NetTCPServer.cs">
       <SubType>UserControl</SubType>
@@ -308,6 +320,9 @@
     <EmbeddedResource Include="PartPanel\UDPClientPanel.resx">
       <DependentUpon>UDPClientPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Units\ColorPopup.resx">
+      <DependentUpon>ColorPopup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Units\NetTCPClient.resx">
       <DependentUpon>NetTCPClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -379,7 +394,6 @@
     <Content Include="Images\新建窗口.png" />
     <Content Include="Images\计算器.png" />
     <Content Include="Images\资讯动态.png" />
-    <Content Include="leafsoft.ico" />
     <Content Include="LICENSE.txt" />
     <Content Include="tools.ico" />
     <None Include="Resources\调试 管理.png" />

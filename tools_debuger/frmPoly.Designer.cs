@@ -36,7 +36,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(44, 0);
+            this.btnOK.Location = new System.Drawing.Point(169, 13);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(53, 23);
             this.btnOK.TabIndex = 1;
@@ -52,17 +52,17 @@
             // txtPoly
             // 
             this.txtPoly.EncodeType = LeafSoft.Lib.EnumType.DataEncode.Hex;
-            this.txtPoly.Location = new System.Drawing.Point(1, 0);
+            this.txtPoly.Location = new System.Drawing.Point(12, 14);
             this.txtPoly.MaxLength = 5;
             this.txtPoly.Name = "txtPoly";
-            this.txtPoly.Size = new System.Drawing.Size(42, 21);
+            this.txtPoly.Size = new System.Drawing.Size(151, 21);
             this.txtPoly.TabIndex = 0;
             // 
             // frmPoly
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(96, 22);
+            this.ClientSize = new System.Drawing.Size(225, 53);
             this.Controls.Add(this.txtPoly);
             this.Controls.Add(this.btnOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

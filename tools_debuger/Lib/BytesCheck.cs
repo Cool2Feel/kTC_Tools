@@ -53,6 +53,28 @@ namespace LeafSoft.Lib
         }
         #endregion
 
+        #region KTC CRC
+
+        public static byte GetKTC(byte[] Cmd)
+        {
+            if (Cmd.Length > 1)
+            {
+                byte check = Cmd[0];
+                for (int i = 1; i < Cmd.Length; i++)
+                {
+                    check = (byte)(check + Cmd[i]);
+                }
+                return (byte)(0xff - (check & 0xff));
+            }
+            else
+            {
+                return Cmd[0];
+            }
+        }
+
+        #endregion
+
+
         #region CRC16查表法
 
         #region CRC对应表

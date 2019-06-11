@@ -40,6 +40,7 @@
             this.MS_CRCPolyL = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_Copy = new System.Windows.Forms.ToolStripMenuItem();
             this.CM_Clear = new System.Windows.Forms.ToolStripMenuItem();
+            this.MS_KTC = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +50,7 @@
             this.txtContent.ContextMenuStrip = this.contextMenuStrip1;
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContent.EncodeType = LeafSoft.Lib.EnumType.DataEncode.Hex;
+            this.txtContent.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtContent.Location = new System.Drawing.Point(0, 0);
             this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
@@ -63,16 +65,17 @@
             this.MS_Copy,
             this.CM_Clear});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
             // 
             // CM_Check
             // 
             this.CM_Check.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MS_CheckSum,
+            this.MS_KTC,
             this.MS_CRC16,
             this.MS_CRCPoly});
             this.CM_Check.Name = "CM_Check";
-            this.CM_Check.Size = new System.Drawing.Size(136, 22);
+            this.CM_Check.Size = new System.Drawing.Size(152, 22);
             this.CM_Check.Text = "计算校验码";
             // 
             // MS_CheckSum
@@ -101,30 +104,37 @@
             // MS_CRCPolyH
             // 
             this.MS_CRCPolyH.Name = "MS_CRCPolyH";
-            this.MS_CRCPolyH.Size = new System.Drawing.Size(124, 22);
+            this.MS_CRCPolyH.Size = new System.Drawing.Size(152, 22);
             this.MS_CRCPolyH.Text = "高位在前";
             this.MS_CRCPolyH.Click += new System.EventHandler(this.MS_CRCPolyH_Click);
             // 
             // MS_CRCPolyL
             // 
             this.MS_CRCPolyL.Name = "MS_CRCPolyL";
-            this.MS_CRCPolyL.Size = new System.Drawing.Size(124, 22);
+            this.MS_CRCPolyL.Size = new System.Drawing.Size(152, 22);
             this.MS_CRCPolyL.Text = "低位在前";
             this.MS_CRCPolyL.Click += new System.EventHandler(this.MS_CRCPolyL_Click);
             // 
             // MS_Copy
             // 
             this.MS_Copy.Name = "MS_Copy";
-            this.MS_Copy.Size = new System.Drawing.Size(136, 22);
+            this.MS_Copy.Size = new System.Drawing.Size(152, 22);
             this.MS_Copy.Text = "复制";
             this.MS_Copy.Click += new System.EventHandler(this.MS_Copy_Click);
             // 
             // CM_Clear
             // 
             this.CM_Clear.Name = "CM_Clear";
-            this.CM_Clear.Size = new System.Drawing.Size(136, 22);
+            this.CM_Clear.Size = new System.Drawing.Size(152, 22);
             this.CM_Clear.Text = "清空";
             this.CM_Clear.Click += new System.EventHandler(this.CM_Clear_Click);
+            // 
+            // MS_KTC
+            // 
+            this.MS_KTC.Name = "MS_KTC";
+            this.MS_KTC.Size = new System.Drawing.Size(154, 22);
+            this.MS_KTC.Text = "KTC-(CRC)";
+            this.MS_KTC.Click += new System.EventHandler(this.MS_KTC_Click);
             // 
             // frmCheck
             // 
@@ -157,5 +167,6 @@
         private System.Windows.Forms.ToolStripMenuItem MS_CRCPolyL;
         private System.Windows.Forms.ToolStripMenuItem CM_Clear;
         private System.Windows.Forms.ToolStripMenuItem MS_Copy;
+        private System.Windows.Forms.ToolStripMenuItem MS_KTC;
     }
 }

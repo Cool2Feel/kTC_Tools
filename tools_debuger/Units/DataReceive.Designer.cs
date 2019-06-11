@@ -59,7 +59,7 @@
             this.txtData.Name = "txtData";
             this.txtData.ReadOnly = true;
             this.txtData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtData.Size = new System.Drawing.Size(609, 252);
+            this.txtData.Size = new System.Drawing.Size(575, 198);
             this.txtData.TabIndex = 1;
             // 
             // CMS_Main
@@ -143,7 +143,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 280);
+            this.label4.Location = new System.Drawing.Point(3, 226);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 17);
             this.label4.TabIndex = 5;
@@ -153,7 +153,7 @@
             // 
             this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(89, 279);
+            this.lblCount.Location = new System.Drawing.Point(89, 225);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(15, 17);
             this.lblCount.TabIndex = 6;
@@ -191,7 +191,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(457, 279);
+            this.label2.Location = new System.Drawing.Point(423, 225);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(138, 17);
             this.label2.TabIndex = 9;
@@ -213,7 +213,7 @@
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DataReceive";
-            this.Size = new System.Drawing.Size(610, 297);
+            this.Size = new System.Drawing.Size(576, 243);
             this.CMS_Main.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

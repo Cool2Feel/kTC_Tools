@@ -47,6 +47,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblCount = new System.Windows.Forms.LinkLabel();
             this.emi_Label1 = new EASkins.Emi_Label();
+            this.openFileRead = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileInit = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgCMD)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDelay)).BeginInit();
@@ -233,6 +235,11 @@
             this.emi_Label1.Size = new System.Drawing.Size(80, 17);
             this.emi_Label1.TabIndex = 9;
             this.emi_Label1.Text = "发送字节数：";
+            this.emi_Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // openFileRead
+            // 
+            this.openFileRead.FileName = "openFileDialog1";
             // 
             // DataSend
             // 
@@ -274,5 +281,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn btnSend;
         private System.Windows.Forms.LinkLabel lblCount;
         private EASkins.Emi_Label emi_Label1;
+        private System.Windows.Forms.OpenFileDialog openFileRead;
+        private System.Windows.Forms.SaveFileDialog saveFileInit;
     }
 }

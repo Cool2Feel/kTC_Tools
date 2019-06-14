@@ -136,6 +136,21 @@ namespace LeafSoft
         }
 
         /// <summary>
+        /// KTC CRC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MS_KTC_Click(object sender, EventArgs e)
+        {
+            Model.CMD cmd = txtContent.GetCMD();
+            if (cmd != null)
+            {
+                byte check = Lib.BytesCheck.GetKTC(cmd.Bytes);
+                txtContent.AppendText(Convert.ToString(check, 16).PadLeft(2, '0'));
+            }
+        }
+
+        /// <summary>
         /// Modbus
         /// </summary>
         /// <param name="sender"></param>

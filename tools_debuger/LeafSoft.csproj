@@ -140,6 +140,7 @@
     <Compile Include="Lib\BytesCheck.cs" />
     <Compile Include="Lib\ExceptionLog.cs" />
     <Compile Include="Lib\HotKey.cs" />
+    <Compile Include="Lib\IniFiles.cs" />
     <Compile Include="Lib\LogHelper.cs" />
     <Compile Include="Lib\SnifferSocket.cs" />
     <Compile Include="MainForm.cs">

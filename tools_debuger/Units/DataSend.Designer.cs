@@ -41,6 +41,9 @@
             this.MS_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.MS_Saved = new System.Windows.Forms.ToolStripMenuItem();
+            this.MS_Input = new System.Windows.Forms.ToolStripMenuItem();
+            this.MS_SaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAutoSend = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.nmDelay = new System.Windows.Forms.NumericUpDown();
@@ -135,30 +138,55 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MS_Add,
             this.MS_Edit,
-            this.MS_Delete});
+            this.MS_Delete,
+            this.MS_Saved,
+            this.MS_Input,
+            this.MS_SaveAs});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 158);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // MS_Add
             // 
             this.MS_Add.Name = "MS_Add";
-            this.MS_Add.Size = new System.Drawing.Size(100, 22);
+            this.MS_Add.Size = new System.Drawing.Size(152, 22);
             this.MS_Add.Text = "添加";
             this.MS_Add.Click += new System.EventHandler(this.MS_Add_Click);
             // 
             // MS_Edit
             // 
             this.MS_Edit.Name = "MS_Edit";
-            this.MS_Edit.Size = new System.Drawing.Size(100, 22);
+            this.MS_Edit.Size = new System.Drawing.Size(152, 22);
             this.MS_Edit.Text = "编辑";
             this.MS_Edit.Click += new System.EventHandler(this.MS_Edit_Click);
             // 
             // MS_Delete
             // 
             this.MS_Delete.Name = "MS_Delete";
-            this.MS_Delete.Size = new System.Drawing.Size(100, 22);
+            this.MS_Delete.Size = new System.Drawing.Size(152, 22);
             this.MS_Delete.Text = "删除";
             this.MS_Delete.Click += new System.EventHandler(this.MS_Delete_Click);
+            // 
+            // MS_Saved
+            // 
+            this.MS_Saved.Name = "MS_Saved";
+            this.MS_Saved.Size = new System.Drawing.Size(152, 22);
+            this.MS_Saved.Text = "默认保存";
+            this.MS_Saved.Click += new System.EventHandler(this.MS_Saved_Click);
+            // 
+            // MS_Input
+            // 
+            this.MS_Input.Name = "MS_Input";
+            this.MS_Input.Size = new System.Drawing.Size(152, 22);
+            this.MS_Input.Text = "导入指令";
+            this.MS_Input.Click += new System.EventHandler(this.MS_Input_Click);
+            // 
+            // MS_SaveAs
+            // 
+            this.MS_SaveAs.Name = "MS_SaveAs";
+            this.MS_SaveAs.Size = new System.Drawing.Size(152, 22);
+            this.MS_SaveAs.Text = "导出保存";
+            this.MS_SaveAs.Click += new System.EventHandler(this.MS_SaveAs_Click);
             // 
             // btnAutoSend
             // 
@@ -237,10 +265,6 @@
             this.emi_Label1.Text = "发送字节数：";
             this.emi_Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // openFileRead
-            // 
-            this.openFileRead.FileName = "openFileDialog1";
-            // 
             // DataSend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -256,6 +280,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DataSend";
             this.Size = new System.Drawing.Size(549, 266);
+            this.Load += new System.EventHandler(this.DataSend_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgCMD)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nmDelay)).EndInit();
@@ -283,5 +308,8 @@
         private EASkins.Emi_Label emi_Label1;
         private System.Windows.Forms.OpenFileDialog openFileRead;
         private System.Windows.Forms.SaveFileDialog saveFileInit;
+        private System.Windows.Forms.ToolStripMenuItem MS_Saved;
+        private System.Windows.Forms.ToolStripMenuItem MS_Input;
+        private System.Windows.Forms.ToolStripMenuItem MS_SaveAs;
     }
 }

@@ -287,13 +287,13 @@
             // 
             // naviBar1
             // 
-            this.naviBar1.ActiveBand = this.naviBand1;
+            this.naviBar1.ActiveBand = this.naviBand3;
             this.naviBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.naviBar1.ButtonHeight = 36;
+            this.naviBar1.Controls.Add(this.naviBand3);
             this.naviBar1.Controls.Add(this.naviBand1);
             this.naviBar1.Controls.Add(this.naviBand2);
-            this.naviBar1.Controls.Add(this.naviBand3);
             this.naviBar1.Controls.Add(this.naviBand4);
             this.naviBar1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.naviBar1.HeaderHeight = 34;
@@ -553,7 +553,6 @@
             this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton2.Depth = 0;
             this.materialFlatButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.materialFlatButton2.Enabled = false;
             this.materialFlatButton2.Icon = global::LeafSoft.Properties.Resources.monitor_socket;
             this.materialFlatButton2.Location = new System.Drawing.Point(0, 0);
             this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
@@ -617,6 +616,7 @@
             this.Controls.Add(this.materialTabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.materialTabControl1.ResumeLayout(false);

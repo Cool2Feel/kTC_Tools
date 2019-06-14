@@ -23,8 +23,6 @@ namespace LeafSoft.Lib
 
         /// <summary>
         /// 捕获到IP数据包
-        /// 作者：Maximus Ye
-        /// 添加时间：2013年9月16日
         /// </summary>
         /// <param name="packet"></param>
         public delegate void PacketReceived(Model.IPPacket packet);

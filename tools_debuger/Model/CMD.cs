@@ -39,6 +39,34 @@ namespace LeafSoft.Model
             }
         }
 
+        public CMD(EnumType.DataEncode DataEncode, string data)
+        {
+            _DataEncode = DataEncode;
+            _strCMD = data;
+            switch (_DataEncode)
+            {
+                case EnumType.DataEncode.Hex:
+                    data = data.Replace(" ", "");
+                    byte[] array = new byte[data.Length / 2];
+                    for (int i = 0; i < data.Length; i += 2)
+                    {
+                        array[i / 2] = Convert.ToByte(data.Substring(i, 2), 16);
+                    }
+                    _byteCMD = array;
+                    break;
+                case EnumType.DataEncode.ASCII:
+                    _byteCMD = new ASCIIEncoding().GetBytes(_strCMD);
+                    break;
+                case EnumType.DataEncode.UTF8:
+                    _byteCMD = new UTF8Encoding().GetBytes(_strCMD);
+                    break;
+                case EnumType.DataEncode.GB2312:
+                    _byteCMD = Encoding.GetEncoding("GB2312").GetBytes(_strCMD);
+                    break;
+            }
+        }
+
+
         /// <summary>
         /// 命令类型
         /// </summary>

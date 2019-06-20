@@ -35,17 +35,11 @@
             this.materialTabSelector2 = new EASkins.Controls.MaterialTabSelector();
             this.materialTabControl1 = new EASkins.Controls.MaterialTabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.comPanel3 = new LeafSoft.PartPanel.ComPanel();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.tcpServerPanel3 = new LeafSoft.PartPanel.TCPServerPanel();
             this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.tcpClientPanel3 = new LeafSoft.PartPanel.TCPClientPanel();
             this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.udpServerPanel3 = new LeafSoft.PartPanel.UDPServerPanel();
             this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.udpClientPanel3 = new LeafSoft.PartPanel.UDPClientPanel();
             this.tabPage12 = new System.Windows.Forms.TabPage();
-            this.pingPanel3 = new LeafSoft.PartPanel.PingPanel();
             this.materialTabSelector1 = new EASkins.Controls.MaterialTabSelector();
             this.naviBar1 = new Guifreaks.NavigationBar.NaviBar(this.components);
             this.naviBand1 = new Guifreaks.NavigationBar.NaviBand(this.components);
@@ -64,6 +58,13 @@
             this.materialFlatButton2 = new EASkins.Controls.MaterialFlatButton();
             this.naviBand4 = new Guifreaks.NavigationBar.NaviBand(this.components);
             this.materialFlatButton3 = new EASkins.Controls.MaterialFlatButton();
+            this.materialFlatButton4 = new EASkins.Controls.MaterialFlatButton();
+            this.comPanel3 = new LeafSoft.PartPanel.ComPanel();
+            this.tcpServerPanel3 = new LeafSoft.PartPanel.TCPServerPanel();
+            this.tcpClientPanel3 = new LeafSoft.PartPanel.TCPClientPanel();
+            this.udpServerPanel3 = new LeafSoft.PartPanel.UDPServerPanel();
+            this.udpClientPanel3 = new LeafSoft.PartPanel.UDPClientPanel();
+            this.pingPanel3 = new LeafSoft.PartPanel.PingPanel();
             this.materialTabControl1.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
@@ -167,15 +168,6 @@
             this.tabPage7.TabIndex = 0;
             this.tabPage7.Text = "串口";
             // 
-            // comPanel3
-            // 
-            this.comPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comPanel3.Location = new System.Drawing.Point(3, 3);
-            this.comPanel3.Name = "comPanel3";
-            this.comPanel3.Size = new System.Drawing.Size(701, 460);
-            this.comPanel3.TabIndex = 1;
-            // 
             // tabPage8
             // 
             this.tabPage8.BackColor = System.Drawing.Color.White;
@@ -187,15 +179,6 @@
             this.tabPage8.TabIndex = 1;
             this.tabPage8.Text = "TCP Server";
             // 
-            // tcpServerPanel3
-            // 
-            this.tcpServerPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tcpServerPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tcpServerPanel3.Location = new System.Drawing.Point(3, 3);
-            this.tcpServerPanel3.Name = "tcpServerPanel3";
-            this.tcpServerPanel3.Size = new System.Drawing.Size(701, 460);
-            this.tcpServerPanel3.TabIndex = 1;
-            // 
             // tabPage9
             // 
             this.tabPage9.BackColor = System.Drawing.Color.White;
@@ -205,15 +188,6 @@
             this.tabPage9.Size = new System.Drawing.Size(707, 466);
             this.tabPage9.TabIndex = 2;
             this.tabPage9.Text = "TCP Client";
-            // 
-            // tcpClientPanel3
-            // 
-            this.tcpClientPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tcpClientPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tcpClientPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tcpClientPanel3.Name = "tcpClientPanel3";
-            this.tcpClientPanel3.Size = new System.Drawing.Size(707, 466);
-            this.tcpClientPanel3.TabIndex = 1;
             // 
             // tabPage10
             // 
@@ -225,15 +199,6 @@
             this.tabPage10.TabIndex = 3;
             this.tabPage10.Text = "UDP Server";
             // 
-            // udpServerPanel3
-            // 
-            this.udpServerPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.udpServerPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.udpServerPanel3.Location = new System.Drawing.Point(0, 0);
-            this.udpServerPanel3.Name = "udpServerPanel3";
-            this.udpServerPanel3.Size = new System.Drawing.Size(707, 466);
-            this.udpServerPanel3.TabIndex = 1;
-            // 
             // tabPage11
             // 
             this.tabPage11.BackColor = System.Drawing.Color.White;
@@ -244,15 +209,6 @@
             this.tabPage11.TabIndex = 4;
             this.tabPage11.Text = "UDP Client";
             // 
-            // udpClientPanel3
-            // 
-            this.udpClientPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.udpClientPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.udpClientPanel3.Location = new System.Drawing.Point(0, 0);
-            this.udpClientPanel3.Name = "udpClientPanel3";
-            this.udpClientPanel3.Size = new System.Drawing.Size(707, 466);
-            this.udpClientPanel3.TabIndex = 1;
-            // 
             // tabPage12
             // 
             this.tabPage12.BackColor = System.Drawing.Color.White;
@@ -262,15 +218,6 @@
             this.tabPage12.Size = new System.Drawing.Size(707, 466);
             this.tabPage12.TabIndex = 5;
             this.tabPage12.Text = "Ping";
-            // 
-            // pingPanel3
-            // 
-            this.pingPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pingPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pingPanel3.Location = new System.Drawing.Point(0, 0);
-            this.pingPanel3.Name = "pingPanel3";
-            this.pingPanel3.Size = new System.Drawing.Size(707, 466);
-            this.pingPanel3.TabIndex = 1;
             // 
             // materialTabSelector1
             // 
@@ -287,13 +234,13 @@
             // 
             // naviBar1
             // 
-            this.naviBar1.ActiveBand = this.naviBand3;
+            this.naviBar1.ActiveBand = this.naviBand1;
             this.naviBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.naviBar1.ButtonHeight = 36;
-            this.naviBar1.Controls.Add(this.naviBand3);
             this.naviBar1.Controls.Add(this.naviBand1);
             this.naviBar1.Controls.Add(this.naviBand2);
+            this.naviBar1.Controls.Add(this.naviBand3);
             this.naviBar1.Controls.Add(this.naviBand4);
             this.naviBar1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.naviBar1.HeaderHeight = 34;
@@ -533,6 +480,7 @@
             // 
             // naviBand3.ClientArea
             // 
+            this.naviBand3.ClientArea.Controls.Add(this.materialFlatButton4);
             this.naviBand3.ClientArea.Controls.Add(this.materialFlatButton2);
             this.naviBand3.ClientArea.Location = new System.Drawing.Point(0, 0);
             this.naviBand3.ClientArea.Name = "ClientArea";
@@ -603,6 +551,78 @@
             this.materialFlatButton3.UseVisualStyleBackColor = true;
             this.materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_Click);
             // 
+            // materialFlatButton4
+            // 
+            this.materialFlatButton4.AutoSize = true;
+            this.materialFlatButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton4.Depth = 0;
+            this.materialFlatButton4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.materialFlatButton4.Icon = global::LeafSoft.Properties.Resources.monitor_com;
+            this.materialFlatButton4.Location = new System.Drawing.Point(0, 36);
+            this.materialFlatButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton4.MouseState = EASkins.MouseState.HOVER;
+            this.materialFlatButton4.Name = "materialFlatButton4";
+            this.materialFlatButton4.Primary = false;
+            this.materialFlatButton4.Size = new System.Drawing.Size(156, 36);
+            this.materialFlatButton4.TabIndex = 7;
+            this.materialFlatButton4.Text = "串口监视";
+            this.materialFlatButton4.UseVisualStyleBackColor = true;
+            this.materialFlatButton4.Click += new System.EventHandler(this.materialFlatButton4_Click);
+            // 
+            // comPanel3
+            // 
+            this.comPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comPanel3.Location = new System.Drawing.Point(3, 3);
+            this.comPanel3.Name = "comPanel3";
+            this.comPanel3.Size = new System.Drawing.Size(701, 460);
+            this.comPanel3.TabIndex = 1;
+            // 
+            // tcpServerPanel3
+            // 
+            this.tcpServerPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcpServerPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tcpServerPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tcpServerPanel3.Name = "tcpServerPanel3";
+            this.tcpServerPanel3.Size = new System.Drawing.Size(701, 460);
+            this.tcpServerPanel3.TabIndex = 1;
+            // 
+            // tcpClientPanel3
+            // 
+            this.tcpClientPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcpClientPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tcpClientPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tcpClientPanel3.Name = "tcpClientPanel3";
+            this.tcpClientPanel3.Size = new System.Drawing.Size(707, 466);
+            this.tcpClientPanel3.TabIndex = 1;
+            // 
+            // udpServerPanel3
+            // 
+            this.udpServerPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.udpServerPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.udpServerPanel3.Location = new System.Drawing.Point(0, 0);
+            this.udpServerPanel3.Name = "udpServerPanel3";
+            this.udpServerPanel3.Size = new System.Drawing.Size(707, 466);
+            this.udpServerPanel3.TabIndex = 1;
+            // 
+            // udpClientPanel3
+            // 
+            this.udpClientPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.udpClientPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.udpClientPanel3.Location = new System.Drawing.Point(0, 0);
+            this.udpClientPanel3.Name = "udpClientPanel3";
+            this.udpClientPanel3.Size = new System.Drawing.Size(707, 466);
+            this.udpClientPanel3.TabIndex = 1;
+            // 
+            // pingPanel3
+            // 
+            this.pingPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pingPanel3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pingPanel3.Location = new System.Drawing.Point(0, 0);
+            this.pingPanel3.Name = "pingPanel3";
+            this.pingPanel3.Size = new System.Drawing.Size(707, 466);
+            this.pingPanel3.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -618,6 +638,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
@@ -684,5 +705,6 @@
         private EASkins.Controls.MaterialFlatButton materialFlatButton_tcps;
         private EASkins.Controls.MaterialFlatButton materialFlatButton2;
         private EASkins.Controls.MaterialFlatButton materialFlatButton3;
+        private EASkins.Controls.MaterialFlatButton materialFlatButton4;
     }
 }

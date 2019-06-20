@@ -11,6 +11,8 @@ using PopupTool;
 using System.Drawing;
 using LeafSoft.Units;
 using System.Configuration;
+using LeafSoft.Lib;
+using System.IO;
 
 namespace LeafSoft
 {
@@ -22,6 +24,7 @@ namespace LeafSoft
         frmBytes fb = new frmBytes();
         private Popup _pop;
         private ColorPopup _popControl;
+        private IniFiles settingFile;//配置文件
         #endregion
         public MainForm()
         {
@@ -31,12 +34,13 @@ namespace LeafSoft
             fc.TopMost = true;
             fb.TopMost = true;
             this.Text = Lib.AppInfor.AssemblyTitle + "[v" + Lib.AppInfor.AssemblyVersion + "][" + Lib.AppInfor.AssemblyCopyright + "][" + Lib.AppInfor.AssemblyCompany + "]";
-
+            settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;           
             //Console.WriteLine(GID);
             //materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey600, Primary.BlueGrey900, Primary.BlueGrey100, Accent.LightBlue200, TextShade.WHITE);
+            
         }
         #region 主题背景
         private void materialRaisedButton1_Click(object sender, System.EventArgs e)
@@ -47,7 +51,7 @@ namespace LeafSoft
         //private int colorSchemeIndex;
         private void materialRaisedButton2_Click(object sender, System.EventArgs e)
         {
-            _pop.Show(this, materialRaisedButton2.Location.X - 125, materialRaisedButton2.Location.Y + 36);
+            _pop.Show(this, materialRaisedButton2.Location.X - 130, materialRaisedButton2.Location.Y + 36);
             /*
             colorSchemeIndex++;
             if (colorSchemeIndex > 3) colorSchemeIndex = 0;
@@ -177,7 +181,7 @@ namespace LeafSoft
         {
             ComPanel tp = new ComPanel();
             tp.Dock = DockStyle.Fill;
-            CreateNewTest(tp, "串口[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.com1);
+            CreateNewTest(tp, "串口通讯[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.com1);
         }
 
         private void materialFlatButton_tcps_Click(object sender, EventArgs e)
@@ -216,6 +220,14 @@ namespace LeafSoft
             CreateNewTest(nwin, "Socket通信监视器[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.monitor_socket_icon);
         }
 
+
+        private void materialFlatButton4_Click(object sender, EventArgs e)
+        {
+            ComMonitor nwin = new ComMonitor();
+            nwin.Dock = DockStyle.Fill;
+            CreateNewTest(nwin, "串口通信监视器[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.monitor_com_icon);
+        }
+
         #endregion
         #region 关于
         private void naviBand4_Click(object sender, EventArgs e)
@@ -228,7 +240,7 @@ namespace LeafSoft
             new AboutMe().ShowDialog();
         }
         #endregion
-        #region Load
+        #region Load、Close
         /// <summary>
         /// 初始化加载
         /// </summary>
@@ -236,13 +248,26 @@ namespace LeafSoft
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            string key = config.AppSettings.Settings["ColorIndex"].Value;
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //string key = config.AppSettings.Settings["ColorIndex"].Value;
+            string sPath = Application.StartupPath + "\\IniFile";
+            if (!Directory.Exists(sPath))
+            {
+                Directory.CreateDirectory(sPath);
+            }
+            string key = settingFile.ReadString("SETTING", "ColorIndex", "0");
             Change_ColorScheme(int.Parse(key));
             _popControl = new ColorPopup(this);
             _pop = new Popup(_popControl);
+            this.comPanel3.Configer.Init_ConfigCom();
         }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.comPanel3.Configer.Save_ConfigCom();
+            this.comPanel3.DataSender.CMD_Saved_default();
+        }
         #endregion
+
     }
 }

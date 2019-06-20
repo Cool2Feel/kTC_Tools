@@ -39,6 +39,7 @@
             this.MSI_GB2312 = new System.Windows.Forms.ToolStripMenuItem();
             this.CM_Check = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_CheckSum = new System.Windows.Forms.ToolStripMenuItem();
+            this.MS_KTC = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_CRC16 = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_CRCPoly = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_CRCPolyH = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,8 @@
             this.CM_Clear = new System.Windows.Forms.ToolStripMenuItem();
             this.txtContent = new LeafSoft.LeafControl.BytesBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.MS_KTC = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ami_Tips = new EASkins.Ami_TextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(4, 4);
+            this.label1.Location = new System.Drawing.Point(4, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 1;
@@ -96,33 +98,33 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowCheckMargin = true;
             this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 158);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 136);
             // 
             // MSI_Hex
             // 
             this.MSI_Hex.Name = "MSI_Hex";
-            this.MSI_Hex.Size = new System.Drawing.Size(152, 22);
+            this.MSI_Hex.Size = new System.Drawing.Size(136, 22);
             this.MSI_Hex.Text = "Hex";
             this.MSI_Hex.Click += new System.EventHandler(this.MSI_Hex_Click);
             // 
             // MSI_ASCII
             // 
             this.MSI_ASCII.Name = "MSI_ASCII";
-            this.MSI_ASCII.Size = new System.Drawing.Size(152, 22);
+            this.MSI_ASCII.Size = new System.Drawing.Size(136, 22);
             this.MSI_ASCII.Text = "ASCII";
             this.MSI_ASCII.Click += new System.EventHandler(this.MSI_ASCII_Click);
             // 
             // MSI_UTF8
             // 
             this.MSI_UTF8.Name = "MSI_UTF8";
-            this.MSI_UTF8.Size = new System.Drawing.Size(152, 22);
+            this.MSI_UTF8.Size = new System.Drawing.Size(136, 22);
             this.MSI_UTF8.Text = "UTF8";
             this.MSI_UTF8.Click += new System.EventHandler(this.MSI_UTF8_Click);
             // 
             // MSI_GB2312
             // 
             this.MSI_GB2312.Name = "MSI_GB2312";
-            this.MSI_GB2312.Size = new System.Drawing.Size(152, 22);
+            this.MSI_GB2312.Size = new System.Drawing.Size(136, 22);
             this.MSI_GB2312.Text = "GB2312";
             this.MSI_GB2312.Click += new System.EventHandler(this.MSI_GB2312_Click);
             // 
@@ -134,7 +136,7 @@
             this.MS_CRC16,
             this.MS_CRCPoly});
             this.CM_Check.Name = "CM_Check";
-            this.CM_Check.Size = new System.Drawing.Size(152, 22);
+            this.CM_Check.Size = new System.Drawing.Size(136, 22);
             this.CM_Check.Text = "计算校验码";
             // 
             // MS_CheckSum
@@ -143,6 +145,13 @@
             this.MS_CheckSum.Size = new System.Drawing.Size(154, 22);
             this.MS_CheckSum.Text = "校验和";
             this.MS_CheckSum.Click += new System.EventHandler(this.MS_CheckSum_Click);
+            // 
+            // MS_KTC
+            // 
+            this.MS_KTC.Name = "MS_KTC";
+            this.MS_KTC.Size = new System.Drawing.Size(154, 22);
+            this.MS_KTC.Text = "KTC-CRC";
+            this.MS_KTC.Click += new System.EventHandler(this.MS_KTC_Click);
             // 
             // MS_CRC16
             // 
@@ -177,7 +186,7 @@
             // CM_Clear
             // 
             this.CM_Clear.Name = "CM_Clear";
-            this.CM_Clear.Size = new System.Drawing.Size(152, 22);
+            this.CM_Clear.Size = new System.Drawing.Size(136, 22);
             this.CM_Clear.Text = "清空";
             this.CM_Clear.Click += new System.EventHandler(this.CM_Clear_Click);
             // 
@@ -189,11 +198,11 @@
             this.txtContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContent.ContextMenuStrip = this.contextMenuStrip1;
             this.txtContent.EncodeType = LeafSoft.Lib.EnumType.DataEncode.Hex;
-            this.txtContent.Location = new System.Drawing.Point(0, 24);
+            this.txtContent.Location = new System.Drawing.Point(0, 31);
             this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
             this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtContent.Size = new System.Drawing.Size(400, 129);
+            this.txtContent.Size = new System.Drawing.Size(400, 122);
             this.txtContent.TabIndex = 0;
             // 
             // label2
@@ -207,18 +216,39 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "提示：右键切换编码格式及计算校验码";
             // 
-            // MS_KTC
+            // label3
             // 
-            this.MS_KTC.Name = "MS_KTC";
-            this.MS_KTC.Size = new System.Drawing.Size(154, 22);
-            this.MS_KTC.Text = "KTC-CRC";
-            this.MS_KTC.Click += new System.EventHandler(this.MS_KTC_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(170, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "命令备注：";
+            // 
+            // ami_Tips
+            // 
+            this.ami_Tips.BackColor = System.Drawing.Color.Transparent;
+            this.ami_Tips.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ami_Tips.ForeColor = System.Drawing.Color.DimGray;
+            this.ami_Tips.Location = new System.Drawing.Point(248, 3);
+            this.ami_Tips.MaxLength = 32767;
+            this.ami_Tips.Multiline = false;
+            this.ami_Tips.Name = "ami_Tips";
+            this.ami_Tips.ReadOnly = false;
+            this.ami_Tips.Size = new System.Drawing.Size(135, 25);
+            this.ami_Tips.TabIndex = 7;
+            this.ami_Tips.Text = "未定义";
+            this.ami_Tips.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ami_Tips.UseSystemPasswordChar = false;
             // 
             // frmCMD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(402, 185);
+            this.Controls.Add(this.ami_Tips);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
@@ -256,5 +286,7 @@
         private System.Windows.Forms.ToolStripMenuItem MSI_GB2312;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem MS_KTC;
+        private System.Windows.Forms.Label label3;
+        private EASkins.Ami_TextBox ami_Tips;
     }
 }

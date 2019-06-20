@@ -47,6 +47,16 @@ namespace LeafSoft.PartPanel
         private void btnSuper_Click(object sender, EventArgs e)
         {
             txtCmd.Visible = !txtCmd.Visible;
+            if(txtCmd.Visible)
+            {
+                btnSuper.Text = "关闭超级终端";
+                btnSuper.ForeColor = Color.Red;
+            }
+            else
+            {
+                btnSuper.Text = "启用超级终端";
+                btnSuper.ForeColor = Color.Black;
+            }
             txtCmd.Focus();
         }
 

@@ -70,7 +70,7 @@
             this.Configer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Configer.Location = new System.Drawing.Point(0, 0);
             this.Configer.Name = "Configer";
-            this.Configer.Size = new System.Drawing.Size(174, 212);
+            this.Configer.Size = new System.Drawing.Size(174, 213);
             this.Configer.TabIndex = 1;
             this.Configer.DataReceived += new LeafSoft.Lib.LeafEvent.DataReceivedHandler(this.Configer_DataReceived);
             // 
@@ -81,7 +81,7 @@
             this.btnSuper.Name = "btnSuper";
             this.btnSuper.Size = new System.Drawing.Size(139, 30);
             this.btnSuper.TabIndex = 5;
-            this.btnSuper.Text = "超级终端";
+            this.btnSuper.Text = "启用超级终端";
             this.btnSuper.UseVisualStyleBackColor = true;
             this.btnSuper.Click += new System.EventHandler(this.btnSuper_Click);
             // 
@@ -135,13 +135,12 @@
         }
 
         #endregion
-
-        private Units.NetRs232 Configer;
-        private Units.DataSend DataSender;
         private Units.DataReceive DataReceiver;
         private System.Windows.Forms.Button btnSuper;
         private LeafControl.CMDTextBox txtCmd;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MS_ClearCMD;
+        public Units.DataSend DataSender;
+        public Units.NetRs232 Configer;
     }
 }

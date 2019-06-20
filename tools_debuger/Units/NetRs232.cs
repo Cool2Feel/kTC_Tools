@@ -13,10 +13,13 @@ namespace LeafSoft.Units
     public partial class NetRs232 :UserControl, ICommunication
     {
         private SerialPort ComDevice = new SerialPort();
-        
+
+        private IniFiles settingFile;//配置文件
         public NetRs232()
         {
             InitializeComponent();
+
+            settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
             drpComList.Items.Clear();
             drpComList.Items.AddRange(SerialPort.GetPortNames());
             if (drpComList.Items.Count > 0)
@@ -126,6 +129,29 @@ namespace LeafSoft.Units
             {
                 ComDevice.Close();
             }
+        }
+
+        public void Init_ConfigCom()
+        {
+            string s = settingFile.ReadString("SETTING", "COM", "COM1");
+            drpComList.SelectedIndex = drpComList.Items.IndexOf(s);
+            s = settingFile.ReadString("SETTING", "Baud", "9600");
+            drpBaudRate.SelectedIndex = drpBaudRate.Items.IndexOf(s);
+            s = settingFile.ReadString("SETTING", "Parity", "None");
+            drpParity.SelectedIndex = drpParity.Items.IndexOf(s);
+            s = settingFile.ReadString("SETTING", "Data", "8");
+            drpDataBits.SelectedIndex = drpDataBits.Items.IndexOf(s);
+            s = settingFile.ReadString("SETTING", "Stop", "1");
+            drpStopBits.SelectedIndex = drpStopBits.Items.IndexOf(s);
+        }
+
+        public void Save_ConfigCom()
+        {
+            settingFile.WriteString("SETTING", "COM", drpComList.Text);
+            settingFile.WriteString("SETTING", "Baud", drpBaudRate.Text);
+            settingFile.WriteString("SETTING", "Parity", drpParity.Text);
+            settingFile.WriteString("SETTING", "Data", drpDataBits.Text);
+            settingFile.WriteString("SETTING", "Stop", drpStopBits.Text);
         }
     }
 }

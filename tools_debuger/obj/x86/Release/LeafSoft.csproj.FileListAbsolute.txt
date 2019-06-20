@@ -135,5 +135,6 @@ D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Release\LeafSoft.Units.NetUDPS
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Release\LeafSoft.csproj.GenerateResource.Cache
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Release\Multi-tools.exe
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Release\Multi-tools.pdb
-D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Release\LeafSoft.csprojResolveAssemblyReference.cache
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Release\LeafSoft.Units.ColorPopup.resources
+D:\VS_test Code\Com_tools\supernetdebuger\bin\Release\stdole.dll
+D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Release\LeafSoft.csprojResolveAssemblyReference.cache

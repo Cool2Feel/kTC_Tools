@@ -27,7 +27,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -55,6 +55,10 @@
     <ApplicationIcon>tools.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxInterop.CommMonitorX, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\AxInterop.CommMonitorX.dll</HintPath>
+    </Reference>
     <Reference Include="CSkin">
       <HintPath>..\..\..\Users\C_tool\CSkin+16.1.14.2\CSkin 16.1.14.2\CSkin 4.0\CSkin.dll</HintPath>
     </Reference>
@@ -73,6 +77,11 @@
     <Reference Include="Guifreaks.NavigationBar.XmlSerializers, Version=0.1.0.0, Culture=neutral, PublicKeyToken=bf0afd6b35ed9434, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Guifreaks.NavigationBar.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.CommMonitorX, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>bin\Release\Interop.CommMonitorX.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>F:\1000_Application_Softwarewc\59_3458\WallControl\bin\x86\log4net.dll</HintPath>

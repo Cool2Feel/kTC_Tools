@@ -1,11 +1,7 @@
 <b>软件名称：通信调试工具</b><br/>
 最新版本:1.0<br/>
-作者：Maximus Ye<br/>
-
-QQ:275623749<br/><br/>
 GIT开源项目地址：https://code.csdn.net/yeqi3000/supernetdebuger<br/>
 C#通信编程交流群：83868794<br/>
-邮箱：yq@yyzq.net<br/>
 
 <b>功能概要：</b><br/>
 1.串口，TCP服务端/客户端，UDP服务端/客户端通讯调试<br/>

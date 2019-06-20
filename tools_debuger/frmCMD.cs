@@ -18,6 +18,7 @@ namespace LeafSoft
             InitializeComponent();
             txtContent.SetCMD(cmd);
             SetType(txtContent.EncodeType);
+            ami_Tips.Text = cmd.Tips;
         }
 
         public frmCMD()
@@ -29,6 +30,7 @@ namespace LeafSoft
         private void btnSave_Click(object sender, EventArgs e)
         {
             NewCMD = txtContent.GetCMD();
+            NewCMD.Tips = ami_Tips.Text;
             if (NewCMD != null)
             {
                 this.DialogResult = DialogResult.OK;

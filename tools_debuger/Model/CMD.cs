@@ -13,6 +13,7 @@ namespace LeafSoft.Model
         EnumType.DataEncode _DataEncode = EnumType.DataEncode.Hex;
         string _strCMD = "";
         byte[] _byteCMD = null;
+        string _tipCMD = "";
 
         public CMD(EnumType.DataEncode DataEncode, byte[] data)
         {
@@ -108,6 +109,18 @@ namespace LeafSoft.Model
             get
             {
                 return _byteCMD;
+            }
+        }
+
+        public string Tips
+        {
+            set
+            {
+                _tipCMD = value;
+            }
+            get
+            {
+                return _tipCMD;
             }
         }
     }

@@ -214,17 +214,16 @@
             // btnCom
             // 
             this.btnCom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCom.AutoSize = true;
             this.btnCom.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCom.BackColor = System.Drawing.Color.White;
             this.btnCom.Depth = 0;
             this.btnCom.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnCom.Icon = null;
-            this.btnCom.Location = new System.Drawing.Point(68, 186);
+            this.btnCom.Location = new System.Drawing.Point(64, 186);
             this.btnCom.MouseState = EASkins.MouseState.HOVER;
             this.btnCom.Name = "btnCom";
             this.btnCom.Primary = true;
-            this.btnCom.Size = new System.Drawing.Size(81, 36);
+            this.btnCom.Size = new System.Drawing.Size(89, 36);
             this.btnCom.TabIndex = 41;
             this.btnCom.Text = "打开串口";
             this.btnCom.UseVisualStyleBackColor = false;

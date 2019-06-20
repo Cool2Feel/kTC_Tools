@@ -58,7 +58,8 @@ namespace LeafSoft.Units
 
         private void dgCMD_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            dgCMD.Rows[e.RowIndex].Cells[3].Value = "发送";
+            dgCMD.Rows[e.RowIndex].Cells[3].Value = lstCMD[e.RowIndex].Tips;
+            dgCMD.Rows[e.RowIndex].Cells[4].Value = "发送";
         }
 
         /// <summary>
@@ -191,7 +192,7 @@ namespace LeafSoft.Units
         {
             lblCount.Text = "0";
         }
-
+        #region 编码处理
         private string SetType(EnumType.DataEncode EncodeType)
         {
             string ss = "";
@@ -239,13 +240,12 @@ namespace LeafSoft.Units
             }
             return EncodeType;
         }
-
+        #endregion
         private void Load_Inifile()
         {
             try
             {
-                string s = settingFile.ReadString("SETTING", "COM", "COM1");
-
+                //string s = settingFile.ReadString("SETTING", "COM", "COM1");
                 int count = settingFile.ReadInteger("SETTING", "COUNT", 0);
                 lstCMD.Clear();
                 if (count > 0)
@@ -258,7 +258,9 @@ namespace LeafSoft.Units
                             string[] str = data.Split(',');
                             EnumType.DataEncode Type = GetType(str[0]);
                             //byte[] byteArray = Encoding.Default.GetBytes(str[1]);
-                            lstCMD.Add(new Model.CMD(Type, str[1]));
+                            Model.CMD cmd = new Model.CMD(Type, str[1]);
+                            cmd.Tips = str[2];
+                            lstCMD.Add(cmd);
                             //Console.Write(data);
                         }
                     }
@@ -275,16 +277,20 @@ namespace LeafSoft.Units
         {
             try
             {
+                settingFile.WriteInteger("SETTING", "COUNT", lstCMD.Count);
                 if (lstCMD.Count > 0)
                 {
-                    settingFile.WriteInteger("SETTING", "COUNT", lstCMD.Count);
                     for (int i = 0; i < lstCMD.Count; i++)
                     {
                         string type = SetType(lstCMD[i].ContentType);
-                        string cmd = lstCMD[i].Text;
-                        string data = type + "," + cmd;
+                        string cmd = lstCMD[i].Text + "," + lstCMD[i].Tips;
+                        string data = type + "," + cmd ;
                         settingFile.WriteString("DATA", "N" + i, data);
                     }
+                }
+                else
+                {
+                    settingFile.EraseSection("DATA");
                 }
             }
             catch
@@ -294,21 +300,28 @@ namespace LeafSoft.Units
 
         private void DataSend_Load(object sender, EventArgs e)
         {
-            string sPath = Application.StartupPath + "\\IniFile";
-            if (!Directory.Exists(sPath))
-            {
-                Directory.CreateDirectory(sPath);
-            }
             settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
             Load_Inifile();
         }
-
-        private void MS_Saved_Click(object sender, EventArgs e)
+        public void CMD_Saved_default()
         {
             settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
             Save_Inifile();
         }
-
+        /// <summary>
+        /// 默认保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MS_Saved_Click(object sender, EventArgs e)
+        {
+            CMD_Saved_default();
+        }
+        /// <summary>
+        /// 导入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MS_Input_Click(object sender, EventArgs e)
         {
             openFileRead.InitialDirectory = Application.StartupPath + "\\IniFile";
@@ -323,7 +336,11 @@ namespace LeafSoft.Units
                 Load_Inifile();
             }
         }
-
+        /// <summary>
+        /// 导出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MS_SaveAs_Click(object sender, EventArgs e)
         {
             saveFileInit.InitialDirectory = Application.StartupPath + "\\IniFile";
@@ -359,6 +376,55 @@ namespace LeafSoft.Units
                 MS_Saved.Enabled = true;
                 MS_Input.Enabled = true;
                 MS_SaveAs.Enabled = true;
+            }
+        }
+        /*
+        private void dgCMD_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            this.toolTip1.Hide(this.dgCMD);//鼠标移出单元格后隐藏提示工具     
+        }
+
+        private int cellColumnIndex = -1;//列索引
+        private int cellRowIndex = -1;//行索引
+        private void dgCMD_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //判断选择单元格的有效性
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            {
+                return;
+            }
+
+            this.toolTip1.Hide(this.dgCMD);
+            this.cellColumnIndex = e.ColumnIndex;//获取列索引
+            this.cellRowIndex = e.RowIndex;//获取行索引
+
+            if (this.cellColumnIndex >= 0 && this.cellRowIndex >= 0)
+            {
+                Point mousePos = PointToClient(MousePosition);//获取鼠标当前的位置
+                //获取鼠标移入的单元格中的值
+                string tip = this.dgCMD[2, this.cellRowIndex].Value.ToString();
+                this.toolTip1.Show(tip, this.dgCMD, mousePos);//在指定位置显示提示工具
+                Console.WriteLine(tip);
+            }
+        }
+
+        private void toolTip1_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.Graphics.FillRectangle(Brushes.AliceBlue, e.Bounds);
+            e.Graphics.DrawRectangle(Pens.Chocolate, new Rectangle(0, 0, e.Bounds.Width - 1, e.Bounds.Height - 1));
+            e.Graphics.DrawString(this.toolTip1.ToolTipTitle + e.ToolTipText, e.Font, Brushes.Red, e.Bounds);
+        }
+        */
+        /// <summary>
+        /// 提示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgCMD_CellToolTipTextNeeded(object sender, DataGridViewCellToolTipTextNeededEventArgs e)
+        {
+            if (e.RowIndex >= 0 && lstCMD.Count > 0)
+            {
+                e.ToolTipText = "提示：" + lstCMD[e.RowIndex].Tips;
             }
         }
     }

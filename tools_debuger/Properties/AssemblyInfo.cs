@@ -12,8 +12,9 @@ using System.Runtime.InteropServices;
     "●支持Hex,ASCII,UTF8,GB2312编码调试\r\n" +
     "●接收数据可通过右键菜单一键计算Hex对应的数值\r\n" +
     "●字节计算器/检验值计算器（CRC16,自定义多项式CRC16，XOR)\r\n" +
-    "●串口超级终端\r\n"+
-    "●Socket通信监视器")]
+    "●串口超级终端\r\n" +
+    "●Socket通信监视器\r\n" +   
+    "●串口通讯监视器")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("KTC")]
 [assembly: AssemblyProduct("通信调试工具")]

@@ -36,7 +36,7 @@ namespace LeafSoft.Units
 
         private void dgCMD_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 3 && e.RowIndex>=0)
+            if (e.ColumnIndex == 4 && e.RowIndex>=0)
             {//点击了发送按钮 
                 if (EventDataSend != null)
                 {
@@ -106,6 +106,19 @@ namespace LeafSoft.Units
             }
         }
 
+        private bool CheckAutoSend()
+        {
+            for (int i = 0; i < lstCMD.Count; i++)
+            {
+                object cbxValue = dgCMD.Rows[i].Cells[0].Value;
+                if (cbxValue is bool && cbxValue.Equals(true))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// 自动发送
         /// </summary>
@@ -119,9 +132,17 @@ namespace LeafSoft.Units
                 dgCMD.Enabled = false;
                 nmDelay.Enabled = false;
                 AutoSend = true;
-                Thread ThTestL = new Thread(new ParameterizedThreadStart(TAutoSend));
-                ThTestL.IsBackground = true;
-                ThTestL.Start(nmDelay.Value);
+                if (CheckAutoSend())
+                {
+                    Thread ThTestL = new Thread(new ParameterizedThreadStart(TAutoSend));
+                    ThTestL.IsBackground = true;
+                    ThTestL.Start(nmDelay.Value);
+                }
+                else
+                {
+                    MessageBox.Show("没有发送的指令选项", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    StopAutoSend();
+                }
             }
             else
             {

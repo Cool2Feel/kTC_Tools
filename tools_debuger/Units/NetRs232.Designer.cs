@@ -33,13 +33,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.drpComList = new EASkins.Emi_ComboBox();
-            this.drpBaudRate = new EASkins.Emi_ComboBox();
-            this.drpParity = new EASkins.Emi_ComboBox();
-            this.drpDataBits = new EASkins.Emi_ComboBox();
-            this.drpStopBits = new EASkins.Emi_ComboBox();
+            this.drpBaudRate = new System.Windows.Forms.ComboBox();
+            this.drpParity = new System.Windows.Forms.ComboBox();
+            this.drpDataBits = new System.Windows.Forms.ComboBox();
+            this.drpStopBits = new System.Windows.Forms.ComboBox();
             this.btnCom = new EASkins.Controls.MaterialRaisedButton();
             this.picComStatus = new System.Windows.Forms.PictureBox();
+            this.drpComList = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.picComStatus)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,38 +93,16 @@
             this.label5.TabIndex = 32;
             this.label5.Text = "停止位";
             // 
-            // drpComList
-            // 
-            this.drpComList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.drpComList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.drpComList.DropDownHeight = 100;
-            this.drpComList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.drpComList.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.drpComList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.drpComList.FormattingEnabled = true;
-            this.drpComList.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.drpComList.IntegralHeight = false;
-            this.drpComList.ItemHeight = 20;
-            this.drpComList.Items.AddRange(new object[] {
-            "COM1"});
-            this.drpComList.Location = new System.Drawing.Point(64, 6);
-            this.drpComList.Name = "drpComList";
-            this.drpComList.Size = new System.Drawing.Size(89, 26);
-            this.drpComList.StartIndex = 0;
-            this.drpComList.TabIndex = 36;
-            // 
             // drpBaudRate
             // 
-            this.drpBaudRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.drpBaudRate.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.drpBaudRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.drpBaudRate.DropDownHeight = 100;
             this.drpBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.drpBaudRate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.drpBaudRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.drpBaudRate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.drpBaudRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.drpBaudRate.FormattingEnabled = true;
-            this.drpBaudRate.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.drpBaudRate.IntegralHeight = false;
-            this.drpBaudRate.ItemHeight = 20;
+            this.drpBaudRate.ItemHeight = 17;
             this.drpBaudRate.Items.AddRange(new object[] {
             "300",
             "600",
@@ -140,22 +118,19 @@
             "115200"});
             this.drpBaudRate.Location = new System.Drawing.Point(64, 38);
             this.drpBaudRate.Name = "drpBaudRate";
-            this.drpBaudRate.Size = new System.Drawing.Size(89, 26);
-            this.drpBaudRate.StartIndex = 0;
+            this.drpBaudRate.Size = new System.Drawing.Size(89, 25);
             this.drpBaudRate.TabIndex = 37;
             // 
             // drpParity
             // 
-            this.drpParity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.drpParity.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.drpParity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.drpParity.DropDownHeight = 100;
             this.drpParity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.drpParity.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.drpParity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.drpParity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.drpParity.FormattingEnabled = true;
-            this.drpParity.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.drpParity.IntegralHeight = false;
-            this.drpParity.ItemHeight = 20;
+            this.drpParity.ItemHeight = 17;
             this.drpParity.Items.AddRange(new object[] {
             "None",
             "Odd",
@@ -164,56 +139,50 @@
             "Space"});
             this.drpParity.Location = new System.Drawing.Point(64, 70);
             this.drpParity.Name = "drpParity";
-            this.drpParity.Size = new System.Drawing.Size(89, 26);
-            this.drpParity.StartIndex = 0;
+            this.drpParity.Size = new System.Drawing.Size(89, 25);
             this.drpParity.TabIndex = 38;
             // 
             // drpDataBits
             // 
             this.drpDataBits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.drpDataBits.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.drpDataBits.DropDownHeight = 100;
             this.drpDataBits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.drpDataBits.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.drpDataBits.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.drpDataBits.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.drpDataBits.FormattingEnabled = true;
-            this.drpDataBits.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.drpDataBits.IntegralHeight = false;
-            this.drpDataBits.ItemHeight = 20;
+            this.drpDataBits.ItemHeight = 17;
             this.drpDataBits.Items.AddRange(new object[] {
             "8",
             "7",
             "6"});
             this.drpDataBits.Location = new System.Drawing.Point(64, 102);
             this.drpDataBits.Name = "drpDataBits";
-            this.drpDataBits.Size = new System.Drawing.Size(89, 26);
-            this.drpDataBits.StartIndex = 0;
+            this.drpDataBits.Size = new System.Drawing.Size(89, 25);
             this.drpDataBits.TabIndex = 39;
             // 
             // drpStopBits
             // 
             this.drpStopBits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.drpStopBits.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.drpStopBits.DropDownHeight = 100;
             this.drpStopBits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.drpStopBits.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.drpStopBits.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.drpStopBits.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.drpStopBits.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.drpStopBits.FormattingEnabled = true;
-            this.drpStopBits.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.drpStopBits.IntegralHeight = false;
-            this.drpStopBits.ItemHeight = 20;
+            this.drpStopBits.ItemHeight = 19;
             this.drpStopBits.Items.AddRange(new object[] {
             "1",
             "2"});
             this.drpStopBits.Location = new System.Drawing.Point(64, 134);
             this.drpStopBits.Name = "drpStopBits";
-            this.drpStopBits.Size = new System.Drawing.Size(89, 26);
-            this.drpStopBits.StartIndex = 0;
+            this.drpStopBits.Size = new System.Drawing.Size(89, 27);
             this.drpStopBits.TabIndex = 40;
             // 
             // btnCom
             // 
             this.btnCom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCom.AutoSize = true;
             this.btnCom.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCom.BackColor = System.Drawing.Color.White;
             this.btnCom.Depth = 0;
@@ -223,7 +192,7 @@
             this.btnCom.MouseState = EASkins.MouseState.HOVER;
             this.btnCom.Name = "btnCom";
             this.btnCom.Primary = true;
-            this.btnCom.Size = new System.Drawing.Size(89, 36);
+            this.btnCom.Size = new System.Drawing.Size(81, 36);
             this.btnCom.TabIndex = 41;
             this.btnCom.Text = "打开串口";
             this.btnCom.UseVisualStyleBackColor = false;
@@ -240,16 +209,30 @@
             this.picComStatus.TabIndex = 35;
             this.picComStatus.TabStop = false;
             // 
+            // drpComList
+            // 
+            this.drpComList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.drpComList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.drpComList.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.drpComList.FormattingEnabled = true;
+            this.drpComList.ItemHeight = 17;
+            this.drpComList.Items.AddRange(new object[] {
+            "COM1"});
+            this.drpComList.Location = new System.Drawing.Point(64, 8);
+            this.drpComList.Name = "drpComList";
+            this.drpComList.Size = new System.Drawing.Size(89, 25);
+            this.drpComList.TabIndex = 42;
+            // 
             // NetRs232
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.drpComList);
             this.Controls.Add(this.btnCom);
             this.Controls.Add(this.drpStopBits);
             this.Controls.Add(this.drpDataBits);
             this.Controls.Add(this.drpParity);
             this.Controls.Add(this.drpBaudRate);
-            this.Controls.Add(this.drpComList);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -257,7 +240,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.picComStatus);
             this.Name = "NetRs232";
-            this.Size = new System.Drawing.Size(174, 229);
+            this.Size = new System.Drawing.Size(172, 229);
             ((System.ComponentModel.ISupportInitialize)(this.picComStatus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -272,11 +255,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox picComStatus;
-        private EASkins.Emi_ComboBox drpComList;
-        private EASkins.Emi_ComboBox drpBaudRate;
-        private EASkins.Emi_ComboBox drpParity;
-        private EASkins.Emi_ComboBox drpDataBits;
-        private EASkins.Emi_ComboBox drpStopBits;
         private EASkins.Controls.MaterialRaisedButton btnCom;
+        private System.Windows.Forms.ComboBox drpBaudRate;
+        private System.Windows.Forms.ComboBox drpParity;
+        private System.Windows.Forms.ComboBox drpDataBits;
+        private System.Windows.Forms.ComboBox drpStopBits;
+        private System.Windows.Forms.ComboBox drpComList;
     }
 }

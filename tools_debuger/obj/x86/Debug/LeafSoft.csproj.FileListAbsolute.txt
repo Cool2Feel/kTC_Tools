@@ -108,7 +108,6 @@ D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.Units.NetTCPCli
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.Units.NetTCPServer.resources
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.Units.NetUDPClient.resources
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.Units.TabDataReceive.resources
-D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.yyzq.resources
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.PartPanel.ComPanel.resources
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.PartPanel.TCPServerPanel.resources
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.PartPanel.UDPServerPanel.resources
@@ -118,7 +117,6 @@ D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.Units.DataRecei
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.Units.DataSend.resources
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.Units.NetUDPServer.resources
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.csproj.GenerateResource.Cache
-D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.csprojResolveAssemblyReference.cache
 D:\VS_test Code\Com_tools\supernetdebuger\bin\Debug\log4net.dll
 D:\VS_test Code\Com_tools\supernetdebuger\bin\Debug\Multi-tools.exe.config
 D:\VS_test Code\Com_tools\supernetdebuger\bin\Debug\Multi-tools.exe
@@ -129,3 +127,11 @@ D:\VS_test Code\Com_tools\supernetdebuger\bin\Debug\PopupTool.dll
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.Units.ColorPopup.resources
 D:\VS_test Code\Com_tools\supernetdebuger\bin\Debug\AxInterop.CommMonitorX.dll
 D:\VS_test Code\Com_tools\supernetdebuger\bin\Debug\stdole.dll
+D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.PartPanel.WOLPanel.resources
+D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.frmAWOL.resources
+D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.LeafControl.MACTextBox.resources
+D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.frmGetMac.resources
+D:\VS_test Code\Com_tools\supernetdebuger\bin\Debug\IpBoxControl.dll
+D:\VS_test Code\Com_tools\supernetdebuger\bin\Debug\IpBoxControl.pdb
+D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.csprojResolveAssemblyReference.cache
+D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.PartPanel.AdbPanel.resources

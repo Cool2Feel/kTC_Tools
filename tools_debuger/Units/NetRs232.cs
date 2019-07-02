@@ -70,7 +70,7 @@ namespace LeafSoft.Units
                     return;
                 }
                 btnCom.Text = "关闭串口";
-                picComStatus.Image = Properties.Resources.greenlight;
+                picComStatus.BackgroundImage = Properties.Resources.greenlight;
             }
             else
             {

@@ -36,7 +36,7 @@
             this.lstConn = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MS_Delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbxServerIP = new EASkins.Emi_ComboBox();
+            this.cbxServerIP = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmServerPort)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +46,7 @@
             this.btnListen.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnListen.Location = new System.Drawing.Point(110, 35);
             this.btnListen.Name = "btnListen";
-            this.btnListen.Size = new System.Drawing.Size(55, 23);
+            this.btnListen.Size = new System.Drawing.Size(55, 24);
             this.btnListen.TabIndex = 10;
             this.btnListen.Text = "监听";
             this.btnListen.UseVisualStyleBackColor = true;
@@ -125,21 +125,18 @@
             // cbxServerIP
             // 
             this.cbxServerIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.cbxServerIP.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbxServerIP.DropDownHeight = 100;
             this.cbxServerIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxServerIP.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbxServerIP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
             this.cbxServerIP.FormattingEnabled = true;
-            this.cbxServerIP.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.cbxServerIP.IntegralHeight = false;
-            this.cbxServerIP.ItemHeight = 20;
+            this.cbxServerIP.ItemHeight = 17;
             this.cbxServerIP.Items.AddRange(new object[] {
             "192.168.0.1"});
             this.cbxServerIP.Location = new System.Drawing.Point(50, 2);
             this.cbxServerIP.Name = "cbxServerIP";
-            this.cbxServerIP.Size = new System.Drawing.Size(115, 26);
-            this.cbxServerIP.StartIndex = 0;
+            this.cbxServerIP.Size = new System.Drawing.Size(115, 25);
             this.cbxServerIP.TabIndex = 37;
             // 
             // NetTCPServer
@@ -170,6 +167,6 @@
         private System.Windows.Forms.ListBox lstConn;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MS_Delete;
-        private EASkins.Emi_ComboBox cbxServerIP;
+        private System.Windows.Forms.ComboBox cbxServerIP;
     }
 }

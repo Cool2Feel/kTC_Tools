@@ -28,9 +28,10 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -53,6 +54,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>tools.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LeafSoft.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.CommMonitorX, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -83,6 +87,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>bin\Release\Interop.CommMonitorX.dll</HintPath>
     </Reference>
+    <Reference Include="IpBoxControl">
+      <HintPath>E:\C#_other\Controls\IpBoxControl\IpBoxControl\bin\Debug\IpBoxControl.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>F:\1000_Application_Softwarewc\59_3458\WallControl\bin\x86\log4net.dll</HintPath>
     </Reference>
@@ -95,10 +102,15 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WOL, Version=2.10.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WOL.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutMe.cs">
@@ -106,6 +118,12 @@
     </Compile>
     <Compile Include="AboutMe.Designer.cs">
       <DependentUpon>AboutMe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAWOL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAWOL.Designer.cs">
+      <DependentUpon>frmAWOL.cs</DependentUpon>
     </Compile>
     <Compile Include="frmBytes.cs">
       <SubType>Form</SubType>
@@ -124,6 +142,12 @@
     </Compile>
     <Compile Include="frmCMD.Designer.cs">
       <DependentUpon>frmCMD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGetMac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGetMac.Designer.cs">
+      <DependentUpon>frmGetMac.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLicense.cs">
       <SubType>Form</SubType>
@@ -146,11 +170,20 @@
     <Compile Include="LeafControl\CMDTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LeafControl\MacAddressEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Lib\ADBHelp\CmdAdbInfo.cs" />
+    <Compile Include="Lib\ADBHelp\CmdHelp.cs" />
+    <Compile Include="Lib\ADBHelp\CmdProcessHelper.cs" />
+    <Compile Include="Lib\ADBHelp\SystemErrorCodes.cs" />
     <Compile Include="Lib\BytesCheck.cs" />
     <Compile Include="Lib\ExceptionLog.cs" />
+    <Compile Include="Lib\GetMac.cs" />
     <Compile Include="Lib\HotKey.cs" />
     <Compile Include="Lib\IniFiles.cs" />
     <Compile Include="Lib\LogHelper.cs" />
+    <Compile Include="Lib\ADBHelp\ProcessHelper.cs" />
     <Compile Include="Lib\SnifferSocket.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -160,6 +193,13 @@
     </Compile>
     <Compile Include="Model\IPPacket.cs" />
     <Compile Include="Model\LeafUDPClient.cs" />
+    <Compile Include="Model\WOL.cs" />
+    <Compile Include="PartPanel\AdbPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PartPanel\AdbPanel.Designer.cs">
+      <DependentUpon>AdbPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="PartPanel\ComMonitor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -180,6 +220,12 @@
     </Compile>
     <Compile Include="PartPanel\BasePanel.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PartPanel\WOLPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PartPanel\WOLPanel.Designer.cs">
+      <DependentUpon>WOLPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -209,12 +255,6 @@
     </Compile>
     <Compile Include="Units\TabDataReceive.Designer.cs">
       <DependentUpon>TabDataReceive.cs</DependentUpon>
-    </Compile>
-    <Compile Include="yyzq.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="yyzq.Designer.cs">
-      <DependentUpon>yyzq.cs</DependentUpon>
     </Compile>
     <Compile Include="LeafControl\BytesBox.cs">
       <SubType>Component</SubType>
@@ -293,6 +333,9 @@
     <EmbeddedResource Include="AboutMe.resx">
       <DependentUpon>AboutMe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAWOL.resx">
+      <DependentUpon>frmAWOL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBytes.resx">
       <DependentUpon>frmBytes.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCMD.resx">
       <DependentUpon>frmCMD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGetMac.resx">
+      <DependentUpon>frmGetMac.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLicense.resx">
       <DependentUpon>frmLicense.cs</DependentUpon>
@@ -312,8 +358,14 @@
     <EmbeddedResource Include="frmPoly.resx">
       <DependentUpon>frmPoly.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LeafControl\MacAddressEditor.resx">
+      <DependentUpon>MacAddressEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartPanel\AdbPanel.resx">
+      <DependentUpon>AdbPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartPanel\ComMonitor.resx">
       <DependentUpon>ComMonitor.cs</DependentUpon>
@@ -330,6 +382,9 @@
     <EmbeddedResource Include="PartPanel\UDPClientPanel.resx">
       <DependentUpon>UDPClientPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PartPanel\WOLPanel.resx">
+      <DependentUpon>WOLPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Units\ColorPopup.resx">
       <DependentUpon>ColorPopup.cs</DependentUpon>
     </EmbeddedResource>
@@ -344,9 +399,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Units\TabDataReceive.resx">
       <DependentUpon>TabDataReceive.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="yyzq.resx">
-      <DependentUpon>yyzq.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PartPanel\ComPanel.resx">
       <DependentUpon>ComPanel.cs</DependentUpon>
@@ -400,6 +452,9 @@
     <None Include="Resources\redlight.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdbLib\adb.exe" />
+    <Content Include="AdbLib\AdbWinApi.dll" />
+    <Content Include="AdbLib\AdbWinUsbApi.dll" />
     <Content Include="Images\信息.png" />
     <Content Include="Images\新建窗口.png" />
     <Content Include="Images\计算器.png" />
@@ -419,10 +474,15 @@
     <None Include="Resources\leafsoft.png" />
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,KB2468871">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29与 .NET Framework 4 的更新%28KB2468871%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
+      <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

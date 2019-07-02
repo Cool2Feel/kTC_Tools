@@ -69,5 +69,15 @@ namespace LeafSoft.PartPanel
         {
             txtCmd.Clear();
         }
+
+        private void MS_FontSet_Click(object sender, EventArgs e)
+        {
+            fontDialog1.Font = txtCmd.Font;
+            if (fontDialog1.ShowDialog() == DialogResult.OK)
+            {
+                txtCmd.Font = fontDialog1.Font;
+                //txtCmd.Font = fontDialog1.Font;
+            }
+        }
     }
 }

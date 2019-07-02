@@ -13,6 +13,7 @@ using LeafSoft.Units;
 using System.Configuration;
 using LeafSoft.Lib;
 using System.IO;
+using System.Linq;
 
 namespace LeafSoft
 {
@@ -33,14 +34,17 @@ namespace LeafSoft
             int GID = Guid.NewGuid().ToString().Length;
             fc.TopMost = true;
             fb.TopMost = true;
-            this.Text = Lib.AppInfor.AssemblyTitle + "[v" + Lib.AppInfor.AssemblyVersion + "][" + Lib.AppInfor.AssemblyCopyright + "][" + Lib.AppInfor.AssemblyCompany + "]";
+            this.Text = Lib.AppInfor.AssemblyCompany + Lib.AppInfor.AssemblyTitle + "[v" + Lib.AppInfor.AssemblyVersion + "]";
             settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;           
-            //Console.WriteLine(GID);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+
+            tabPage10.Parent = null;
+            tabPage10.Hide();
+            //Console.WriteLine(Screen.AllScreens.Count() + ":" + Screen.FromControl(this).DeviceName);
             //materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey600, Primary.BlueGrey900, Primary.BlueGrey100, Accent.LightBlue200, TextShade.WHITE);
-            
+
         }
         #region 主题背景
         private void materialRaisedButton1_Click(object sender, System.EventArgs e)
@@ -118,12 +122,17 @@ namespace LeafSoft
             {
                 materialTabControl1.Width += 125;
                 materialTabControl1.Location = new System.Drawing.Point(materialTabControl1.Location.X - 125, materialTabControl1.Location.Y);
+
+                materialTabSelector1.Width += 100;
+                materialTabSelector1.Location = new System.Drawing.Point(materialTabSelector1.Location.X - 100, materialTabSelector1.Location.Y);
                 size = true;
             }
             else if (size && naviBar1.Width == 158)
             {
                 materialTabControl1.Width -= 125;
                 materialTabControl1.Location = new System.Drawing.Point(materialTabControl1.Location.X + 125, materialTabControl1.Location.Y);
+                materialTabSelector1.Width -= 100;
+                materialTabSelector1.Location = new System.Drawing.Point(materialTabSelector1.Location.X + 100, materialTabSelector1.Location.Y);
                 size = false;
             }
         }
@@ -168,6 +177,15 @@ namespace LeafSoft
             frm.Text = title;
             frm.FormClosing += new FormClosingEventHandler(frm_FormClosing);
             frm.Show();
+            /*
+            if (Screen.AllScreens.Count() == 2)
+            {
+                frm.Left = ((Screen.AllScreens[1].Bounds.Width - this.Width) / 2);
+                frm.Top = ((Screen.AllScreens[1].Bounds.Height - this.Height) / 2);
+                //frm.Size = new System.Drawing.Size(Screen.AllScreens[1].Bounds.Width, Screen.AllScreens[1].Bounds.Height);
+                //Console.WriteLine(Screen.AllScreens[1].Bounds.Width + Screen.AllScreens[1].Bounds.Height);
+            }
+            */
         }
 
         void frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -260,12 +278,17 @@ namespace LeafSoft
             _popControl = new ColorPopup(this);
             _pop = new Popup(_popControl);
             this.comPanel3.Configer.Init_ConfigCom();
+
+            naviBar1.Collapsed = true;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.comPanel3.Configer.Save_ConfigCom();
+            this.comPanel3.Configer.ClearSelf();
             this.comPanel3.DataSender.CMD_Saved_default();
+            this.wolPanel1.WOL_Saved_default();
+            //this.pingPanel3.OutPutForm_FormClosing();
         }
         #endregion
 

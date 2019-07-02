@@ -123,6 +123,7 @@
             // 
             // comSelect
             // 
+            this.comSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comSelect.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comSelect.FormattingEnabled = true;
             this.comSelect.Location = new System.Drawing.Point(65, 16);
@@ -190,12 +191,13 @@
             // 
             // redtData
             // 
+            this.redtData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.redtData.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.redtData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.redtData.Location = new System.Drawing.Point(3, 54);
             this.redtData.Name = "redtData";
             this.redtData.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.redtData.Size = new System.Drawing.Size(768, 249);
+            this.redtData.Size = new System.Drawing.Size(768, 227);
             this.redtData.TabIndex = 25;
             this.redtData.Text = "";
             // 
@@ -203,9 +205,9 @@
             // 
             this.splitter2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter2.Location = new System.Drawing.Point(3, 303);
+            this.splitter2.Location = new System.Drawing.Point(3, 281);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(768, 5);
+            this.splitter2.Size = new System.Drawing.Size(768, 3);
             this.splitter2.TabIndex = 24;
             this.splitter2.TabStop = false;
             // 
@@ -213,10 +215,10 @@
             // 
             this.ctlData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ctlData.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ctlData.Location = new System.Drawing.Point(3, 308);
+            this.ctlData.Location = new System.Drawing.Point(3, 284);
             this.ctlData.Name = "ctlData";
             this.ctlData.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.ctlData.Size = new System.Drawing.Size(768, 78);
+            this.ctlData.Size = new System.Drawing.Size(768, 102);
             this.ctlData.TabIndex = 23;
             this.ctlData.Text = "";
             // 

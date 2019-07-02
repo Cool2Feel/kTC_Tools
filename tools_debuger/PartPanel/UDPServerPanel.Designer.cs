@@ -40,7 +40,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabDataReceiver.Location = new System.Drawing.Point(2, 262);
             this.tabDataReceiver.Name = "tabDataReceiver";
-            this.tabDataReceiver.Size = new System.Drawing.Size(797, 244);
+            this.tabDataReceiver.Size = new System.Drawing.Size(797, 235);
             this.tabDataReceiver.TabIndex = 8;
             // 
             // Configer
@@ -67,8 +67,8 @@
             // 
             // UDPServerPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.tabDataReceiver);
             this.Controls.Add(this.Configer);
             this.Controls.Add(this.DataSender);

@@ -36,7 +36,7 @@
             this.lstConn = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MS_Delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbxLocalIP = new EASkins.Emi_ComboBox();
+            this.cbxLocalIP = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmLocalPort)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -122,21 +122,18 @@
             // cbxLocalIP
             // 
             this.cbxLocalIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.cbxLocalIP.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbxLocalIP.DropDownHeight = 100;
             this.cbxLocalIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxLocalIP.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbxLocalIP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
             this.cbxLocalIP.FormattingEnabled = true;
-            this.cbxLocalIP.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.cbxLocalIP.IntegralHeight = false;
-            this.cbxLocalIP.ItemHeight = 20;
+            this.cbxLocalIP.ItemHeight = 17;
             this.cbxLocalIP.Items.AddRange(new object[] {
             "192.168.0.1"});
             this.cbxLocalIP.Location = new System.Drawing.Point(50, 2);
             this.cbxLocalIP.Name = "cbxLocalIP";
-            this.cbxLocalIP.Size = new System.Drawing.Size(115, 26);
-            this.cbxLocalIP.StartIndex = 0;
+            this.cbxLocalIP.Size = new System.Drawing.Size(115, 25);
             this.cbxLocalIP.TabIndex = 38;
             // 
             // NetUDPServer
@@ -168,6 +165,6 @@
         private System.Windows.Forms.ListBox lstConn;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MS_Delete;
-        private EASkins.Emi_ComboBox cbxLocalIP;
+        private new System.Windows.Forms.ComboBox cbxLocalIP;
     }
 }

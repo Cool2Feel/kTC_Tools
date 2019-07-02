@@ -92,7 +92,7 @@
             // txtServerIP
             // 
             this.txtServerIP.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtServerIP.Location = new System.Drawing.Point(50, 2);
+            this.txtServerIP.Location = new System.Drawing.Point(50, 4);
             this.txtServerIP.Name = "txtServerIP";
             this.txtServerIP.Size = new System.Drawing.Size(111, 23);
             this.txtServerIP.TabIndex = 16;
@@ -101,11 +101,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(4, 7);
+            this.label1.Location = new System.Drawing.Point(2, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.Size = new System.Drawing.Size(47, 17);
             this.label1.TabIndex = 15;
-            this.label1.Text = "服务端";
+            this.label1.Text = "服务端:";
             // 
             // btnConn
             // 
@@ -122,11 +122,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(8, 38);
+            this.label2.Location = new System.Drawing.Point(6, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 17);
+            this.label2.Size = new System.Drawing.Size(35, 17);
             this.label2.TabIndex = 17;
-            this.label2.Text = "端口";
+            this.label2.Text = "端口:";
             // 
             // NetUDPClient
             // 

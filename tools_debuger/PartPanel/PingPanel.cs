@@ -210,7 +210,9 @@ namespace LeafSoft.PartPanel
                         t = new Thread(new ThreadStart(ExecuteCMD));
                         t.Start();
                         running = false;
-                        writer.WriteLine(cmd);
+                        textBox1.Text = "";
+                        txtCmd.Focus();
+                        //writer.WriteLine(cmd);
                         //Console.WriteLine("-=-=");
                     }
                     else
@@ -227,12 +229,7 @@ namespace LeafSoft.PartPanel
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string cmd = comboBox1.Text;
-            string arg = textBox2.Text;
-            if (arg != "")
-                cmd = cmd + " " + arg;
-            Thread th = new Thread(new ParameterizedThreadStart(ExecuteADB));
-            th.Start(cmd);
+
         }
     }
 }

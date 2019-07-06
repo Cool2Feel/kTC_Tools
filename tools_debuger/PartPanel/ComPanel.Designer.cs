@@ -94,6 +94,7 @@
             this.Configer.Name = "Configer";
             this.Configer.Size = new System.Drawing.Size(174, 210);
             this.Configer.TabIndex = 11;
+            this.Configer.DataReceived += new LeafSoft.Lib.LeafEvent.DataReceivedHandler(this.Configer_DataReceived);
             // 
             // txtCmd
             // 
@@ -111,6 +112,7 @@
             this.txtCmd.Size = new System.Drawing.Size(800, 247);
             this.txtCmd.TabIndex = 15;
             this.txtCmd.Visible = false;
+            this.txtCmd.DataSend += new LeafSoft.Lib.LeafEvent.DataSendHandler(this.txtCmd_DataSend);
             // 
             // DataReceiver
             // 

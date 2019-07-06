@@ -120,7 +120,6 @@ namespace LeafSoft
             return ipAddr;
         }
 
-
         /// <summary>
         /// 根据ip地址获得MAC地址
         /// </summary>

@@ -13,7 +13,9 @@ using System.Runtime.InteropServices;
     "●接收数据可通过右键菜单一键计算Hex对应的数值\r\n" +
     "●字节计算器/检验值计算器（CRC16,自定义多项式CRC16，XOR)\r\n" +
     "●串口超级终端\r\n" +
-    "●Socket通信监视器\r\n" +   
+    "●Socket通信监视器\r\n" +
+    "●WOL远程唤醒\r\n" +
+    "●ADB调试功能\r\n" + 
     "●串口通讯监视器")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("KTC")]
@@ -40,5 +42,6 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“内部版本号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2")]
+[assembly: AssemblyVersion("1.3")]
 [assembly: AssemblyFileVersion("1.0")]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "app.config", ConfigFileExtension = "config", Watch = true)]

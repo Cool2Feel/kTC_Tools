@@ -195,7 +195,6 @@
             this.button1.Text = "ADB";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
@@ -273,6 +272,7 @@
             this.txtCmd.Location = new System.Drawing.Point(0, 89);
             this.txtCmd.Multiline = true;
             this.txtCmd.Name = "txtCmd";
+            this.txtCmd.ReadOnly = true;
             this.txtCmd.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtCmd.Size = new System.Drawing.Size(846, 291);
             this.txtCmd.TabIndex = 19;

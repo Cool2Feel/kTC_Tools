@@ -65,6 +65,8 @@ namespace LeafSoft.Units
                 client.NetWork.GetStream().BeginRead(client.buffer, 0, client.buffer.Length, new AsyncCallback(TCPCallBack), client);
                 lstClient.Add(client);
                 BindLstClient();
+
+                LogHelper.WriteLog("TCP Client Connect: " + txtServerIP.Text);
             }
             catch (Exception ex)
             {
@@ -93,6 +95,7 @@ namespace LeafSoft.Units
                         {
                             DataReceived.BeginInvoke(client.Name, recdata, null, null);//异步输出数据
                         }
+                        LogHelper.WriteLog("TCP Client Received: " + Encoding.Default.GetString(recdata));
                         ns.BeginRead(client.buffer, 0, client.buffer.Length, new AsyncCallback(TCPCallBack), client);
                     }
                     else
@@ -123,6 +126,8 @@ namespace LeafSoft.Units
                     try
                     {
                         selClient.NetWork.GetStream().Write(data, 0, data.Length);
+
+                        LogHelper.WriteLog("TCP Client Send data: " + Encoding.Default.GetString(data));
                     }
                     catch (Exception ex)
                     {

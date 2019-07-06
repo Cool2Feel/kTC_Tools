@@ -51,6 +51,9 @@ namespace LeafSoft.PartPanel
 
                 //SendWakeOnLanPacket(mac);
                 WOL.AquilaWolLibrary.WakeUp(MacTextBox.Text);
+
+                LogHelper.WriteLog("WOL Date: " + MacTextBox.Text);
+                MessageBox.Show("已发送唤醒数据信息！", "提示");
             }
             else
                 MessageBox.Show("请输入正确的MAC地址！","提示");
@@ -172,6 +175,8 @@ namespace LeafSoft.PartPanel
                 if (null != macByte)
                 {
                     SendWakeOnLanPacket(macByte, ipString);
+                    LogHelper.WriteLog("WOL Date: " + macString);
+                    MessageBox.Show("已发送唤醒数据信息！", "提示");
                 }
             }
         }
@@ -264,6 +269,8 @@ namespace LeafSoft.PartPanel
                                     if (null != macByte)
                                     {
                                         SendWakeOnLanPacket(macByte, ipString);
+
+                                        LogHelper.WriteLog("WOL Date: " + macString);
                                     }
                                 }
                             }));
@@ -364,13 +371,13 @@ namespace LeafSoft.PartPanel
         }
         private void WOLPanel_Load(object sender, EventArgs e)
         {
-            settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\WOL.ini");
+            settingFile = new IniFiles(Application.StartupPath + "\\WOL\\WOL.ini");
             Load_Inifile();
         }
 
         public void WOL_Saved_default()
         {
-            settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\WOL.ini");
+            settingFile = new IniFiles(Application.StartupPath + "\\WOL\\WOL.ini");
             Save_Inifile();
         }
         #endregion

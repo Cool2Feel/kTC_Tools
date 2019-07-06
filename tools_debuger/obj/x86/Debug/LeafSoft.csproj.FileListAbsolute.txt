@@ -133,5 +133,5 @@ D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.LeafControl.MAC
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.frmGetMac.resources
 D:\VS_test Code\Com_tools\supernetdebuger\bin\Debug\IpBoxControl.dll
 D:\VS_test Code\Com_tools\supernetdebuger\bin\Debug\IpBoxControl.pdb
-D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.csprojResolveAssemblyReference.cache
 D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.PartPanel.AdbPanel.resources
+D:\VS_test Code\Com_tools\supernetdebuger\obj\x86\Debug\LeafSoft.csprojResolveAssemblyReference.cache

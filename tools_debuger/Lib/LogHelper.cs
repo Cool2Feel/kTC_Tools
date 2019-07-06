@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace LeafSoft
@@ -17,22 +18,23 @@ namespace LeafSoft
 
         public static readonly log4net.ILog logdebug = log4net.LogManager.GetLogger("logdebug");
 
-        /*
-        public static void SetConfig()
+        
+        public static void SetConfig(string filePath)
         {
-            log4net.Config.XmlConfigurator.Configure();
+            FileInfo configFile = new FileInfo(filePath);
+            log4net.Config.XmlConfigurator.Configure(configFile);
         }
         public static void SetConfig(FileInfo configFile)
         {
             log4net.Config.XmlConfigurator.Configure(configFile);
         }
-         */ 
 
         public static void WriteLog(string info)
         {
             if (loginfo.IsInfoEnabled)
             {
                 loginfo.Info(info);
+                //Console.WriteLine(loginfo.Logger.Name);
             }
         }
 

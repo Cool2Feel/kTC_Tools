@@ -105,6 +105,8 @@
             // cbxAutoLine
             // 
             this.cbxAutoLine.AutoSize = true;
+            this.cbxAutoLine.Checked = true;
+            this.cbxAutoLine.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbxAutoLine.Location = new System.Drawing.Point(10, 0);
             this.cbxAutoLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbxAutoLine.Name = "cbxAutoLine";

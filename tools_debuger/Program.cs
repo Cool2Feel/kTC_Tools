@@ -17,7 +17,13 @@ namespace LeafSoft
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
+                //加载日志配置文件，只需要在程序启动时加载一次
+                string filePath = AppDomain.CurrentDomain.BaseDirectory + "app.config";
+                LogHelper.SetConfig(filePath);
+                //log4net.Config.XmlConfigurator.Configure();
+                LogHelper.WriteLog("Multi-tool Start: Running...");
                 Application.Run(new MainForm());
+
             }
             catch (Exception e)
             {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using LeafSoft.Lib;
 using System.Threading;
+using System.IO;
 
 namespace LeafSoft.PartPanel
 {
@@ -19,11 +20,13 @@ namespace LeafSoft.PartPanel
         delegate void SetTextCallback(string data);
 
         SynchronizationContext m_SyncContext = null;
+        private IniFiles settingFile;//配置文件
 
         public AdbPanel()
         {
             InitializeComponent();
             m_SyncContext = SynchronizationContext.Current;
+            settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
         }
 
         private void AdbPanel_Load(object sender, EventArgs e)
@@ -35,6 +38,7 @@ namespace LeafSoft.PartPanel
 
             //加载所有的ADB指令
             LoadAllADBCmd();
+            Init_ConfigAdb();
         }
 
         //接收到数据
@@ -75,7 +79,7 @@ namespace LeafSoft.PartPanel
             }
             if (cboAllADBCmd.Items.Count > 0)
             {
-                cboAllADBCmd.SelectedIndex = 0;
+                cboAllADBCmd.SelectedIndex = 1;
             }
         }
 
@@ -138,6 +142,8 @@ namespace LeafSoft.PartPanel
             string cmdStr = txtCustomCmd.Text.Trim();
             ShowSendCmdInfo(cmdStr);
             cmdHelp.SendAdbCmd(cmdStr);
+
+            LogHelper.WriteLog("ADB Send Date: " + cmdStr);
         }
 
         //显示发送的指令
@@ -149,6 +155,75 @@ namespace LeafSoft.PartPanel
         private void btnClearCmd_Click(object sender, EventArgs e)
         {
             txtListInfo.Clear();
+        }
+
+        private void txtCustomCmd_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string cmdStr = txtCustomCmd.Text.Trim();
+                ShowSendCmdInfo(cmdStr);
+                cmdHelp.SendAdbCmd(cmdStr);
+
+                LogHelper.WriteLog("ADB Send Date: " + cmdStr);
+            }
+        }
+
+        private void bt_connect_Click(object sender, EventArgs e)
+        {
+            if(txtCustomIP.Text != "")
+            {
+                string cmdStr = CmdAdbInfo.adb_connect + " " + txtCustomIP.Text.Trim();
+                ShowSendCmdInfo(cmdStr);
+                cmdHelp.SendAdbCmd(cmdStr);
+
+                LogHelper.WriteLog("ADB Send Date: " + cmdStr);
+            }
+        }
+
+        private void bt_pull_Click(object sender, EventArgs e)
+        {
+            if (txtCustomPath.Text != "")
+            {
+                string spath = "E:\\Log\\";
+                if (!Directory.Exists(spath))
+                {
+                    try
+                    {
+                        DirectoryInfo directoryInfo = new DirectoryInfo(spath);
+                        directoryInfo.Create();
+                    }
+                    catch
+                    {
+                        DirectoryInfo directoryInfo = new DirectoryInfo("C:\\Log\\");
+                        directoryInfo.Create();
+                        MessageBox.Show("E盘路径不存在，已修改到C:\\Log\\","提示");
+                    }
+                }
+                string cmdStr = CmdAdbInfo.adb_root;
+                ShowSendCmdInfo(cmdStr);
+                cmdHelp.SendAdbCmd(cmdStr);
+                cmdStr = CmdAdbInfo.adb_remount;
+                ShowSendCmdInfo(cmdStr);
+                cmdHelp.SendAdbCmd(cmdStr);
+
+                cmdStr = CmdAdbInfo.adb_pull + " " + txtCustomPath.Text.Trim() + " " + spath;
+                ShowSendCmdInfo(cmdStr);
+                cmdHelp.SendAdbCmd(cmdStr);
+
+                LogHelper.WriteLog("ADB Send Date: " + cmdStr);
+            }
+        }
+
+        private void Init_ConfigAdb()
+        {
+            string s = settingFile.ReadString("SETTING", "ADB", "");
+            txtCustomIP.Text = s;
+        }
+
+        public void Save_ConfigAdb()
+        {
+            settingFile.WriteString("SETTING", "ADB", txtCustomIP.Text);
         }
     }
 }

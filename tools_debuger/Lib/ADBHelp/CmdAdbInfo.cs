@@ -42,6 +42,10 @@ namespace LeafSoft.Lib
         public static string adb_pull = "pull";
         /**push 上传**/
         public static string adb_push = "push";
+        /**connect**/
+        public static string adb_connect = "connect";
+        /**remount**/
+        public static string adb_remount = "remount";
 
 
         /**获取所有adb指令*/
@@ -66,6 +70,8 @@ namespace LeafSoft.Lib
             itemsList.Add(adb_root);
             itemsList.Add(adb_pull);
             itemsList.Add(adb_push);
+            itemsList.Add(adb_connect);
+            itemsList.Add(adb_remount);
             itemsList.Sort();
             return itemsList;
         }

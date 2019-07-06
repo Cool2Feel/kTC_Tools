@@ -83,7 +83,7 @@ namespace LeafSoft.Units
         /// <param name="e"></param>
         private void MS_Edit_Click(object sender, EventArgs e)
         {
-            if (dgCMD.SelectedRows.Count > 0)
+            if (dgCMD.SelectedRows.Count >= 0)
             {
                 frmCMD fCmd = new frmCMD(lstCMD[dgCMD.SelectedRows[0].Index]);
                 if (fCmd.ShowDialog() == DialogResult.OK)
@@ -100,7 +100,7 @@ namespace LeafSoft.Units
         /// <param name="e"></param>
         private void MS_Delete_Click(object sender, EventArgs e)
         {
-            if (dgCMD.SelectedRows.Count > 0)
+            if (dgCMD.SelectedRows.Count >= 0)
             {
                 lstCMD.RemoveAt(dgCMD.SelectedRows[0].Index);
             }

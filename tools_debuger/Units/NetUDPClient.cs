@@ -75,6 +75,8 @@ namespace LeafSoft.Units
                 client.NetWork.BeginReceive(new AsyncCallback(ReceiveCallback), client);//继续异步接收数据
                 lstClient.Add(client);
                 BindLstClient();
+
+                LogHelper.WriteLog("UDP Add Connect: " + txtServerIP.Text);
             }
             catch (Exception ex)
             {
@@ -99,6 +101,8 @@ namespace LeafSoft.Units
                     if (DataReceived != null)
                     {
                         DataReceived.BeginInvoke(ConnName, recdata, null, null);//异步输出数据
+
+                        LogHelper.WriteLog("UDP Receive Date: " + Encoding.Default.GetString(recdata));
                     }
                     uclient.NetWork.BeginReceive(new AsyncCallback(ReceiveCallback), uclient);//继续异步接收数据
                 }
@@ -124,6 +128,8 @@ namespace LeafSoft.Units
                     {
                         LeafUDPClient client = (LeafUDPClient)lstConn.SelectedItems[i];
                         client.NetWork.Send(data, data.Length);
+
+                        LogHelper.WriteLog("UDP Send Date: " + Encoding.Default.GetString(data));
                     }
                     catch (Exception ex)
                     {

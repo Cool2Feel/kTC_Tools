@@ -278,7 +278,6 @@ namespace LeafSoft
             _popControl = new ColorPopup(this);
             _pop = new Popup(_popControl);
             this.comPanel3.Configer.Init_ConfigCom();
-
             naviBar1.Collapsed = true;
         }
 
@@ -288,7 +287,10 @@ namespace LeafSoft
             this.comPanel3.Configer.ClearSelf();
             this.comPanel3.DataSender.CMD_Saved_default();
             this.wolPanel1.WOL_Saved_default();
+            this.adbPanel1.Save_ConfigAdb();
             //this.pingPanel3.OutPutForm_FormClosing();
+            LogHelper.WriteLog("Multi-tool Stop: Closed...");
+            System.Environment.Exit(0);
         }
         #endregion
 

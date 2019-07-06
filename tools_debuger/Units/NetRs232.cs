@@ -44,6 +44,10 @@ namespace LeafSoft.Units
             byte[] ReDatas = new byte[ComDevice.BytesToRead];
             ComDevice.Read(ReDatas, 0, ReDatas.Length);//读取数据
             DataReceived(this,ReDatas);//输出数据
+
+            LogHelper.WriteLog("串口 DataReceived：" + Encoding.Default.GetString(ReDatas));
+
+            ExceptionLog.getLog().WriteLogFile(ReDatas, DateTime.Now.ToString("yyyyMMdd") + "log.txt");
         }
 
         /// <summary>
@@ -62,13 +66,20 @@ namespace LeafSoft.Units
                 ComDevice.StopBits = (StopBits)Convert.ToInt32(drpStopBits.SelectedItem.ToString());
                 try
                 {
-                    ComDevice.Open();
+                    if (ComDevice.PortName != null)
+                        ComDevice.Open();
+                    else
+                    {
+                        MessageBox.Show("串口没有选中或不存在！", "提示");
+                        return;
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                LogHelper.WriteLog(btnCom.Text);
                 btnCom.Text = "关闭串口";
                 picComStatus.BackgroundImage = Properties.Resources.greenlight;
             }
@@ -82,6 +93,7 @@ namespace LeafSoft.Units
                 {
                     MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                LogHelper.WriteLog(btnCom.Text);
                 btnCom.Text = "打开串口";
                 picComStatus.BackgroundImage = Properties.Resources.redlight;
             }
@@ -106,6 +118,8 @@ namespace LeafSoft.Units
                 try
                 {
                     ComDevice.Write(data, 0, data.Length);//发送数据
+
+                    LogHelper.WriteLog("串口 Send Data:" + data);
                     return true;
                 }
                 catch (Exception ex)

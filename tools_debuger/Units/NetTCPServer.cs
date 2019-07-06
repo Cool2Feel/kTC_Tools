@@ -102,6 +102,8 @@ namespace LeafSoft.Units
                 tcpsever.Start();
                 tcpsever.BeginAcceptTcpClient(new AsyncCallback(Acceptor), tcpsever);
                 isListen = true;
+
+                LogHelper.WriteLog("TCP Server Connect: open");
             }
             catch (Exception ex)
             {
@@ -117,6 +119,7 @@ namespace LeafSoft.Units
         {
             tcpsever.Stop();
             isListen = false;
+            LogHelper.WriteLog("TCP Server Connect: close");
         }
 
         /// <summary>
@@ -161,6 +164,9 @@ namespace LeafSoft.Units
                     try
                     {
                         selClient.NetWork.GetStream().Write(data, 0, data.Length);
+
+
+                        LogHelper.WriteLog("TCP Server Send date:" + Encoding.Default.GetString(data));
                     }
                     catch (Exception ex)
                     {
@@ -197,6 +203,8 @@ namespace LeafSoft.Units
                         {
                             DataReceived.BeginInvoke(client.Name, recdata, null, null);//异步输出数据
                         }
+
+                        LogHelper.WriteLog("TCP Server Received: " + Encoding.Default.GetString(recdata));
                         ns.BeginRead(client.buffer, 0, client.buffer.Length, new AsyncCallback(TCPCallBack), client);
                     }
                     else

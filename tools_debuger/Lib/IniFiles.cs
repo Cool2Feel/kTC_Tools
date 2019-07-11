@@ -27,15 +27,18 @@ namespace LeafSoft.Lib
             { //|| (FileAttributes.Directory in fileInfo.Attributes))
                 //文件不存在，建立文件
                 System.IO.StreamWriter sw = new System.IO.StreamWriter(AFileName, false, System.Text.Encoding.Default);
-                /*try
+                try
                 {
-                    sw.Write("#表格配置档案");
+                    sw.Write("# 指令配置文件\r\n");
+                    sw.Write("# COM - 串口指令数据；TCPS - SERVER指令数据；TCPC - CLIENT指令数据；UDP - UDP指令数据\r\n");
+                    sw.Write("# *COUNT - 指令集的数目\r\n");
+                    sw.Write("# H - Hex;A - ASCII;U - UTF8;G - GB2312\r\n");
                     sw.Close();
                 }
                 catch
                 {
                     throw (new ApplicationException("Ini文件不存在"));
-                }*/
+                }
             }
             //必须是完全路径，不能是相对路径
             FileName = fileInfo.FullName;

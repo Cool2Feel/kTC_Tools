@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace LeafSoft.Lib
 {
@@ -84,7 +85,10 @@ namespace LeafSoft.Lib
         /// <returns></returns>
         public  void SendAdbCmd(string cmdStr)
         {
-            CmdProcessHelper.AysnRun(AdbExePath, cmdStr);
+            new Thread(new ThreadStart(() =>
+            {
+                CmdProcessHelper.AysnRun(AdbExePath, cmdStr);
+            })).Start();
         }
 
 

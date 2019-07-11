@@ -37,6 +37,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MS_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.cbxServerIP = new System.Windows.Forms.ComboBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nmServerPort)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -107,6 +108,7 @@
             this.lstConn.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstConn.Size = new System.Drawing.Size(172, 157);
             this.lstConn.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.lstConn, "右键断开连接");
             // 
             // contextMenuStrip1
             // 
@@ -168,5 +170,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MS_Delete;
         private System.Windows.Forms.ComboBox cbxServerIP;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

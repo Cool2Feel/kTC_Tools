@@ -35,16 +35,23 @@ namespace LeafSoft.PartPanel
                 Regex regex = new Regex("^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}$");
                 if (!regex.IsMatch(ip))
                 {
-                    MessageBox.Show("输入一个无效的 IP 地址!", "提示");
+                    MessageBox.Show("输入的 IP 地址无效!", "提示");
                     return;
                 }
                 btnPing.Text = "停止";
                 PingCount = (int)nmPingCount.Value;
                 Interval = (int)nmInterval.Value;
-                IsPingAllow = true;
-                Thread ThPing = new Thread(new ParameterizedThreadStart(PingThread));
-                ThPing.IsBackground = true;
-                ThPing.Start(txtServerIP.Text.Trim());
+                if (PingCount > 0 && Interval >= 0)
+                {
+                    IsPingAllow = true;
+                    Thread ThPing = new Thread(new ParameterizedThreadStart(PingThread));
+                    ThPing.IsBackground = true;
+                    ThPing.Start(txtServerIP.Text.Trim());
+                }
+                else
+                {
+                    MessageBox.Show("设置的Ping次数或间隔时间不符合!", "提示");
+                }
             }
             else
             {
@@ -230,6 +237,45 @@ namespace LeafSoft.PartPanel
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtCmd_Click(object sender, EventArgs e)
+        {
+            textBox1.Focus();
+        }
+
+        private void nmPingCount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int key = Convert.ToInt32(e.KeyChar);
+            if (!(48 <= key && key <= 58 || key == 8)) //数字、 Backspace
+            {
+                //this.Text = "keyChar:" + key.ToString();
+                decimal value = nmPingCount.Value;
+                if (value < 1 || value > 100)
+                {
+                    MessageBox.Show("Ping次数限制在(0-100)之间。", "提示");
+                    nmPingCount.Value = 1;
+                }
+                e.Handled = true;
+            }
+            else this.Text = "";
+        }
+
+        private void nmInterval_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int key = Convert.ToInt32(e.KeyChar);
+            if (!(48 <= key && key <= 58 || key == 8)) //数字、 Backspace
+            {
+                //this.Text = "keyChar:" + key.ToString();
+                decimal value = nmInterval.Value;
+                if (value < 0 || value > 3600000)
+                {
+                    MessageBox.Show("Ping次数限制在(0-3600000)之间。", "提示");
+                    nmInterval.Value = 1;
+                }
+                e.Handled = true;
+            }
+            else this.Text = "";
         }
     }
 }

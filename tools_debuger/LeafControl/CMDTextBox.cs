@@ -31,10 +31,12 @@ namespace LeafSoft.LeafControl
         {
             if (!this.ReadOnly)
             {
+                /*
                 if (this.SelectionStart != this.Text.Length)
                 {
                     this.SelectionStart = this.Text.Length;
                 }
+                */
                 if (DataSend(new UTF8Encoding().GetBytes(e.KeyChar.ToString())) == false)
                 {
                     e.Handled = true;

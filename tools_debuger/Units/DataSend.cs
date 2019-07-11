@@ -52,7 +52,6 @@ namespace LeafSoft.Units
                         }));
                     }
                 }
-
             }
         }
 
@@ -262,18 +261,18 @@ namespace LeafSoft.Units
             return EncodeType;
         }
         #endregion
-        private void Load_Inifile()
+        private void Load_Inifile(string key)
         {
             try
             {
                 //string s = settingFile.ReadString("SETTING", "COM", "COM1");
-                int count = settingFile.ReadInteger("SETTING", "COUNT", 0);
+                int count = settingFile.ReadInteger("SETTING", key + "COUNT", 0);
                 lstCMD.Clear();
                 if (count > 0)
                 {
                     for (int i = 0; i < count; i++)
                     {
-                        string data = settingFile.ReadString("DATA", "N" + i, "");
+                        string data = settingFile.ReadString(key + "DATA", "N" + i, "");
                         if (!data.Equals(""))
                         {
                             string[] str = data.Split(',');
@@ -294,11 +293,11 @@ namespace LeafSoft.Units
             }
         }
 
-        private void Save_Inifile()
+        private void Save_Inifile(string key)
         {
             try
             {
-                settingFile.WriteInteger("SETTING", "COUNT", lstCMD.Count);
+                settingFile.WriteInteger("SETTING", key + "COUNT", lstCMD.Count);
                 if (lstCMD.Count > 0)
                 {
                     for (int i = 0; i < lstCMD.Count; i++)
@@ -306,28 +305,51 @@ namespace LeafSoft.Units
                         string type = SetType(lstCMD[i].ContentType);
                         string cmd = lstCMD[i].Text + "," + lstCMD[i].Tips;
                         string data = type + "," + cmd ;
-                        settingFile.WriteString("DATA", "N" + i, data);
+                        settingFile.WriteString(key + "DATA", "N" + i, data);
                     }
                 }
                 else
                 {
-                    settingFile.EraseSection("DATA");
+                    settingFile.EraseSection(key + "DATA");
                 }
             }
-            catch
-            { }
+            catch(Exception x)
+            {
+                Console.WriteLine(x.Message);
+            }
             
         }
 
         private void DataSend_Load(object sender, EventArgs e)
         {
             settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
-            Load_Inifile();
+            string tab =  this.Parent.Name;
+            //Console.WriteLine(tab);
+            if (tab == "comPanel3" || tab == "ComPanel")
+                Load_Inifile("COM");
+            else if(tab == "tcpServerPanel3" || tab == "TCPServerPanel")
+                Load_Inifile("TCPS");
+            else if (tab == "tcpClientPanel3" || tab == "TCPClientPanel")
+                Load_Inifile("TCPC");
+            else if (tab == "udpClientPanel3" || tab == "UDPClientPanel" || tab == "udpServerPanel3" || tab == "UDPServerPanel")
+                Load_Inifile("UDP");
+            else
+                Load_Inifile("COM"); 
         }
         public void CMD_Saved_default()
         {
             settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
-            Save_Inifile();
+            string tab = this.Parent.Name;
+            if (tab == "comPanel3" || tab == "ComPanel")
+                Load_Inifile("COM");
+            else if (tab == "tcpServerPanel3" || tab == "TCPServerPanel")
+                Load_Inifile("TCPS");
+            else if (tab == "tcpClientPanel3" || tab == "TCPClientPanel")
+                Load_Inifile("TCPC");
+            else if (tab == "udpClientPanel3" || tab == "UDPClientPanel")
+                Load_Inifile("UDP");
+            else
+                Save_Inifile("COM");
         }
         /// <summary>
         /// 默认保存
@@ -354,7 +376,17 @@ namespace LeafSoft.Units
                 string filename = openFileRead.FileName;
                 //Console.WriteLine(filename);
                 settingFile = new IniFiles(filename);
-                Load_Inifile();
+                string tab = this.Parent.Name;
+                if (tab == "comPanel3" || tab == "ComPanel")
+                    Load_Inifile("COM");
+                else if (tab == "tcpServerPanel3" || tab == "TCPServerPanel")
+                    Load_Inifile("TCPS");
+                else if (tab == "tcpClientPanel3" || tab == "TCPClientPanel")
+                    Load_Inifile("TCPC");
+                else if (tab == "udpClientPanel3" || tab == "UDPClientPanel")
+                    Load_Inifile("UDP");
+                else
+                    Load_Inifile("COM");
             }
         }
         /// <summary>
@@ -374,20 +406,29 @@ namespace LeafSoft.Units
                 string filename = saveFileInit.FileName;
                 //Console.WriteLine(filename);
                 settingFile = new IniFiles(filename);
-
-                Save_Inifile();
+                string tab = this.Parent.Name;
+                if (tab == "comPanel3" || tab == "ComPanel")
+                    Load_Inifile("COM");
+                else if (tab == "tcpServerPanel3" || tab == "TCPServerPanel")
+                    Load_Inifile("TCPS");
+                else if (tab == "tcpClientPanel3" || tab == "TCPClientPanel")
+                    Load_Inifile("TCPC");
+                else if (tab == "udpClientPanel3" || tab == "UDPClientPanel")
+                    Load_Inifile("UDP");
+                else
+                    Save_Inifile("COM");
             }
             //settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            if(lstCMD.Count < 0)
+            if(lstCMD.Count <= 0)
             {
                 MS_Edit.Enabled = false;
                 MS_Delete.Enabled = false;
                 MS_Saved.Enabled = false;
-                MS_Input.Enabled = false;
+                //MS_Input.Enabled = false;
                 MS_SaveAs.Enabled = false;
             }
             else
@@ -395,7 +436,7 @@ namespace LeafSoft.Units
                 MS_Edit.Enabled = true;
                 MS_Delete.Enabled = true;
                 MS_Saved.Enabled = true;
-                MS_Input.Enabled = true;
+                //.Enabled = true;
                 MS_SaveAs.Enabled = true;
             }
         }
@@ -447,6 +488,17 @@ namespace LeafSoft.Units
             {
                 e.ToolTipText = "提示：" + lstCMD[e.RowIndex].Tips;
             }
+        }
+
+        private void nmDelay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int key = Convert.ToInt32(e.KeyChar);
+            if (!(48 <= key && key <= 58 || key == 8)) //数字、 Backspace
+            {
+                e.Handled = true;
+            }
+            else
+                e.Handled = false;
         }
     }
 }

@@ -71,13 +71,17 @@
             // tabData
             // 
             this.tabData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabData.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabData.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabData.Location = new System.Drawing.Point(0, 0);
             this.tabData.Name = "tabData";
+            this.tabData.Padding = new System.Drawing.Point(10, 3);
             this.tabData.SelectedIndex = 0;
             this.tabData.Size = new System.Drawing.Size(536, 290);
             this.tabData.TabIndex = 1;
+            this.tabData.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabData_DrawItem);
             this.tabData.DoubleClick += new System.EventHandler(this.tabData_DoubleClick);
+            this.tabData.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabData_MouseDown);
             // 
             // TabDataReceive
             // 

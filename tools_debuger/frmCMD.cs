@@ -30,9 +30,9 @@ namespace LeafSoft
         private void btnSave_Click(object sender, EventArgs e)
         {
             NewCMD = txtContent.GetCMD();
-            NewCMD.Tips = ami_Tips.Text;
             if (NewCMD != null)
             {
+                NewCMD.Tips = ami_Tips.Text;
                 this.DialogResult = DialogResult.OK;
             }
         }

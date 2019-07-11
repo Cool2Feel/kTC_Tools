@@ -16,7 +16,7 @@ namespace LeafSoft.PartPanel
     {
         //ADB命令窗口
         CmdHelp cmdHelp = new CmdHelp();
-
+        string pullPath = "E:\\Log\\";
         delegate void SetTextCallback(string data);
 
         SynchronizationContext m_SyncContext = null;
@@ -66,6 +66,7 @@ namespace LeafSoft.PartPanel
             {
                 txtListInfo.AppendText(">>:" + data + "\r\n");
             }
+            this.Cursor = Cursors.Default;
         }
 
         //加载所有的ADB指令
@@ -140,16 +141,20 @@ namespace LeafSoft.PartPanel
         private void btnSendCmd_Click(object sender, EventArgs e)
         {
             string cmdStr = txtCustomCmd.Text.Trim();
-            ShowSendCmdInfo(cmdStr);
-            cmdHelp.SendAdbCmd(cmdStr);
+            if(!string.IsNullOrEmpty(cmdStr))
+            {
+                ShowSendCmdInfo(cmdStr);
+                cmdHelp.SendAdbCmd(cmdStr);
 
-            LogHelper.WriteLog("ADB Send Date: " + cmdStr);
+                LogHelper.WriteLog("ADB Send Date: " + cmdStr);
+            }
         }
 
         //显示发送的指令
         private void ShowSendCmdInfo(string cmdStr)
         {
             txtListInfo.AppendText("-->:" + cmdStr + "\r\n");
+            this.Cursor = Cursors.WaitCursor;
         }
 
         private void btnClearCmd_Click(object sender, EventArgs e)
@@ -173,11 +178,15 @@ namespace LeafSoft.PartPanel
         {
             if(txtCustomIP.Text != "")
             {
-                string cmdStr = CmdAdbInfo.adb_connect + " " + txtCustomIP.Text.Trim();
+                string cmdStr = CmdAdbInfo.adb_connect + " " + txtCustomIP.Text.Trim();    
                 ShowSendCmdInfo(cmdStr);
                 cmdHelp.SendAdbCmd(cmdStr);
 
                 LogHelper.WriteLog("ADB Send Date: " + cmdStr);
+            }
+            else
+            {
+                MessageBox.Show("请输入连接设备的IP地址！", "提示");
             }
         }
 
@@ -197,6 +206,7 @@ namespace LeafSoft.PartPanel
                     {
                         DirectoryInfo directoryInfo = new DirectoryInfo("C:\\Log\\");
                         directoryInfo.Create();
+                        spath = "C:\\Log\\";
                         MessageBox.Show("E盘路径不存在，已修改到C:\\Log\\","提示");
                     }
                 }
@@ -219,11 +229,31 @@ namespace LeafSoft.PartPanel
         {
             string s = settingFile.ReadString("SETTING", "ADB", "");
             txtCustomIP.Text = s;
+            pullPath = settingFile.ReadString("SETTING", "PULL", "E:\\Log\\");
         }
 
         public void Save_ConfigAdb()
         {
             settingFile.WriteString("SETTING", "ADB", txtCustomIP.Text);
+            settingFile.WriteString("SETTING", "PULL", pullPath);
+        }
+
+        private void linkLabel1_DoubleClick(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = "请选择文件路径";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string foldPath = dialog.SelectedPath;
+                DirectoryInfo theFolder = new DirectoryInfo(foldPath);
+                pullPath = theFolder.FullName;
+                linkLabel1.Text = "pull到本地: " + pullPath;
+
+                settingFile.WriteString("SETTING", "PULL", pullPath);
+                //theFolder 包含文件路径
+                //Console.WriteLine(pullPath);
+            }
         }
     }
 }

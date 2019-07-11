@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtServerIP = new System.Windows.Forms.TextBox();
             this.btnPing = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.nmPingCount = new System.Windows.Forms.NumericUpDown();
@@ -46,6 +45,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new CCWin.SkinControl.SkinWaterTextBox();
+            this.txtServerIP = new IpBoxControl.IpTextBox();
             this.txtCmd = new LeafSoft.LeafControl.CMDTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmPingCount)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -57,24 +57,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(150, 27);
+            this.label1.Location = new System.Drawing.Point(117, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "目标IP:";
             // 
-            // txtServerIP
-            // 
-            this.txtServerIP.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtServerIP.Location = new System.Drawing.Point(200, 24);
-            this.txtServerIP.Name = "txtServerIP";
-            this.txtServerIP.Size = new System.Drawing.Size(117, 23);
-            this.txtServerIP.TabIndex = 1;
-            // 
             // btnPing
             // 
-            this.btnPing.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnPing.Location = new System.Drawing.Point(588, 23);
+            this.btnPing.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnPing.Location = new System.Drawing.Point(656, 23);
             this.btnPing.Name = "btnPing";
             this.btnPing.Size = new System.Drawing.Size(75, 25);
             this.btnPing.TabIndex = 18;
@@ -86,29 +78,30 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(324, 27);
+            this.label2.Location = new System.Drawing.Point(308, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 17);
+            this.label2.Size = new System.Drawing.Size(105, 17);
             this.label2.TabIndex = 20;
-            this.label2.Text = "Ping次数:";
+            this.label2.Text = "Ping次数(1~100):";
             // 
             // nmPingCount
             // 
             this.nmPingCount.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nmPingCount.Location = new System.Drawing.Point(388, 24);
-            this.nmPingCount.Maximum = new decimal(new int[] {
-            1000,
+            this.nmPingCount.Location = new System.Drawing.Point(414, 24);
+            this.nmPingCount.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             this.nmPingCount.Name = "nmPingCount";
-            this.nmPingCount.Size = new System.Drawing.Size(41, 23);
+            this.nmPingCount.Size = new System.Drawing.Size(46, 23);
             this.nmPingCount.TabIndex = 21;
             this.nmPingCount.Value = new decimal(new int[] {
             4,
             0,
             0,
             0});
+            this.nmPingCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nmPingCount_KeyPress);
             // 
             // contextMenuStrip1
             // 
@@ -129,35 +122,36 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(435, 27);
+            this.label3.Location = new System.Drawing.Point(460, 27);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 17);
+            this.label3.Size = new System.Drawing.Size(104, 17);
             this.label3.TabIndex = 22;
-            this.label3.Text = "Ping间隔:";
+            this.label3.Text = "Ping间隔(0s~1h):";
             // 
             // nmInterval
             // 
             this.nmInterval.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nmInterval.Location = new System.Drawing.Point(500, 24);
+            this.nmInterval.Location = new System.Drawing.Point(563, 24);
             this.nmInterval.Maximum = new decimal(new int[] {
-            1000,
+            3600000,
             0,
             0,
             0});
             this.nmInterval.Name = "nmInterval";
-            this.nmInterval.Size = new System.Drawing.Size(54, 23);
+            this.nmInterval.Size = new System.Drawing.Size(64, 23);
             this.nmInterval.TabIndex = 23;
             this.nmInterval.Value = new decimal(new int[] {
             1000,
             0,
             0,
             0});
+            this.nmInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nmInterval_KeyPress);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(555, 27);
+            this.label4.Location = new System.Drawing.Point(629, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(25, 17);
             this.label4.TabIndex = 24;
@@ -165,12 +159,12 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtServerIP);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtServerIP);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnPing);
@@ -228,7 +222,7 @@
             "remount",
             "logcat",
             "push"});
-            this.comboBox1.Location = new System.Drawing.Point(708, 24);
+            this.comboBox1.Location = new System.Drawing.Point(719, 24);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(37, 25);
             this.comboBox1.TabIndex = 26;
@@ -238,7 +232,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(692, 5);
+            this.label5.Location = new System.Drawing.Point(703, 5);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 17);
             this.label5.TabIndex = 25;
@@ -256,8 +250,17 @@
             this.textBox1.TabIndex = 25;
             this.textBox1.TabStop = false;
             this.textBox1.WaterColor = System.Drawing.Color.DarkGray;
-            this.textBox1.WaterText = ">输入CMD命令：";
+            this.textBox1.WaterText = ">输入CMD命令：Enter(回车确认)";
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            // 
+            // txtServerIP
+            // 
+            this.txtServerIP.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtServerIP.Location = new System.Drawing.Point(166, 23);
+            this.txtServerIP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtServerIP.Name = "txtServerIP";
+            this.txtServerIP.Size = new System.Drawing.Size(140, 24);
+            this.txtServerIP.TabIndex = 30;
             // 
             // txtCmd
             // 
@@ -277,6 +280,7 @@
             this.txtCmd.Size = new System.Drawing.Size(846, 291);
             this.txtCmd.TabIndex = 19;
             this.txtCmd.TabStop = false;
+            this.txtCmd.Click += new System.EventHandler(this.txtCmd_Click);
             // 
             // PingPanel
             // 
@@ -302,7 +306,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtServerIP;
         private System.Windows.Forms.Button btnPing;
         private LeafControl.CMDTextBox txtCmd;
         private System.Windows.Forms.Label label2;
@@ -319,5 +322,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
+        private IpBoxControl.IpTextBox txtServerIP;
     }
 }

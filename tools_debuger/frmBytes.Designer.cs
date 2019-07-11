@@ -45,6 +45,7 @@
             this.MS_IntToBytes = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_FloatToBytes = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_DoubleToBytes = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
             this.CMS_Main.SuspendLayout();
             this.CMS_Value.SuspendLayout();
             this.SuspendLayout();
@@ -180,11 +181,24 @@
             this.MS_DoubleToBytes.Text = "浮点数(Double)转字节";
             this.MS_DoubleToBytes.Click += new System.EventHandler(this.MS_DoubleToBytes_Click);
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(118, 88);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 12);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "提示：右键数值操作";
+            // 
             // frmBytes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(234, 101);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -220,5 +234,6 @@
         private System.Windows.Forms.ToolStripMenuItem MS_FloatToBytes;
         private System.Windows.Forms.ToolStripMenuItem MS_DoubleToBytes;
         private System.Windows.Forms.ToolStripMenuItem MS_ShortToBytes;
+        private System.Windows.Forms.Label label3;
     }
 }

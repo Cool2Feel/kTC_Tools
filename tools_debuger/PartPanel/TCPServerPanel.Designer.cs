@@ -79,7 +79,7 @@
         #endregion
 
         private Units.NetTCPServer Configer;
-        private Units.DataSend DataSender;
         private Units.TabDataReceive tabDataReceiver;
+        public Units.DataSend DataSender;
     }
 }

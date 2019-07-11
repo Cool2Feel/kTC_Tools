@@ -45,10 +45,10 @@
             this.MS_CRCPolyH = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_CRCPolyL = new System.Windows.Forms.ToolStripMenuItem();
             this.CM_Clear = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtContent = new LeafSoft.LeafControl.BytesBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.ami_Tips = new EASkins.Ami_TextBox();
+            this.txtContent = new LeafSoft.LeafControl.BytesBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,9 +66,9 @@
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSave.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSave.Location = new System.Drawing.Point(244, 157);
+            this.btnSave.Location = new System.Drawing.Point(244, 156);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(75, 24);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -78,9 +78,9 @@
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCancel.Location = new System.Drawing.Point(325, 157);
+            this.btnCancel.Location = new System.Drawing.Point(325, 156);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(75, 24);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -190,21 +190,6 @@
             this.CM_Clear.Text = "清空";
             this.CM_Clear.Click += new System.EventHandler(this.CM_Clear_Click);
             // 
-            // txtContent
-            // 
-            this.txtContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtContent.ContextMenuStrip = this.contextMenuStrip1;
-            this.txtContent.EncodeType = LeafSoft.Lib.EnumType.DataEncode.Hex;
-            this.txtContent.Location = new System.Drawing.Point(0, 31);
-            this.txtContent.Multiline = true;
-            this.txtContent.Name = "txtContent";
-            this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtContent.Size = new System.Drawing.Size(400, 122);
-            this.txtContent.TabIndex = 0;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -236,11 +221,26 @@
             this.ami_Tips.Multiline = false;
             this.ami_Tips.Name = "ami_Tips";
             this.ami_Tips.ReadOnly = false;
-            this.ami_Tips.Size = new System.Drawing.Size(135, 25);
+            this.ami_Tips.Size = new System.Drawing.Size(135, 26);
             this.ami_Tips.TabIndex = 7;
             this.ami_Tips.Text = "未定义";
             this.ami_Tips.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.ami_Tips.UseSystemPasswordChar = false;
+            // 
+            // txtContent
+            // 
+            this.txtContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtContent.ContextMenuStrip = this.contextMenuStrip1;
+            this.txtContent.EncodeType = LeafSoft.Lib.EnumType.DataEncode.Hex;
+            this.txtContent.Location = new System.Drawing.Point(0, 31);
+            this.txtContent.Multiline = true;
+            this.txtContent.Name = "txtContent";
+            this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtContent.Size = new System.Drawing.Size(400, 122);
+            this.txtContent.TabIndex = 0;
             // 
             // frmCMD
             // 

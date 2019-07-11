@@ -44,7 +44,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(49, 25);
+            this.label1.Location = new System.Drawing.Point(24, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 17);
             this.label1.TabIndex = 0;
@@ -54,7 +54,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(65, 79);
+            this.label2.Location = new System.Drawing.Point(40, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 17);
             this.label2.TabIndex = 2;
@@ -64,7 +64,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(66, 128);
+            this.label3.Location = new System.Drawing.Point(41, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 17);
             this.label3.TabIndex = 4;
@@ -84,7 +84,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(59, 184);
+            this.button2.Location = new System.Drawing.Point(46, 184);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 28);
             this.button2.TabIndex = 7;
@@ -97,7 +97,7 @@
             this.TextName.BackColor = System.Drawing.Color.Transparent;
             this.TextName.Font = new System.Drawing.Font("Tahoma", 11F);
             this.TextName.ForeColor = System.Drawing.Color.DimGray;
-            this.TextName.Location = new System.Drawing.Point(124, 73);
+            this.TextName.Location = new System.Drawing.Point(99, 73);
             this.TextName.MaxLength = 32767;
             this.TextName.Multiline = false;
             this.TextName.Name = "TextName";
@@ -113,7 +113,7 @@
             this.ami_Label1.BackColor = System.Drawing.Color.Transparent;
             this.ami_Label1.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.ami_Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.ami_Label1.Location = new System.Drawing.Point(113, 49);
+            this.ami_Label1.Location = new System.Drawing.Point(88, 49);
             this.ami_Label1.Name = "ami_Label1";
             this.ami_Label1.Size = new System.Drawing.Size(178, 20);
             this.ami_Label1.TabIndex = 13;
@@ -125,16 +125,16 @@
             this.ami_Label2.BackColor = System.Drawing.Color.Transparent;
             this.ami_Label2.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.ami_Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.ami_Label2.Location = new System.Drawing.Point(120, 153);
+            this.ami_Label2.Location = new System.Drawing.Point(95, 153);
             this.ami_Label2.Name = "ami_Label2";
-            this.ami_Label2.Size = new System.Drawing.Size(124, 20);
+            this.ami_Label2.Size = new System.Drawing.Size(156, 20);
             this.ami_Label2.TabIndex = 14;
-            this.ami_Label2.Text = "例：xxx . xxx . xxx";
+            this.ami_Label2.Text = "例：xxx . xxx . xxx . xxx";
             // 
             // TextMac
             // 
             this.TextMac.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextMac.Location = new System.Drawing.Point(124, 20);
+            this.TextMac.Location = new System.Drawing.Point(99, 20);
             this.TextMac.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TextMac.Name = "TextMac";
             this.TextMac.Size = new System.Drawing.Size(166, 26);
@@ -143,7 +143,7 @@
             // TextIp
             // 
             this.TextIp.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextIp.Location = new System.Drawing.Point(124, 124);
+            this.TextIp.Location = new System.Drawing.Point(99, 124);
             this.TextIp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TextIp.Name = "TextIp";
             this.TextIp.Size = new System.Drawing.Size(140, 24);
@@ -164,11 +164,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAWOL";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "添加唤醒信息";
             this.ResumeLayout(false);
             this.PerformLayout();

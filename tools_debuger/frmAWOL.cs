@@ -17,6 +17,13 @@ namespace LeafSoft
         {
             InitializeComponent();
         }
+        public frmAWOL(Model.WOL wol)
+        {
+            InitializeComponent();
+            TextMac.Text = wol.MAC;
+            TextName.Text = wol.NAME;
+            TextIp.Text = wol.IP;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -25,15 +32,16 @@ namespace LeafSoft
             string mac = TextMac.Text;
             if (!r.IsMatch(mac))
             {
-                MessageBox.Show("输入一个无效的 MAC 地址!", "提示");
+                MessageBox.Show("输入的 MAC 地址无效!", "提示");
                 return;
             }
             string name = TextName.Text;
             string ip = TextIp.Text;
             Regex regex = new Regex("^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}$");
-            if(!regex.IsMatch(ip))
+            if(!regex.IsMatch(ip) || (ip == "0.0.0.0"))
             {
-                MessageBox.Show("输入一个无效的 IP 地址!", "提示");
+                MessageBox.Show("输入的 IP 地址无效!", "提示");
+                TextIp.Text = "";
                 return;
             }
             NewWOL = new Model.WOL(mac,name,ip);

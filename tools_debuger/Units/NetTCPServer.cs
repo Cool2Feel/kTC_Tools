@@ -91,7 +91,7 @@ namespace LeafSoft.Units
         {
             try
             {
-                if (cbxServerIP.SelectedIndex == 0)
+                if (cbxServerIP.SelectedIndex == -1)
                 {
                     tcpsever = new TcpListener(IPAddress.Any, (int)nmServerPort.Value);
                 }

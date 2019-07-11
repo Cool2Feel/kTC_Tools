@@ -146,6 +146,8 @@ namespace LeafSoft
                 //Mac = "获取远程主机的MAC错误：" +  Mye.Message;
                 MessageBox.Show("获取远程主机的MAC错误：" + Mye.Message,"提示");
             }
+            if (Mac == "00:00:00:00:00:00")
+                Mac = "";
             return Mac;
         }
 

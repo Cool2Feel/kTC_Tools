@@ -133,11 +133,12 @@
             // 
             // TextMac
             // 
+            this.TextMac.Enabled = false;
             this.TextMac.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TextMac.Location = new System.Drawing.Point(108, 116);
             this.TextMac.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TextMac.Name = "TextMac";
-            this.TextMac.Size = new System.Drawing.Size(170, 26);
+            this.TextMac.Size = new System.Drawing.Size(166, 26);
             this.TextMac.TabIndex = 25;
             // 
             // TextIp

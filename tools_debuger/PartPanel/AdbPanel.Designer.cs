@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtListInfo = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.bt_pull = new System.Windows.Forms.Button();
+            this.txtCustomPath = new System.Windows.Forms.TextBox();
+            this.bt_connect = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnClearCmd = new System.Windows.Forms.Button();
             this.txtOS = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,18 +47,13 @@
             this.cboDevice = new System.Windows.Forms.ComboBox();
             this.btnStopADB = new System.Windows.Forms.Button();
             this.cboAllADBCmd = new System.Windows.Forms.ComboBox();
+            this.btnSendCmd = new System.Windows.Forms.Button();
             this.txtCustomCmd = new System.Windows.Forms.TextBox();
             this.btnGetDevice = new System.Windows.Forms.Button();
             this.btnStartADB = new System.Windows.Forms.Button();
             this.btnADBVersion = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnSendCmd = new System.Windows.Forms.Button();
-            this.bt_connect = new System.Windows.Forms.Button();
-            this.txtCustomIP = new IpBoxControl.IpTextBox();
-            this.txtCustomPath = new System.Windows.Forms.TextBox();
-            this.bt_pull = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.txtCustomIP = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -76,10 +79,11 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.txtCustomIP);
+            this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.bt_pull);
             this.panel1.Controls.Add(this.txtCustomPath);
-            this.panel1.Controls.Add(this.txtCustomIP);
             this.panel1.Controls.Add(this.bt_connect);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
@@ -102,6 +106,83 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(218, 385);
             this.panel1.TabIndex = 12;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.linkLabel1.Location = new System.Drawing.Point(12, 215);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(118, 17);
+            this.linkLabel1.TabIndex = 54;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "pull到本地: E:\\Log\\ ";
+            this.toolTip1.SetToolTip(this.linkLabel1, "双击自定义修改路径");
+            this.linkLabel1.DoubleClick += new System.EventHandler(this.linkLabel1_DoubleClick);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(12, 165);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 17);
+            this.label6.TabIndex = 52;
+            this.label6.Text = "pull 路径 :";
+            // 
+            // bt_pull
+            // 
+            this.bt_pull.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_pull.Location = new System.Drawing.Point(149, 183);
+            this.bt_pull.Name = "bt_pull";
+            this.bt_pull.Size = new System.Drawing.Size(66, 28);
+            this.bt_pull.TabIndex = 51;
+            this.bt_pull.Text = "pull log";
+            this.toolTip1.SetToolTip(this.bt_pull, "获取log信息");
+            this.bt_pull.UseVisualStyleBackColor = true;
+            this.bt_pull.Click += new System.EventHandler(this.bt_pull_Click);
+            // 
+            // txtCustomPath
+            // 
+            this.txtCustomPath.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtCustomPath.Location = new System.Drawing.Point(3, 186);
+            this.txtCustomPath.Name = "txtCustomPath";
+            this.txtCustomPath.Size = new System.Drawing.Size(144, 23);
+            this.txtCustomPath.TabIndex = 50;
+            this.txtCustomPath.Text = "/data/log/debug.log*";
+            // 
+            // bt_connect
+            // 
+            this.bt_connect.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_connect.Location = new System.Drawing.Point(149, 137);
+            this.bt_connect.Name = "bt_connect";
+            this.bt_connect.Size = new System.Drawing.Size(66, 28);
+            this.bt_connect.TabIndex = 48;
+            this.bt_connect.Text = "connect";
+            this.toolTip1.SetToolTip(this.bt_connect, "adb连接设备");
+            this.bt_connect.UseVisualStyleBackColor = true;
+            this.bt_connect.Click += new System.EventHandler(this.bt_connect_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(12, 120);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 17);
+            this.label5.TabIndex = 47;
+            this.label5.Text = "Connect IP :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(12, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 17);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "adb命令 :";
             // 
             // btnClearCmd
             // 
@@ -181,7 +262,7 @@
             // btnStopADB
             // 
             this.btnStopADB.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnStopADB.Location = new System.Drawing.Point(13, 245);
+            this.btnStopADB.Location = new System.Drawing.Point(13, 254);
             this.btnStopADB.Name = "btnStopADB";
             this.btnStopADB.Size = new System.Drawing.Size(92, 26);
             this.btnStopADB.TabIndex = 37;
@@ -200,6 +281,18 @@
             this.cboAllADBCmd.TabIndex = 36;
             this.cboAllADBCmd.SelectedIndexChanged += new System.EventHandler(this.cboAllADBCmd_SelectedIndexChanged);
             // 
+            // btnSendCmd
+            // 
+            this.btnSendCmd.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSendCmd.Location = new System.Drawing.Point(149, 69);
+            this.btnSendCmd.Name = "btnSendCmd";
+            this.btnSendCmd.Size = new System.Drawing.Size(66, 38);
+            this.btnSendCmd.TabIndex = 35;
+            this.btnSendCmd.Text = "发送指令";
+            this.toolTip1.SetToolTip(this.btnSendCmd, "adb命令调试");
+            this.btnSendCmd.UseVisualStyleBackColor = true;
+            this.btnSendCmd.Click += new System.EventHandler(this.btnSendCmd_Click);
+            // 
             // txtCustomCmd
             // 
             this.txtCustomCmd.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -213,7 +306,7 @@
             // btnGetDevice
             // 
             this.btnGetDevice.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnGetDevice.Location = new System.Drawing.Point(111, 279);
+            this.btnGetDevice.Location = new System.Drawing.Point(111, 288);
             this.btnGetDevice.Name = "btnGetDevice";
             this.btnGetDevice.Size = new System.Drawing.Size(92, 26);
             this.btnGetDevice.TabIndex = 33;
@@ -224,7 +317,7 @@
             // btnStartADB
             // 
             this.btnStartADB.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnStartADB.Location = new System.Drawing.Point(111, 245);
+            this.btnStartADB.Location = new System.Drawing.Point(111, 254);
             this.btnStartADB.Name = "btnStartADB";
             this.btnStartADB.Size = new System.Drawing.Size(92, 26);
             this.btnStartADB.TabIndex = 32;
@@ -235,7 +328,7 @@
             // btnADBVersion
             // 
             this.btnADBVersion.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnADBVersion.Location = new System.Drawing.Point(13, 279);
+            this.btnADBVersion.Location = new System.Drawing.Point(13, 288);
             this.btnADBVersion.Name = "btnADBVersion";
             this.btnADBVersion.Size = new System.Drawing.Size(92, 26);
             this.btnADBVersion.TabIndex = 31;
@@ -243,97 +336,23 @@
             this.btnADBVersion.UseVisualStyleBackColor = true;
             this.btnADBVersion.Click += new System.EventHandler(this.btnADBVersion_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(12, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 17);
-            this.label3.TabIndex = 45;
-            this.label3.Text = "adb命令 :";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(12, 120);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 17);
-            this.label5.TabIndex = 47;
-            this.label5.Text = "Connect IP :";
-            // 
-            // btnSendCmd
-            // 
-            this.btnSendCmd.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSendCmd.Location = new System.Drawing.Point(149, 69);
-            this.btnSendCmd.Name = "btnSendCmd";
-            this.btnSendCmd.Size = new System.Drawing.Size(66, 38);
-            this.btnSendCmd.TabIndex = 35;
-            this.btnSendCmd.Text = "发送指令";
-            this.btnSendCmd.UseVisualStyleBackColor = true;
-            this.btnSendCmd.Click += new System.EventHandler(this.btnSendCmd_Click);
-            // 
-            // bt_connect
-            // 
-            this.bt_connect.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_connect.Location = new System.Drawing.Point(149, 135);
-            this.bt_connect.Name = "bt_connect";
-            this.bt_connect.Size = new System.Drawing.Size(66, 28);
-            this.bt_connect.TabIndex = 48;
-            this.bt_connect.Text = "connect";
-            this.bt_connect.UseVisualStyleBackColor = true;
-            this.bt_connect.Click += new System.EventHandler(this.bt_connect_Click);
-            // 
             // txtCustomIP
             // 
             this.txtCustomIP.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtCustomIP.Location = new System.Drawing.Point(5, 137);
-            this.txtCustomIP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCustomIP.Location = new System.Drawing.Point(9, 140);
             this.txtCustomIP.Name = "txtCustomIP";
-            this.txtCustomIP.Size = new System.Drawing.Size(142, 24);
-            this.txtCustomIP.TabIndex = 49;
-            // 
-            // txtCustomPath
-            // 
-            this.txtCustomPath.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtCustomPath.Location = new System.Drawing.Point(3, 185);
-            this.txtCustomPath.Name = "txtCustomPath";
-            this.txtCustomPath.Size = new System.Drawing.Size(144, 23);
-            this.txtCustomPath.TabIndex = 50;
-            this.txtCustomPath.Text = "/data/log/debug.log*";
-            // 
-            // bt_pull
-            // 
-            this.bt_pull.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_pull.Location = new System.Drawing.Point(149, 182);
-            this.bt_pull.Name = "bt_pull";
-            this.bt_pull.Size = new System.Drawing.Size(66, 28);
-            this.bt_pull.TabIndex = 51;
-            this.bt_pull.Text = "pull log";
-            this.bt_pull.UseVisualStyleBackColor = true;
-            this.bt_pull.Click += new System.EventHandler(this.bt_pull_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(12, 165);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 17);
-            this.label6.TabIndex = 52;
-            this.label6.Text = "pull 路径 :";
+            this.txtCustomIP.Size = new System.Drawing.Size(138, 23);
+            this.txtCustomIP.TabIndex = 55;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label7.Location = new System.Drawing.Point(100, 165);
+            this.label7.Location = new System.Drawing.Point(152, 120);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(118, 17);
-            this.label7.TabIndex = 53;
-            this.label7.Text = "pull到本地: E:\\Log\\ ";
+            this.label7.Size = new System.Drawing.Size(43, 17);
+            this.label7.TabIndex = 56;
+            this.label7.Text = " Port :";
             // 
             // AdbPanel
             // 
@@ -372,10 +391,12 @@
         private System.Windows.Forms.Button bt_connect;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSendCmd;
-        private IpBoxControl.IpTextBox txtCustomIP;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button bt_pull;
         private System.Windows.Forms.TextBox txtCustomPath;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtCustomIP;
     }
 }

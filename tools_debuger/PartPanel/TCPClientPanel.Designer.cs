@@ -77,9 +77,8 @@
         }
 
         #endregion
-
-        private Units.DataSend DataSender;
         private Units.NetTCPClient Configer;
         private Units.TabDataReceive tabDataReceiver;
+        public Units.DataSend DataSender;
     }
 }

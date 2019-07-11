@@ -38,8 +38,8 @@
             this.drpDataBits = new System.Windows.Forms.ComboBox();
             this.drpStopBits = new System.Windows.Forms.ComboBox();
             this.btnCom = new EASkins.Controls.MaterialRaisedButton();
-            this.picComStatus = new System.Windows.Forms.PictureBox();
             this.drpComList = new System.Windows.Forms.ComboBox();
+            this.picComStatus = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picComStatus)).BeginInit();
             this.SuspendLayout();
             // 
@@ -198,17 +198,6 @@
             this.btnCom.UseVisualStyleBackColor = false;
             this.btnCom.Click += new System.EventHandler(this.btnCom_Click);
             // 
-            // picComStatus
-            // 
-            this.picComStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.picComStatus.BackgroundImage = global::LeafSoft.Properties.Resources.redlight;
-            this.picComStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.picComStatus.Location = new System.Drawing.Point(20, 186);
-            this.picComStatus.Name = "picComStatus";
-            this.picComStatus.Size = new System.Drawing.Size(39, 37);
-            this.picComStatus.TabIndex = 35;
-            this.picComStatus.TabStop = false;
-            // 
             // drpComList
             // 
             this.drpComList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -222,6 +211,17 @@
             this.drpComList.Name = "drpComList";
             this.drpComList.Size = new System.Drawing.Size(89, 25);
             this.drpComList.TabIndex = 42;
+            // 
+            // picComStatus
+            // 
+            this.picComStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.picComStatus.BackgroundImage = global::LeafSoft.Properties.Resources.redlight;
+            this.picComStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picComStatus.Location = new System.Drawing.Point(20, 186);
+            this.picComStatus.Name = "picComStatus";
+            this.picComStatus.Size = new System.Drawing.Size(39, 37);
+            this.picComStatus.TabIndex = 35;
+            this.picComStatus.TabStop = false;
             // 
             // NetRs232
             // 

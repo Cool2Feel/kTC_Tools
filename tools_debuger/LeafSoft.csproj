@@ -28,7 +28,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>1.0.3.%2a</ApplicationVersion>
+    <ApplicationVersion>1.3.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
@@ -250,6 +250,12 @@
     <Compile Include="Units\NetUDPClient.Designer.cs">
       <DependentUpon>NetUDPClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Units\StringFind.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Units\StringFind.Designer.cs">
+      <DependentUpon>StringFind.cs</DependentUpon>
+    </Compile>
     <Compile Include="Units\TabDataReceive.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -397,6 +403,9 @@
     <EmbeddedResource Include="Units\NetUDPClient.resx">
       <DependentUpon>NetUDPClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Units\StringFind.resx">
+      <DependentUpon>StringFind.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Units\TabDataReceive.resx">
       <DependentUpon>TabDataReceive.cs</DependentUpon>
     </EmbeddedResource>
@@ -460,6 +469,10 @@
     <Content Include="Images\计算器.png" />
     <Content Include="Images\资讯动态.png" />
     <Content Include="LICENSE.txt" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\new1.png" />
+    <None Include="Resources\calcc.png" />
+    <None Include="Resources\mt.png" />
     <Content Include="tools.ico" />
     <None Include="Resources\调试 管理.png" />
     <None Include="Resources\资讯动态.png" />

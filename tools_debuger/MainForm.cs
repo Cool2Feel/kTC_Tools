@@ -86,16 +86,16 @@ namespace LeafSoft
                 switch (key)
                 {
                     case 0:
-                        materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey600, Primary.BlueGrey900, Primary.BlueGrey100, Accent.LightBlue200, TextShade.WHITE);
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey700, Primary.BlueGrey600, Primary.BlueGrey200, Accent.LightBlue200, TextShade.WHITE);
                         break;
                     case 1:
-                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo500, Primary.Indigo700, Primary.Indigo100, Accent.Pink200, TextShade.WHITE);
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo700, Primary.Indigo500, Primary.Indigo100, Accent.Pink200, TextShade.WHITE);
                         break;
                     case 2:
-                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Green600, Primary.Green700, Primary.Green200, Accent.Red100, TextShade.WHITE);
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Green700, Primary.Green600, Primary.Green200, Accent.Red100, TextShade.WHITE);
                         break;
                     case 3:
-                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey800, Primary.Grey700, Primary.Grey300, Accent.Orange100, TextShade.WHITE);
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey800, Primary.Grey700, Primary.Grey200, Accent.Amber100, TextShade.WHITE);
                         break;
                     default:
                         break;
@@ -127,7 +127,7 @@ namespace LeafSoft
                 materialTabSelector1.Location = new System.Drawing.Point(materialTabSelector1.Location.X - 100, materialTabSelector1.Location.Y);
                 size = true;
             }
-            else if (size && naviBar1.Width == 158)
+            else if (size && naviBar1.Width == 165)
             {
                 materialTabControl1.Width -= 125;
                 materialTabControl1.Location = new System.Drawing.Point(materialTabControl1.Location.X + 125, materialTabControl1.Location.Y);
@@ -286,6 +286,9 @@ namespace LeafSoft
             this.comPanel3.Configer.Save_ConfigCom();
             this.comPanel3.Configer.ClearSelf();
             this.comPanel3.DataSender.CMD_Saved_default();
+            this.tcpServerPanel3.DataSender.CMD_Saved_default();
+            this.tcpClientPanel3.DataSender.CMD_Saved_default();
+            this.udpClientPanel3.DataSender.CMD_Saved_default();
             this.wolPanel1.WOL_Saved_default();
             this.adbPanel1.Save_ConfigAdb();
             //this.pingPanel3.OutPutForm_FormClosing();

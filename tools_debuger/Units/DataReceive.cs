@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using LeafSoft.Lib;
+using PopupTool;
 
 namespace LeafSoft.Units
 {
@@ -15,9 +16,14 @@ namespace LeafSoft.Units
     /// </summary>
     public partial class DataReceive : UserControl
     {
+        private Popup _pop;
+        private StringFind _popControl;
         public DataReceive()
         {
             InitializeComponent();
+
+            _popControl = new StringFind(this);
+            _pop = new Popup(_popControl);
         }
 
         #region 公有方法
@@ -233,6 +239,46 @@ namespace LeafSoft.Units
                 }
             }
             return BToInt32;
+        }
+        #endregion
+
+        #region 查询搜索框
+        private void MS_Find_Click(object sender, EventArgs e)
+        {
+            _pop.Show(this, txtData.Width - 245, txtData.Location.Y + 1);
+        }
+
+        public void ClosePop()
+        {
+            _pop.Close();
+        }
+        
+        int index = 0;
+        public void FindString(string str)
+        {
+            if(string.IsNullOrEmpty(str))
+            {
+                MessageBox.Show("查询的字符不能为空！","提示");
+                return;
+            }
+            index = txtData.Text.IndexOf(str, index);
+            if (index < 0)
+            {
+                index = 0;
+                txtData.SelectionStart = 0;
+                txtData.SelectionLength = 0;
+                MessageBox.Show("已搜索到结尾.","提示");
+                return;
+            }
+            txtData.SelectionStart = index;
+            txtData.SelectionLength = str.Length;
+            index = index + str.Length;
+            txtData.Focus();
+        }
+
+        private void txtData_Click(object sender, EventArgs e)
+        {
+            index = txtData.SelectionStart;
         }
         #endregion
     }

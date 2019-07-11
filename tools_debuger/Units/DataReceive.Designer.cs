@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.txtData = new System.Windows.Forms.TextBox();
             this.CMS_Main = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MS_Find = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_Clear = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_ToInt = new System.Windows.Forms.ToolStripMenuItem();
             this.MS_ToFloat = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,22 +62,33 @@
             this.txtData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtData.Size = new System.Drawing.Size(575, 198);
             this.txtData.TabIndex = 1;
+            this.txtData.Click += new System.EventHandler(this.txtData_Click);
             // 
             // CMS_Main
             // 
             this.CMS_Main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MS_Find,
             this.MS_Clear,
             this.MS_ToInt,
             this.MS_ToFloat,
             this.MS_ToDouble});
             this.CMS_Main.Name = "contextMenuStrip1";
             this.CMS_Main.ShowImageMargin = false;
-            this.CMS_Main.Size = new System.Drawing.Size(174, 92);
+            this.CMS_Main.Size = new System.Drawing.Size(174, 114);
             this.CMS_Main.VisibleChanged += new System.EventHandler(this.CMS_Main_VisibleChanged);
+            // 
+            // MS_Find
+            // 
+            this.MS_Find.Name = "MS_Find";
+            this.MS_Find.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.MS_Find.Size = new System.Drawing.Size(173, 22);
+            this.MS_Find.Text = "查找";
+            this.MS_Find.Click += new System.EventHandler(this.MS_Find_Click);
             // 
             // MS_Clear
             // 
             this.MS_Clear.Name = "MS_Clear";
+            this.MS_Clear.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.MS_Clear.Size = new System.Drawing.Size(173, 22);
             this.MS_Clear.Text = "清空";
             this.MS_Clear.Click += new System.EventHandler(this.MS_Clear_Click);
@@ -145,7 +157,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 226);
+            this.label4.Location = new System.Drawing.Point(3, 223);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 17);
             this.label4.TabIndex = 5;
@@ -155,7 +167,7 @@
             // 
             this.lblCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(89, 225);
+            this.lblCount.Location = new System.Drawing.Point(89, 223);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(15, 17);
             this.lblCount.TabIndex = 6;
@@ -193,7 +205,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(423, 225);
+            this.label2.Location = new System.Drawing.Point(433, 223);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(138, 17);
             this.label2.TabIndex = 9;
@@ -238,5 +250,6 @@
         private System.Windows.Forms.RadioButton rbtnUTF8;
         private System.Windows.Forms.RadioButton rbtnGB2312;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem MS_Find;
     }
 }

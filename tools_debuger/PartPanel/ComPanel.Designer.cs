@@ -85,6 +85,7 @@
             this.DataSender.Name = "DataSender";
             this.DataSender.Size = new System.Drawing.Size(617, 250);
             this.DataSender.TabIndex = 12;
+            this.DataSender.EventDataSend += new LeafSoft.Lib.LeafEvent.DataSendHandler(this.DataSender_EventDataSend);
             // 
             // Configer
             // 

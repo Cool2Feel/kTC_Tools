@@ -79,7 +79,7 @@
         #endregion
 
         private Units.TabDataReceive tabDataReceiver;
-        private Units.DataSend DataSender;
         private Units.NetUDPClient Configer;
+        public Units.DataSend DataSender;
     }
 }

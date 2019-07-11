@@ -59,6 +59,12 @@ namespace LeafSoft.Units
         {
             if (ComDevice.IsOpen==false)
             {
+                if (string.IsNullOrEmpty(drpComList.Text))
+                { 
+                    MessageBox.Show("串口没有选中或不存在,无法打开！", "提示");
+                    return;
+                }
+
                 ComDevice.PortName = drpComList.SelectedItem.ToString();
                 ComDevice.BaudRate = Convert.ToInt32(drpBaudRate.SelectedItem.ToString());
                 ComDevice.Parity = (Parity)Convert.ToInt32(drpParity.SelectedIndex.ToString());
@@ -66,11 +72,11 @@ namespace LeafSoft.Units
                 ComDevice.StopBits = (StopBits)Convert.ToInt32(drpStopBits.SelectedItem.ToString());
                 try
                 {
-                    if (ComDevice.PortName != null)
+                    if (!string.IsNullOrEmpty(ComDevice.PortName))
                         ComDevice.Open();
                     else
                     {
-                        MessageBox.Show("串口没有选中或不存在！", "提示");
+                        MessageBox.Show("串口无法打开！", "提示");
                         return;
                     }
                 }

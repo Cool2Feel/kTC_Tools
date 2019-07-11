@@ -115,5 +115,18 @@ namespace LeafSoft
             Clipboard.SetDataObject(txtContent.Text);
         }
 
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            if(txtContent.Text == "")
+            {
+                CM_Check.Enabled = false;
+                MS_Copy.Enabled = false;
+            }
+            else
+            {
+                CM_Check.Enabled = true;
+                MS_Copy.Enabled = true;
+            }
+        }
     }
 }

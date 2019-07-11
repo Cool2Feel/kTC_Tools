@@ -45,7 +45,7 @@ namespace LeafSoft.PartPanel
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!MacTextBox.Text.Equals(""))
+            if (!string.IsNullOrEmpty(MacTextBox.Text))
             {
                 //byte[] mac = MacToBytes(MacTextBox.Text);
 
@@ -56,7 +56,7 @@ namespace LeafSoft.PartPanel
                 MessageBox.Show("已发送唤醒数据信息！", "提示");
             }
             else
-                MessageBox.Show("请输入正确的MAC地址！","提示");
+                MessageBox.Show("请输入正确的MAC地址进行唤醒！","提示");
         }
 
         private static void SendWakeOnLanPacket(byte[] mac)
@@ -381,5 +381,73 @@ namespace LeafSoft.PartPanel
             Save_Inifile();
         }
         #endregion
+        /// <summary>
+        /// 编辑修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_Eidt_Click(object sender, EventArgs e)
+        {
+            if (dgWOL.SelectedRows.Count >= 0)
+            {
+                frmAWOL fCmd = new frmAWOL(lstWOL[dgWOL.SelectedRows[0].Index]);
+                if (fCmd.ShowDialog() == DialogResult.OK)
+                {
+                    //lstWOL.Add(fCmd.NewWOL);
+                    lstWOL[dgWOL.SelectedRows[0].Index] = fCmd.NewWOL;
+                }
+            }
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            if (lstWOL.Count <= 0)
+            {
+                MS_eidt.Enabled = false;
+                MS_delete.Enabled = false;
+                MS_wake.Enabled = false;
+                //MS_Input.Enabled = false;
+                MS_select.Enabled = false;
+            }
+            else
+            {
+                MS_eidt.Enabled = true;
+                MS_delete.Enabled = true;
+                MS_wake.Enabled = true;
+                //.Enabled = true;
+                MS_select.Enabled = true;
+            }
+        }
+
+        bool all_select = false;
+        private void MS_select_Click(object sender, EventArgs e)
+        {
+            if (all_select)
+            {
+                for (int i = 0; i < dgWOL.Rows.Count; i++)
+                {
+                    if ((Convert.ToBoolean(dgWOL.Rows[i].Cells[0].Value) == true))
+                    {
+                        dgWOL.Rows[i].Cells[0].Value = "False";
+                    }
+                    else
+                        continue;
+                }
+                all_select = false;
+            }
+            else
+            {
+                for (int i = 0; i < dgWOL.Rows.Count; i++)
+                {
+                    if ((Convert.ToBoolean(dgWOL.Rows[i].Cells[0].Value) == false))
+                    {
+                        dgWOL.Rows[i].Cells[0].Value = "True";
+                    }
+                    else
+                        continue;
+                }
+                all_select = true;
+            }
+        }
     }
 }

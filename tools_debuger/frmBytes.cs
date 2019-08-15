@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeafSoft.Lib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,14 @@ namespace LeafSoft
         public frmBytes()
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(frmBytes));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(frmBytes));
+            }
         }
 
         private void CMS_Main_VisibleChanged(object sender, EventArgs e)
@@ -62,6 +71,10 @@ namespace LeafSoft
         {
             string[] SelectData = txtData.Text.TrimEnd().TrimStart().Split(' ');//获取选中部分文本
             byte[] IntByte = StringsToBytes(SelectData);
+            if (BitConverter.IsLittleEndian) // 若为 小端模式
+            {
+                Array.Reverse(IntByte); // 转换为 大端模式  
+            }
             if (IntByte.Length == 2)
             {
                 txtValue.Text = BitConverter.ToInt16(IntByte, 0).ToString();
@@ -80,6 +93,10 @@ namespace LeafSoft
         {
             string[] SelectData = txtData.Text.TrimEnd().TrimStart().Split(' ');//获取选中部分文本
             byte[] IntByte = StringsToBytes(SelectData);
+            if (BitConverter.IsLittleEndian) // 若为 小端模式
+            {
+                Array.Reverse(IntByte); // 转换为 大端模式  
+            }
             txtValue.Text = BitConverter.ToSingle(IntByte, 0).ToString();
         }
         /// <summary>
@@ -91,6 +108,10 @@ namespace LeafSoft
         {
             string[] SelectData = txtData.Text.TrimEnd().TrimStart().Split(' ');//获取选中部分文本
             byte[] IntByte = StringsToBytes(SelectData);
+            if (BitConverter.IsLittleEndian) // 若为 小端模式
+            {
+                Array.Reverse(IntByte); // 转换为 大端模式  
+            }
             txtValue.Text = BitConverter.ToDouble(IntByte, 0).ToString();
         }
 
@@ -121,13 +142,18 @@ namespace LeafSoft
             try
             {
                 byte[] b = BitConverter.GetBytes(Convert.ToInt16(txtValue.Text));
+                //Array.Reverse(b);
+                if (BitConverter.IsLittleEndian) // 若为 小端模式
+                {
+                    Array.Reverse(b); // 转换为 大端模式  
+                }
                 txtData.SetCMD(new Model.CMD(Lib.EnumType.DataEncode.Hex,b));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message
-                                + "\n Int16最小值为：" + Int16.MinValue.ToString()
-                                + "\n Int16最大值为：" + Int16.MaxValue.ToString());
+                                + "\n Int16 MinValue：" + Int16.MinValue.ToString()
+                                + "\n Int16 MaxValue：" + Int16.MaxValue.ToString());
             }
         }
 
@@ -136,13 +162,17 @@ namespace LeafSoft
             try
             {
                 byte[] b = BitConverter.GetBytes(Convert.ToInt32(txtValue.Text));
+                if (BitConverter.IsLittleEndian) // 若为 小端模式
+                {
+                    Array.Reverse(b); // 转换为 大端模式  
+                }
                 txtData.SetCMD(new Model.CMD(Lib.EnumType.DataEncode.Hex, b));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message
-                                 + "\n Int32最小值为：" + Int32.MinValue.ToString()
-                                 + "\n Int32最大值为：" + Int32.MaxValue.ToString());
+                                 + "\n Int32 MinValue：" + Int32.MinValue.ToString()
+                                 + "\n Int32 MaxValue：" + Int32.MaxValue.ToString());
             }
         }
 
@@ -151,13 +181,17 @@ namespace LeafSoft
             try
             {
                 byte[] b = BitConverter.GetBytes(Convert.ToSingle(txtValue.Text));
+                if (BitConverter.IsLittleEndian) // 若为 小端模式
+                {
+                    Array.Reverse(b); // 转换为 大端模式  
+                }
                 txtData.SetCMD(new Model.CMD(Lib.EnumType.DataEncode.Hex, b));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message
-                                + "\n Float最小值为：" + Single.MinValue.ToString()
-                                + "\n Float最大值为：" + Single.MaxValue.ToString());
+                                + "\n Float MinValue：" + Single.MinValue.ToString()
+                                + "\n Float MinValue：" + Single.MinValue.ToString());
             }
         }
 
@@ -166,17 +200,54 @@ namespace LeafSoft
             try
             {
                 byte[] b = BitConverter.GetBytes(Convert.ToDouble(txtValue.Text));
+                if (BitConverter.IsLittleEndian) // 若为 小端模式
+                {
+                    Array.Reverse(b); // 转换为 大端模式  
+                }
                 txtData.SetCMD(new Model.CMD(Lib.EnumType.DataEncode.Hex, b));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message
-                                + "\n Double最小值为：" + Double.MinValue.ToString()
-                                + "\n Double最大值为：" + Double.MaxValue.ToString());
+                                + "\n Double MinValue：" + Double.MinValue.ToString()
+                                + "\n Double MaxValue：" + Double.MaxValue.ToString());
             }
         }
+
         #endregion
 
-        
+        private void CMS_Main_Opening(object sender, CancelEventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtData.Text))
+            {
+                MS_ToInt.Enabled = false;
+                MS_ToFloat.Enabled = true;
+                MS_ToDouble.Enabled = false;
+            }
+            else
+            {
+                MS_ToInt.Enabled = true;
+                MS_ToFloat.Enabled = false;
+                MS_ToDouble.Enabled = true;
+            }
+        }
+
+        private void CMS_Value_Opening(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtValue.Text))
+            {
+                MS_ShortToBytes.Enabled = false;
+                MS_IntToBytes.Enabled = false;
+                MS_FloatToBytes.Enabled = false;
+                MS_DoubleToBytes.Enabled = false;
+            }
+            else
+            {
+                MS_ShortToBytes.Enabled = true;
+                MS_IntToBytes.Enabled = true;
+                MS_FloatToBytes.Enabled = true;
+                MS_DoubleToBytes.Enabled = true;
+            }
+        }
     }
 }

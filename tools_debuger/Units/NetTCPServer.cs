@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Net;
 using LeafSoft.Model;
+using LeafSoft.Lib;
 
 namespace LeafSoft.Units
 {
@@ -28,10 +29,19 @@ namespace LeafSoft.Units
         /// 当前已连接客户端集合
         /// </summary>
         public BindingList<LeafTCPClient> lstClient = new BindingList<LeafTCPClient>();
-
+        //private string lan;
+        //private IniFiles settingFile;//配置文件
         public NetTCPServer()
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(NetTCPServer));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(NetTCPServer));
+            }
             if (this.DesignMode == false)
             {
                 //cbxServerIP.SelectedIndex = 0;
@@ -47,6 +57,14 @@ namespace LeafSoft.Units
             }
             if(cbxServerIP.Items.Count > 0)
                 cbxServerIP.SelectedIndex = 0;
+        }
+        private void ApplyResource()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetTCPServer));
+            foreach (Control ctl in this.Controls)
+            {
+                resources.ApplyResources(ctl, ctl.Name);
+            }
         }
 
         /// <summary>
@@ -75,11 +93,17 @@ namespace LeafSoft.Units
             nmServerPort.Enabled = !isListen;
             if (isListen)
             {
-                btnListen.Text = "停止";
+                if (LanguageSet.Language == "0")
+                    btnListen.Text = "停止";
+                else
+                    btnListen.Text = "Stop";
             }
             else
             {
-                btnListen.Text = "监听";
+                if (LanguageSet.Language == "0")
+                    btnListen.Text = "监听";
+                else
+                    btnListen.Text = "Listen";
             }
         }
 
@@ -107,7 +131,10 @@ namespace LeafSoft.Units
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -144,7 +171,10 @@ namespace LeafSoft.Units
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -170,7 +200,10 @@ namespace LeafSoft.Units
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(selClient.Name + ":" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (LanguageSet.Language == "0")
+                            MessageBox.Show(selClient.Name + ":" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show(selClient.Name + ":" + ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
                 }
@@ -178,7 +211,10 @@ namespace LeafSoft.Units
             }
             else
             {
-                MessageBox.Show("无可用客户端", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show("无可用客户端", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("No client available", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -216,7 +252,10 @@ namespace LeafSoft.Units
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     client.DisConnect();
                     lstClient.Remove(client);
                     BindLstClient();
@@ -228,18 +267,15 @@ namespace LeafSoft.Units
         {
             if (lstConn.SelectedItems.Count > 0)
             {
-                if (lstConn.SelectedItems.Count > 0)
+                List<LeafTCPClient> WaitRemove = new List<LeafTCPClient>();
+                for (int i = 0; i < lstConn.SelectedItems.Count; i++)
                 {
-                    List<LeafTCPClient> WaitRemove = new List<LeafTCPClient>();
-                    for (int i = 0; i < lstConn.SelectedItems.Count; i++)
-                    {
-                        WaitRemove.Add((LeafTCPClient)lstConn.SelectedItems[i]);
-                    }
-                    foreach (LeafTCPClient client in WaitRemove)
-                    {
-                        client.DisConnect();
-                        lstClient.Remove(client);
-                    }
+                    WaitRemove.Add((LeafTCPClient)lstConn.SelectedItems[i]);
+                }
+                foreach (LeafTCPClient client in WaitRemove)
+                {
+                    client.DisConnect();
+                    lstClient.Remove(client);
                 }
             }
         }
@@ -257,6 +293,37 @@ namespace LeafSoft.Units
             if (tcpsever != null)
             {
                 tcpsever.Stop();
+            }
+        }
+
+        private void MS_Clearn_Click(object sender, EventArgs e)
+        {
+            if (lstConn.Items.Count > 0)
+            {
+                List<LeafTCPClient> WaitRemove = new List<LeafTCPClient>();
+                for (int i = 0; i < lstConn.Items.Count; i++)
+                {
+                    WaitRemove.Add((LeafTCPClient)lstConn.Items[i]);
+                }
+                foreach (LeafTCPClient client in WaitRemove)
+                {
+                    client.DisConnect();
+                    lstClient.Remove(client);
+                }
+            }
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            if (lstConn.Items.Count > 0)
+            {
+                MS_Delete.Enabled = true;
+                MS_Clearn.Enabled = true;
+            }
+            else
+            {
+                MS_Delete.Enabled = false;
+                MS_Clearn.Enabled = false;
             }
         }
     }

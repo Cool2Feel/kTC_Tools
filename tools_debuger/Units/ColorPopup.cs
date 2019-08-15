@@ -14,7 +14,7 @@ namespace LeafSoft.Units
     public partial class ColorPopup : UserControl
     {
         private MainForm _main;
-        private Configuration config;
+        //private Configuration config;
         private IniFiles settingFile;//配置文件
         public ColorPopup(MainForm main)
         {
@@ -27,6 +27,15 @@ namespace LeafSoft.Units
             //config = System.Configuration.ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
 
+            string lan = settingFile.ReadString("SETTING", "Language", "1");
+            if (lan == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(ColorPopup));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(ColorPopup));
+            }
             //string key = config.AppSettings.Settings["ColorIndex"].Value;
             string key = settingFile.ReadString("SETTING", "ColorIndex", "0");
             if (key == "0")

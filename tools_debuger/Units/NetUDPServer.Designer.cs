@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetUDPServer));
             this.btnListen = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.nmLocalPort = new System.Windows.Forms.NumericUpDown();
@@ -36,6 +37,7 @@
             this.lstConn = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MS_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.MS_Clearn = new System.Windows.Forms.ToolStripMenuItem();
             this.cbxLocalIP = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmLocalPort)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -43,37 +45,25 @@
             // 
             // btnListen
             // 
-            this.btnListen.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnListen.Location = new System.Drawing.Point(111, 36);
+            resources.ApplyResources(this.btnListen, "btnListen");
             this.btnListen.Name = "btnListen";
-            this.btnListen.Size = new System.Drawing.Size(55, 24);
-            this.btnListen.TabIndex = 10;
-            this.btnListen.Text = "监听";
             this.btnListen.UseVisualStyleBackColor = true;
             this.btnListen.Click += new System.EventHandler(this.btnListen_Click);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(4, 7);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "本地IP:";
             // 
             // nmLocalPort
             // 
-            this.nmLocalPort.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nmLocalPort.Location = new System.Drawing.Point(51, 37);
+            resources.ApplyResources(this.nmLocalPort, "nmLocalPort");
             this.nmLocalPort.Maximum = new decimal(new int[] {
             65535,
             0,
             0,
             0});
             this.nmLocalPort.Name = "nmLocalPort";
-            this.nmLocalPort.Size = new System.Drawing.Size(56, 23);
-            this.nmLocalPort.TabIndex = 7;
             this.nmLocalPort.Value = new decimal(new int[] {
             6000,
             0,
@@ -82,65 +72,54 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(7, 39);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 17);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "端口:";
             // 
             // lstConn
             // 
-            this.lstConn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.lstConn, "lstConn");
             this.lstConn.ContextMenuStrip = this.contextMenuStrip1;
-            this.lstConn.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lstConn.FormattingEnabled = true;
-            this.lstConn.ItemHeight = 17;
-            this.lstConn.Location = new System.Drawing.Point(0, 69);
             this.lstConn.Name = "lstConn";
             this.lstConn.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstConn.Size = new System.Drawing.Size(174, 157);
-            this.lstConn.TabIndex = 11;
             // 
             // contextMenuStrip1
             // 
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MS_Delete});
+            this.MS_Delete,
+            this.MS_Clearn});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // MS_Delete
             // 
+            resources.ApplyResources(this.MS_Delete, "MS_Delete");
             this.MS_Delete.Name = "MS_Delete";
-            this.MS_Delete.Size = new System.Drawing.Size(100, 22);
-            this.MS_Delete.Text = "删除";
             this.MS_Delete.Click += new System.EventHandler(this.MS_Delete_Click);
+            // 
+            // MS_Clearn
+            // 
+            resources.ApplyResources(this.MS_Clearn, "MS_Clearn");
+            this.MS_Clearn.Name = "MS_Clearn";
+            this.MS_Clearn.Click += new System.EventHandler(this.MS_Clearn_Click);
             // 
             // cbxLocalIP
             // 
+            resources.ApplyResources(this.cbxLocalIP, "cbxLocalIP");
             this.cbxLocalIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
             this.cbxLocalIP.DropDownHeight = 100;
             this.cbxLocalIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxLocalIP.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbxLocalIP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
             this.cbxLocalIP.FormattingEnabled = true;
-            this.cbxLocalIP.IntegralHeight = false;
-            this.cbxLocalIP.ItemHeight = 17;
             this.cbxLocalIP.Items.AddRange(new object[] {
-            "192.168.0.1"});
-            this.cbxLocalIP.Location = new System.Drawing.Point(50, 2);
+            resources.GetString("cbxLocalIP.Items")});
             this.cbxLocalIP.Name = "cbxLocalIP";
-            this.cbxLocalIP.Size = new System.Drawing.Size(115, 25);
-            this.cbxLocalIP.TabIndex = 38;
             // 
             // NetUDPServer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.cbxLocalIP);
             this.Controls.Add(this.lstConn);
             this.Controls.Add(this.btnListen);
@@ -148,7 +127,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nmLocalPort);
             this.Name = "NetUDPServer";
-            this.Size = new System.Drawing.Size(174, 229);
             ((System.ComponentModel.ISupportInitialize)(this.nmLocalPort)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -166,5 +144,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MS_Delete;
         private new System.Windows.Forms.ComboBox cbxLocalIP;
+        private System.Windows.Forms.ToolStripMenuItem MS_Clearn;
     }
 }

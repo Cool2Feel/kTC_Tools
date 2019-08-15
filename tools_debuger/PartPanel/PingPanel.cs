@@ -23,6 +23,14 @@ namespace LeafSoft.PartPanel
         public PingPanel()
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(PingPanel));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(PingPanel));
+            }
             comboBox1.SelectedIndex = 0;
             btnPing.Focus();
         }
@@ -35,12 +43,21 @@ namespace LeafSoft.PartPanel
                 Regex regex = new Regex("^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}$");
                 if (!regex.IsMatch(ip))
                 {
-                    MessageBox.Show("输入的 IP 地址无效!", "提示");
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show("输入的 IP 地址无效!", "提示");
+                    else
+                        MessageBox.Show("Invalid IP address entered!", "Tips");
                     return;
                 }
-                btnPing.Text = "停止";
-                PingCount = (int)nmPingCount.Value;
-                Interval = (int)nmInterval.Value;
+                if (LanguageSet.Language == "0")
+                    btnPing.Text = "停止";
+                else
+                    btnPing.Text = "Stop";
+                txtServerIP.Enabled = false;
+                nmPingCount.Enabled = false;
+                nmInterval.Enabled = false;
+                PingCount = int.Parse(textPingCount.Text);
+                Interval = int.Parse(textInterval.Text);
                 if (PingCount > 0 && Interval >= 0)
                 {
                     IsPingAllow = true;
@@ -50,7 +67,10 @@ namespace LeafSoft.PartPanel
                 }
                 else
                 {
-                    MessageBox.Show("设置的Ping次数或间隔时间不符合!", "提示");
+                    if(LanguageSet.Language == "0")
+                        MessageBox.Show("设置的Ping次数或间隔时间不符合!", "提示");
+                    else
+                        MessageBox.Show("The set number of pings or interval does not match!", "Tips");
                 }
             }
             else
@@ -64,7 +84,10 @@ namespace LeafSoft.PartPanel
         {
             txtCmd.Invoke(new MethodInvoker(delegate
             {
-                txtCmd.AppendText("正在 Ping " + ServerIP.ToString()+"：\r\n");
+                if (LanguageSet.Language == "0")
+                    txtCmd.AppendText("正在 Ping " + ServerIP.ToString()+"：\r\n");
+                else
+                    txtCmd.AppendText("Pinging " + ServerIP.ToString() + "：\r\n");
             }));
             Ping p = new Ping();
             int pcount=0;
@@ -81,7 +104,10 @@ namespace LeafSoft.PartPanel
                     if (pr.Status == IPStatus.Success)
                     {
                         SuccessRT++;
-                        txtCmd.AppendText("来自 " + pr.Address.ToString() + " 的答复：字节=" + pr.Buffer.Length + " 时间=" + pr.RoundtripTime + " TTL=" + pr.Options.Ttl + "\r\n");
+                        if (LanguageSet.Language == "0")
+                            txtCmd.AppendText("来自 " + pr.Address.ToString() + " 的答复：字节=" + pr.Buffer.Length + " 时间=" + pr.RoundtripTime + " TTL=" + pr.Options.Ttl + "\r\n");
+                        else
+                            txtCmd.AppendText("From " + pr.Address.ToString() + " reply：bytes=" + pr.Buffer.Length + " time=" + pr.RoundtripTime + " TTL=" + pr.Options.Ttl + "\r\n");
                         if (MinRT == -1 || pr.RoundtripTime < MinRT)
                         {
                             MinRT = pr.RoundtripTime;
@@ -96,6 +122,8 @@ namespace LeafSoft.PartPanel
                     else
                     {
                         txtCmd.AppendText(pr.Status.ToString()+"\r\n");
+                        this.txtCmd.AppendText("");
+                        this.txtCmd.Focus();
                     }
                 }));
                 pcount++;
@@ -107,10 +135,24 @@ namespace LeafSoft.PartPanel
             }
             this.Invoke(new MethodInvoker(delegate
             {
-                txtCmd.AppendText("Ping统计信息：\r\n");
-                txtCmd.AppendText("数据包：已发送 = " + pcount + ",已接收 = " + SuccessRT + ",丢失 = " + (pcount - SuccessRT) + " <" + (int)((1 - (float)SuccessRT / (float)pcount) * 100) + "%丢失>\r\n");
-                txtCmd.AppendText("往返行程估计时间：最短 = " + MinRT + "ms,最长 = " + MaxRT + "ms,平均 = " + AvgRT + "ms\r\n\r\n");
+                if (LanguageSet.Language == "0")
+                {
+                    txtCmd.AppendText("Ping统计信息：\r\n");
+                    txtCmd.AppendText("数据包：已发送 = " + pcount + ",已接收 = " + SuccessRT + ",丢失 = " + (pcount - SuccessRT) + " <" + (int)((1 - (float)SuccessRT / (float)pcount) * 100) + "%丢失>\r\n");
+                    txtCmd.AppendText("往返行程估计时间：最短 = " + MinRT + "ms,最长 = " + MaxRT + "ms,平均 = " + AvgRT + "ms\r\n\r\n");
+                }
+                else
+                {
+                    txtCmd.AppendText("Ping statistics：\r\n");
+                    txtCmd.AppendText("Packet: sent = " + pcount + ",received = " + SuccessRT + ",lost = " + (pcount - SuccessRT) + " <" + (int)((1 - (float)SuccessRT / (float)pcount) * 100) + "%lost>\r\n");
+                    txtCmd.AppendText("Round trip estimated time：shortest = " + MinRT + "ms,longest = " + MaxRT + "ms,average = " + AvgRT + "ms\r\n\r\n");
+                }
+                this.txtCmd.AppendText("");
+                this.txtCmd.Focus();
                 btnPing.Enabled = true;
+                txtServerIP.Enabled = true;
+                nmPingCount.Enabled = true;
+                nmInterval.Enabled = true;
                 btnPing.Text = "Ping";
             }));
             IsPingAllow = false;
@@ -160,8 +202,10 @@ namespace LeafSoft.PartPanel
             p.WaitForExit();
             p.Close();
             running = true;
-            MessageBox.Show("cmd 命令不正确！");
-
+            if (LanguageSet.Language == "0")
+                MessageBox.Show("cmd 命令不正确！");
+            else
+                MessageBox.Show("cmd The command is incorrect！");
         }
 
         private void ExecuteADB(object obj)
@@ -178,13 +222,18 @@ namespace LeafSoft.PartPanel
             }
             else
             {
-                MessageBox.Show("adb 命令出错！");
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show("adb 命令出错！");
+                else
+                    MessageBox.Show("adb Command error！");
             }
         }
 
         private void AppendText(string text)
         {
-            this.txtCmd.AppendText(text + "\n\r");
+            this.txtCmd.AppendText(text + "\n");
+            this.txtCmd.AppendText("");
+            this.txtCmd.Focus();
         }
 
         private void OutputHandler(object sendingProcess, DataReceivedEventArgs outLine)
@@ -241,7 +290,7 @@ namespace LeafSoft.PartPanel
 
         private void txtCmd_Click(object sender, EventArgs e)
         {
-            textBox1.Focus();
+            //textBox1.Focus();
         }
 
         private void nmPingCount_KeyPress(object sender, KeyPressEventArgs e)
@@ -253,7 +302,10 @@ namespace LeafSoft.PartPanel
                 decimal value = nmPingCount.Value;
                 if (value < 1 || value > 100)
                 {
-                    MessageBox.Show("Ping次数限制在(0-100)之间。", "提示");
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show("Ping次数限制在(0-100)之间。", "提示");
+                    else
+                        MessageBox.Show("The number of pings is limited to between (0 and 100).", "Tips");
                     nmPingCount.Value = 1;
                 }
                 e.Handled = true;
@@ -270,12 +322,71 @@ namespace LeafSoft.PartPanel
                 decimal value = nmInterval.Value;
                 if (value < 0 || value > 3600000)
                 {
-                    MessageBox.Show("Ping次数限制在(0-3600000)之间。", "提示");
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show("Ping间隔限制在(0-3600000)s之间。", "提示");
+                    else
+                        MessageBox.Show("The ping interval is limited to between (0 and 3600000)s.", "Tips");
                     nmInterval.Value = 1;
                 }
                 e.Handled = true;
             }
             else this.Text = "";
+        }
+
+        private void textPingCount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 8 && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textPingCount_TextChanged(object sender, EventArgs e)
+        {
+            if (textPingCount.Text.Length > 0)
+            {
+                int value = int.Parse(textPingCount.Text);
+                if (value < 1)
+                {
+                    textPingCount.Text = "1";
+                    if(LanguageSet.Language == "0")
+                        MessageBox.Show("小于目标设置范围(1-100)！", "提示");
+                    else
+                        MessageBox.Show("Less than the target setting range(1-100)！", "Tips");
+                }
+                else if (value > 100)
+                {
+                    textPingCount.Text = "100";
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show("大于目标设置范围(1-100)！", "提示");
+                    else
+                        MessageBox.Show("Greater than the target setting range(1-100)！", "Tips");
+                }
+            }
+        }
+
+        private void textInterval_TextChanged(object sender, EventArgs e)
+        {
+            if (textInterval.Text.Length > 0)
+            {
+                int value = int.Parse(textInterval.Text);
+                if (value < 1000)
+                {
+                    textInterval.Text = "1000";
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show("小于目标设置范围(1-100)！", "提示");
+                    else
+                        MessageBox.Show("Less than the target setting range(1-100)！", "Tips");
+                }
+                else if (value > 3600000)
+                {
+                    textInterval.Text = "3600000";
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show("大于目标设置范围(1-100)！", "提示");
+                    else
+                        MessageBox.Show("Greater than the target setting range(1-100)！", "Tips");
+                }
+            }
         }
     }
 }

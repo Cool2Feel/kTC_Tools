@@ -54,7 +54,7 @@
             // 
             this.panel1.Controls.Add(this.textClear);
             this.panel1.Controls.Add(this.chk_R);
-            this.panel1.Controls.Add(this.axCCommMonitorX1);
+            //this.panel1.Controls.Add(this.axCCommMonitorX1);
             this.panel1.Controls.Add(this.comPause);
             this.panel1.Controls.Add(this.comStart);
             this.panel1.Controls.Add(this.comSelect);

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
 using LeafSoft.Lib;
+using System.Linq;
 
 namespace LeafSoft.Units
 {
@@ -18,10 +19,17 @@ namespace LeafSoft.Units
         public NetRs232()
         {
             InitializeComponent();
-
             settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(NetRs232));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(NetRs232));
+            }
             drpComList.Items.Clear();
-            drpComList.Items.AddRange(SerialPort.GetPortNames());
+            drpComList.Items.AddRange(SerialPort.GetPortNames().Distinct().ToArray());
             if (drpComList.Items.Count > 0)
             {
                 drpComList.SelectedIndex = 0;
@@ -33,6 +41,64 @@ namespace LeafSoft.Units
             drpStopBits.SelectedIndex = 0;
             ComDevice.DataReceived+=new SerialDataReceivedEventHandler(Com_DataReceived);
         }
+        
+        /*
+        // 系统消息常量
+        public const int WM_DEVICE_CHANGE = 0x219;             //设备改变           
+        public const int DBT_DEVICEARRIVAL = 0x8000;          //设备插入
+        public const int DBT_DEVICE_REMOVE_COMPLETE = 0x8004; //设备移除
+        /// <summary>
+        /// 串口插拔的消息处理
+        /// </summary>
+        /// <param name="m"></param>
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_DEVICE_CHANGE)        // 捕获USB设备的拔出消息WM_DEVICECHANGE
+            {
+                switch (m.WParam.ToInt32())
+                {
+                    case DBT_DEVICE_REMOVE_COMPLETE:    // USB拔出      
+                        {
+                            if (ComDevice.IsOpen)
+                            {
+                                bool com = false;
+                                String[] serialPorts = System.IO.Ports.SerialPort.GetPortNames();
+                                for (int i = 0; i < serialPorts.Length; i++)//找出所有串口，并选择文件中的
+                                {
+                                    if (serialPorts[i].Equals(ComDevice.PortName))
+                                        com = true;
+                                    //Console.WriteLine(serialPorts[i]);
+                                }
+                                if (!com)
+                                {
+                                    drpComList.Items.Clear();
+                                    drpComList.Items.AddRange(SerialPort.GetPortNames());
+                                    if (drpComList.Items.Count > 0)
+                                    {
+                                        drpComList.SelectedIndex = 0;
+                                        //btnCom.Enabled = true;
+                                    }
+                                    MessageBox.Show("串口已拔出！", "Tips");
+                                }
+                            }
+                        }
+                        break;
+                    case DBT_DEVICEARRIVAL:             // USB插入获取对应串口名称
+                        {
+                            drpComList.Items.Clear();
+                            drpComList.Items.AddRange(SerialPort.GetPortNames());
+                            if (drpComList.Items.Count > 0)
+                            {
+                                drpComList.SelectedIndex = 0;
+                                //btnCom.Enabled = true;
+                            }
+                        }
+                        break;
+                }
+            }
+            base.WndProc(ref m);
+        }
+        */
 
         /// <summary>
         /// 输出数据
@@ -60,8 +126,11 @@ namespace LeafSoft.Units
             if (ComDevice.IsOpen==false)
             {
                 if (string.IsNullOrEmpty(drpComList.Text))
-                { 
-                    MessageBox.Show("串口没有选中或不存在,无法打开！", "提示");
+                {
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show("串口没有选中或不存在,无法打开！", "提示");
+                    else
+                        MessageBox.Show("The serial port is not selected or does not exist and cannot be opened！", "Tips");
                     return;
                 }
 
@@ -76,17 +145,26 @@ namespace LeafSoft.Units
                         ComDevice.Open();
                     else
                     {
-                        MessageBox.Show("串口无法打开！", "提示");
+                        if (LanguageSet.Language == "0")
+                            MessageBox.Show("串口无法打开！", "提示");
+                        else
+                            MessageBox.Show("Serial port cannot be opened！", "Tips");
                         return;
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 LogHelper.WriteLog(btnCom.Text);
-                btnCom.Text = "关闭串口";
+                if (LanguageSet.Language == "0")
+                    btnCom.Text = "关闭串口";
+                else
+                    btnCom.Text = "Close";
                 picComStatus.BackgroundImage = Properties.Resources.greenlight;
             }
             else
@@ -97,10 +175,16 @@ namespace LeafSoft.Units
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 LogHelper.WriteLog(btnCom.Text);
-                btnCom.Text = "打开串口";
+                if (LanguageSet.Language == "0")
+                    btnCom.Text = "打开串口";
+                else
+                    btnCom.Text = "Open";
                 picComStatus.BackgroundImage = Properties.Resources.redlight;
             }
 
@@ -130,12 +214,18 @@ namespace LeafSoft.Units
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("串口未打开", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show("串口未打开", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Serial port is not open", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return false;
         }
@@ -150,11 +240,23 @@ namespace LeafSoft.Units
                 ComDevice.Close();
             }
         }
+        public void ChangePort()
+        {
+            drpComList.Items.Clear();
+            drpComList.Items.AddRange(SerialPort.GetPortNames().Distinct().ToArray());
+            if (drpComList.Items.Count > 0)
+            {
+                drpComList.SelectedIndex = 0;
+                //btnCom.Enabled = true;
+            }
+        }
 
         public void Init_ConfigCom()
         {
             string s = settingFile.ReadString("SETTING", "COM", "COM1");
             drpComList.SelectedIndex = drpComList.Items.IndexOf(s);
+            if (drpComList.Items.IndexOf(s) == -1 && drpComList.Items.Count > 0)
+                drpComList.SelectedIndex = 0;
             s = settingFile.ReadString("SETTING", "Baud", "9600");
             drpBaudRate.SelectedIndex = drpBaudRate.Items.IndexOf(s);
             s = settingFile.ReadString("SETTING", "Parity", "None");
@@ -172,6 +274,12 @@ namespace LeafSoft.Units
             settingFile.WriteString("SETTING", "Parity", drpParity.Text);
             settingFile.WriteString("SETTING", "Data", drpDataBits.Text);
             settingFile.WriteString("SETTING", "Stop", drpStopBits.Text);
+        }
+
+        private void drpComList_Click(object sender, EventArgs e)
+        {
+            ChangePort();
+            //Console.WriteLine(drpComList.Items.Count);
         }
     }
 }

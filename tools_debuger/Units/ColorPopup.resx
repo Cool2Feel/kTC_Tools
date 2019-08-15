@@ -117,4 +117,262 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="skinButton4.Text" xml:space="preserve">
+    <value>灰</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="skinButton2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="skinButton2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 9</value>
+  </data>
+  <data name="skinButton3.Text" xml:space="preserve">
+    <value>绿</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="materialRadioButton1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ColorPopup</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;skinButton2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;skinButton4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton1.Type" xml:space="preserve">
+    <value>EASkins.Controls.MaterialRadioButton, EASkins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="materialRadioButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 30</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton3.Type" xml:space="preserve">
+    <value>EASkins.Controls.MaterialRadioButton, EASkins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="materialRadioButton2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="skinButton2.Text" xml:space="preserve">
+    <value>蓝</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton2.Name" xml:space="preserve">
+    <value>materialRadioButton2</value>
+  </data>
+  <data name="skinButton3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton4.Name" xml:space="preserve">
+    <value>materialRadioButton4</value>
+  </data>
+  <data name="materialRadioButton3.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="materialRadioButton4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;skinButton4.Type" xml:space="preserve">
+    <value>CCWin.SkinControl.SkinButton, CSkin, Version=16.1.14.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="materialRadioButton2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;skinButton2.Type" xml:space="preserve">
+    <value>CCWin.SkinControl.SkinButton, CSkin, Version=16.1.14.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;skinButton3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="materialRadioButton3.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;skinButton1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="materialRadioButton3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 30</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton3.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="skinButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="materialRadioButton4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="materialRadioButton2.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="materialRadioButton2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 10pt</value>
+  </data>
+  <data name="skinButton3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="skinButton2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 66</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton1.Name" xml:space="preserve">
+    <value>materialRadioButton1</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton3.Name" xml:space="preserve">
+    <value>materialRadioButton3</value>
+  </data>
+  <data name="&gt;&gt;skinButton1.Type" xml:space="preserve">
+    <value>CCWin.SkinControl.SkinButton, CSkin, Version=16.1.14.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="skinButton1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="&gt;&gt;skinButton4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="skinButton4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 66</value>
+  </data>
+  <data name="skinButton4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 107</value>
+  </data>
+  <data name="materialRadioButton3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="skinButton1.Text" xml:space="preserve">
+    <value>青</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="materialRadioButton2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 30</value>
+  </data>
+  <data name="&gt;&gt;skinButton3.Type" xml:space="preserve">
+    <value>CCWin.SkinControl.SkinButton, CSkin, Version=16.1.14.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="skinButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 9</value>
+  </data>
+  <data name="skinButton3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 66</value>
+  </data>
+  <data name="&gt;&gt;skinButton3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="materialRadioButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 76</value>
+  </data>
+  <data name="&gt;&gt;skinButton1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="skinButton3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 107</value>
+  </data>
+  <data name="skinButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 66</value>
+  </data>
+  <data name="materialRadioButton4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 10pt</value>
+  </data>
+  <data name="&gt;&gt;skinButton2.Name" xml:space="preserve">
+    <value>skinButton2</value>
+  </data>
+  <data name="skinButton4.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="materialRadioButton4.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="materialRadioButton2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 76</value>
+  </data>
+  <data name="materialRadioButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="materialRadioButton1.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="materialRadioButton4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 30</value>
+  </data>
+  <data name="materialRadioButton2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="materialRadioButton4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 171</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>317, 203</value>
+  </data>
+  <data name="&gt;&gt;skinButton4.Name" xml:space="preserve">
+    <value>skinButton4</value>
+  </data>
+  <data name="&gt;&gt;skinButton3.Name" xml:space="preserve">
+    <value>skinButton3</value>
+  </data>
+  <data name="&gt;&gt;skinButton1.Name" xml:space="preserve">
+    <value>skinButton1</value>
+  </data>
+  <data name="materialRadioButton4.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="materialRadioButton3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 10pt</value>
+  </data>
+  <data name="materialRadioButton3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 171</value>
+  </data>
+  <data name="skinButton4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="materialRadioButton3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton2.Type" xml:space="preserve">
+    <value>EASkins.Controls.MaterialRadioButton, EASkins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="materialRadioButton1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Roboto, 10pt</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;materialRadioButton4.Type" xml:space="preserve">
+    <value>EASkins.Controls.MaterialRadioButton, EASkins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="materialRadioButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;skinButton2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="skinButton2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

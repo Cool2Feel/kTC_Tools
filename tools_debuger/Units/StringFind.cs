@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using LeafSoft.Lib;
 
 namespace LeafSoft.Units
 {
@@ -15,6 +16,14 @@ namespace LeafSoft.Units
         public StringFind(DataReceive DR)
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(StringFind));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(StringFind));
+            }
             dr = DR;
         }
 

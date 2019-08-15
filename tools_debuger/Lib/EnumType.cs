@@ -17,4 +17,5 @@ namespace LeafSoft.Lib
             GB2312
         }
     }
+
 }

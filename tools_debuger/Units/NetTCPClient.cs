@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using LeafSoft.Model;
 using System.Net;
 using System.Net.Sockets;
+using LeafSoft.Lib;
 
 namespace LeafSoft.Units
 {
@@ -19,10 +20,18 @@ namespace LeafSoft.Units
         public BindingList<LeafTCPClient> lstClient = new BindingList<LeafTCPClient>();
 
         public event Lib.LeafEvent.DataReceivedHandler DataReceived;
-
+        
         public NetTCPClient()
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(NetTCPClient));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(NetTCPClient));
+            }
             if (this.DesignMode == false)
             {
                 IPHostEntry ipHostEntry = Dns.GetHostEntry(Dns.GetHostName());
@@ -35,7 +44,7 @@ namespace LeafSoft.Units
                 }
             }
         }
-
+        
         /// <summary>
         /// 绑定客户端列表
         /// </summary>
@@ -71,7 +80,10 @@ namespace LeafSoft.Units
             catch (Exception ex)
             {
                 client.DisConnect();
-                MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if(LanguageSet.Language == "0")
+                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -107,7 +119,10 @@ namespace LeafSoft.Units
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     client.DisConnect();
                     lstClient.Remove(client);
                     BindLstClient();
@@ -131,7 +146,10 @@ namespace LeafSoft.Units
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(selClient.Name + ":" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (LanguageSet.Language == "0")
+                            MessageBox.Show(selClient.Name + ":" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show(selClient.Name + ":" + ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
                 }
@@ -139,7 +157,10 @@ namespace LeafSoft.Units
             }
             else
             {
-                MessageBox.Show("无可用连接", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show("无可用连接", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("No connection available", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -172,6 +193,37 @@ namespace LeafSoft.Units
             }
             lstClient.Clear();
             BindLstClient();
+        }
+
+        private void MS_Clearn_Click(object sender, EventArgs e)
+        {
+            if (lstConn.Items.Count > 0)
+            {
+                List<LeafTCPClient> WaitRemove = new List<LeafTCPClient>();
+                for (int i = 0; i < lstConn.Items.Count; i++)
+                {
+                    WaitRemove.Add((LeafTCPClient)lstConn.Items[i]);
+                }
+                foreach (LeafTCPClient client in WaitRemove)
+                {
+                    client.DisConnect();
+                    lstClient.Remove(client);
+                }
+            }
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            if (lstConn.Items.Count > 0)
+            {
+                MS_Delete.Enabled = true;
+                MS_Clearn.Enabled = true;
+            }
+            else
+            {
+                MS_Delete.Enabled = false;
+                MS_Clearn.Enabled = false;
+            }
         }
     }
 }

@@ -52,19 +52,15 @@
             // 
             // txtData
             // 
+            resources.ApplyResources(this.txtData, "txtData");
             this.txtData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtData.ContextMenuStrip = this.CMS_Main;
             this.txtData.EncodeType = LeafSoft.Lib.EnumType.DataEncode.Hex;
-            this.txtData.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtData.Location = new System.Drawing.Point(59, 15);
-            this.txtData.MaxLength = 23;
-            this.txtData.Multiline = true;
             this.txtData.Name = "txtData";
-            this.txtData.Size = new System.Drawing.Size(150, 23);
-            this.txtData.TabIndex = 2;
             // 
             // CMS_Main
             // 
+            resources.ApplyResources(this.CMS_Main, "CMS_Main");
             this.CMS_Main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MS_Clear,
             this.MS_ToInt,
@@ -72,70 +68,53 @@
             this.MS_ToDouble});
             this.CMS_Main.Name = "contextMenuStrip1";
             this.CMS_Main.ShowImageMargin = false;
-            this.CMS_Main.Size = new System.Drawing.Size(174, 92);
+            this.CMS_Main.Opening += new System.ComponentModel.CancelEventHandler(this.CMS_Main_Opening);
             this.CMS_Main.VisibleChanged += new System.EventHandler(this.CMS_Main_VisibleChanged);
             // 
             // MS_Clear
             // 
+            resources.ApplyResources(this.MS_Clear, "MS_Clear");
             this.MS_Clear.Name = "MS_Clear";
-            this.MS_Clear.Size = new System.Drawing.Size(173, 22);
-            this.MS_Clear.Text = "清空";
             this.MS_Clear.Click += new System.EventHandler(this.MS_Clear_Click);
             // 
             // MS_ToInt
             // 
+            resources.ApplyResources(this.MS_ToInt, "MS_ToInt");
             this.MS_ToInt.Name = "MS_ToInt";
-            this.MS_ToInt.Size = new System.Drawing.Size(173, 22);
-            this.MS_ToInt.Text = "转换为整数(Int)";
             this.MS_ToInt.Click += new System.EventHandler(this.MS_ToInt_Click);
             // 
             // MS_ToFloat
             // 
+            resources.ApplyResources(this.MS_ToFloat, "MS_ToFloat");
             this.MS_ToFloat.Name = "MS_ToFloat";
-            this.MS_ToFloat.Size = new System.Drawing.Size(173, 22);
-            this.MS_ToFloat.Text = "转换为浮点数(Float)";
             this.MS_ToFloat.Click += new System.EventHandler(this.MS_ToFloat_Click);
             // 
             // MS_ToDouble
             // 
+            resources.ApplyResources(this.MS_ToDouble, "MS_ToDouble");
             this.MS_ToDouble.Name = "MS_ToDouble";
-            this.MS_ToDouble.Size = new System.Drawing.Size(173, 22);
-            this.MS_ToDouble.Text = "转换为浮点数(Double)";
             this.MS_ToDouble.Click += new System.EventHandler(this.MS_ToDouble_Click);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(13, 18);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Hex：";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(18, 56);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "值：";
             // 
             // txtValue
             // 
+            resources.ApplyResources(this.txtValue, "txtValue");
             this.txtValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValue.ContextMenuStrip = this.CMS_Value;
-            this.txtValue.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtValue.Location = new System.Drawing.Point(59, 54);
-            this.txtValue.MaxLength = 20;
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(150, 23);
-            this.txtValue.TabIndex = 5;
             // 
             // CMS_Value
             // 
+            resources.ApplyResources(this.CMS_Value, "CMS_Value");
             this.CMS_Value.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MS_ClearValue,
             this.MS_ShortToBytes,
@@ -144,72 +123,58 @@
             this.MS_DoubleToBytes});
             this.CMS_Value.Name = "contextMenuStrip1";
             this.CMS_Value.ShowImageMargin = false;
-            this.CMS_Value.Size = new System.Drawing.Size(174, 114);
+            this.CMS_Value.Opening += new System.ComponentModel.CancelEventHandler(this.CMS_Value_Opening);
             // 
             // MS_ClearValue
             // 
+            resources.ApplyResources(this.MS_ClearValue, "MS_ClearValue");
             this.MS_ClearValue.Name = "MS_ClearValue";
-            this.MS_ClearValue.Size = new System.Drawing.Size(173, 22);
-            this.MS_ClearValue.Text = "清空";
             this.MS_ClearValue.Click += new System.EventHandler(this.MS_ClearValue_Click);
             // 
             // MS_ShortToBytes
             // 
+            resources.ApplyResources(this.MS_ShortToBytes, "MS_ShortToBytes");
             this.MS_ShortToBytes.Name = "MS_ShortToBytes";
-            this.MS_ShortToBytes.Size = new System.Drawing.Size(173, 22);
-            this.MS_ShortToBytes.Text = "整数(Short)转字节";
             this.MS_ShortToBytes.Click += new System.EventHandler(this.MS_ShortToBytes_Click);
             // 
             // MS_IntToBytes
             // 
+            resources.ApplyResources(this.MS_IntToBytes, "MS_IntToBytes");
             this.MS_IntToBytes.Name = "MS_IntToBytes";
-            this.MS_IntToBytes.Size = new System.Drawing.Size(173, 22);
-            this.MS_IntToBytes.Text = "整数(Int)转字节";
             this.MS_IntToBytes.Click += new System.EventHandler(this.MS_IntToBytes_Click);
             // 
             // MS_FloatToBytes
             // 
+            resources.ApplyResources(this.MS_FloatToBytes, "MS_FloatToBytes");
             this.MS_FloatToBytes.Name = "MS_FloatToBytes";
-            this.MS_FloatToBytes.Size = new System.Drawing.Size(173, 22);
-            this.MS_FloatToBytes.Text = "浮点数(Float)转字节";
             this.MS_FloatToBytes.Click += new System.EventHandler(this.MS_FloatToBytes_Click);
             // 
             // MS_DoubleToBytes
             // 
+            resources.ApplyResources(this.MS_DoubleToBytes, "MS_DoubleToBytes");
             this.MS_DoubleToBytes.Name = "MS_DoubleToBytes";
-            this.MS_DoubleToBytes.Size = new System.Drawing.Size(173, 22);
-            this.MS_DoubleToBytes.Text = "浮点数(Double)转字节";
             this.MS_DoubleToBytes.Click += new System.EventHandler(this.MS_DoubleToBytes_Click);
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
+            resources.ApplyResources(this.label3, "label3");
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(118, 88);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 12);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "提示：右键数值操作";
             // 
             // frmBytes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(234, 101);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmBytes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "字节数值计算器";
             this.CMS_Main.ResumeLayout(false);
             this.CMS_Value.ResumeLayout(false);
             this.ResumeLayout(false);

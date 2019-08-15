@@ -16,6 +16,14 @@ namespace LeafSoft
         public frmPoly()
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(frmPoly));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(frmPoly));
+            }
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -32,7 +40,10 @@ namespace LeafSoft
                 }
                 else
                 {
-                    MessageBox.Show("请输入2个字节的多项式值！");
+                    if(LanguageSet.Language == "0")
+                        MessageBox.Show("请输入2个字节的多项式值！");
+                    else
+                        MessageBox.Show("Please enter a 2-byte polynomial value！");
                 }
             }
             txtPoly.Focus();

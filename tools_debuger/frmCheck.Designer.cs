@@ -47,123 +47,99 @@
             // 
             // contextMenuStrip1
             // 
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CM_Check,
             this.MS_Copy,
             this.CM_Clear});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 70);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // CM_Check
             // 
+            resources.ApplyResources(this.CM_Check, "CM_Check");
             this.CM_Check.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MS_CheckSum,
             this.MS_KTC,
             this.MS_CRC16,
             this.MS_CRCPoly});
             this.CM_Check.Name = "CM_Check";
-            this.CM_Check.Size = new System.Drawing.Size(136, 22);
-            this.CM_Check.Text = "计算校验码";
             // 
             // MS_CheckSum
             // 
+            resources.ApplyResources(this.MS_CheckSum, "MS_CheckSum");
             this.MS_CheckSum.Name = "MS_CheckSum";
-            this.MS_CheckSum.Size = new System.Drawing.Size(154, 22);
-            this.MS_CheckSum.Text = "校验和";
             this.MS_CheckSum.Click += new System.EventHandler(this.MS_CheckSum_Click);
             // 
             // MS_KTC
             // 
+            resources.ApplyResources(this.MS_KTC, "MS_KTC");
             this.MS_KTC.Name = "MS_KTC";
-            this.MS_KTC.Size = new System.Drawing.Size(154, 22);
-            this.MS_KTC.Text = "KTC-(CRC)";
             this.MS_KTC.Click += new System.EventHandler(this.MS_KTC_Click);
             // 
             // MS_CRC16
             // 
+            resources.ApplyResources(this.MS_CRC16, "MS_CRC16");
             this.MS_CRC16.Name = "MS_CRC16";
-            this.MS_CRC16.Size = new System.Drawing.Size(154, 22);
-            this.MS_CRC16.Text = "Modbus-RTU";
             this.MS_CRC16.Click += new System.EventHandler(this.MS_CRC16_Click);
             // 
             // MS_CRCPoly
             // 
+            resources.ApplyResources(this.MS_CRCPoly, "MS_CRCPoly");
             this.MS_CRCPoly.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MS_CRCPolyH,
             this.MS_CRCPolyL});
             this.MS_CRCPoly.Name = "MS_CRCPoly";
-            this.MS_CRCPoly.Size = new System.Drawing.Size(154, 22);
-            this.MS_CRCPoly.Text = "CRC16多项式";
             // 
             // MS_CRCPolyH
             // 
+            resources.ApplyResources(this.MS_CRCPolyH, "MS_CRCPolyH");
             this.MS_CRCPolyH.Name = "MS_CRCPolyH";
-            this.MS_CRCPolyH.Size = new System.Drawing.Size(124, 22);
-            this.MS_CRCPolyH.Text = "高位在前";
             this.MS_CRCPolyH.Click += new System.EventHandler(this.MS_CRCPolyH_Click);
             // 
             // MS_CRCPolyL
             // 
+            resources.ApplyResources(this.MS_CRCPolyL, "MS_CRCPolyL");
             this.MS_CRCPolyL.Name = "MS_CRCPolyL";
-            this.MS_CRCPolyL.Size = new System.Drawing.Size(124, 22);
-            this.MS_CRCPolyL.Text = "低位在前";
             this.MS_CRCPolyL.Click += new System.EventHandler(this.MS_CRCPolyL_Click);
             // 
             // MS_Copy
             // 
+            resources.ApplyResources(this.MS_Copy, "MS_Copy");
             this.MS_Copy.Name = "MS_Copy";
-            this.MS_Copy.Size = new System.Drawing.Size(136, 22);
-            this.MS_Copy.Text = "复制";
             this.MS_Copy.Click += new System.EventHandler(this.MS_Copy_Click);
             // 
             // CM_Clear
             // 
+            resources.ApplyResources(this.CM_Clear, "CM_Clear");
             this.CM_Clear.Name = "CM_Clear";
-            this.CM_Clear.Size = new System.Drawing.Size(136, 22);
-            this.CM_Clear.Text = "清空";
             this.CM_Clear.Click += new System.EventHandler(this.CM_Clear_Click);
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
+            resources.ApplyResources(this.label3, "label3");
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(245, 157);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 12);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "提示：右键校验操作";
             // 
             // txtContent
             // 
+            resources.ApplyResources(this.txtContent, "txtContent");
             this.txtContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContent.ContextMenuStrip = this.contextMenuStrip1;
-            this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContent.EncodeType = LeafSoft.Lib.EnumType.DataEncode.Hex;
-            this.txtContent.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtContent.Location = new System.Drawing.Point(0, 0);
-            this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
-            this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtContent.Size = new System.Drawing.Size(379, 173);
-            this.txtContent.TabIndex = 1;
             // 
             // frmCheck
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(379, 173);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtContent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCheck";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "校验码计算器";
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

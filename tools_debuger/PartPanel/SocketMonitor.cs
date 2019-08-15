@@ -6,6 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using System.Net;
+using LeafSoft.Lib;
 
 namespace LeafSoft.PartPanel
 {
@@ -20,6 +21,16 @@ namespace LeafSoft.PartPanel
         public SocketMonitor()
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                Console.WriteLine("0000");
+                LanguageSet.SetLang("", this, typeof(SocketMonitor));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(SocketMonitor));
+                Console.WriteLine("1111");
+            }
             //cbxProtocol.SelectedIndex = 0;
             IPHostEntry ipHostEntry = Dns.GetHostEntry(Dns.GetHostName());
             foreach (IPAddress ip in ipHostEntry.AddressList)
@@ -75,7 +86,12 @@ namespace LeafSoft.PartPanel
                 {
                     strCMD += string.Format("{0:X2} ", b);
                 }
+                //strCMD = packet.RecTime +"]: "+ strCMD;
                 txtData.Text = strCMD;
+                //strCMD += packet.Protocol + "\n";
+                //strCMD += packet.RecTime + "\n";
+                //strCMD += Encoding.ASCII.GetString(packet.ReceiveBuffer) + "\n";
+                //Console.WriteLine(strCMD);
             }
         }
 

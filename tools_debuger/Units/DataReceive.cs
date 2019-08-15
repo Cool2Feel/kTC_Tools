@@ -21,9 +21,18 @@ namespace LeafSoft.Units
         public DataReceive()
         {
             InitializeComponent();
-
+            
             _popControl = new StringFind(this);
             _pop = new Popup(_popControl);
+            
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(DataReceive));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(DataReceive));
+            }
         }
 
         #region 公有方法
@@ -193,11 +202,17 @@ namespace LeafSoft.Units
             byte[] IntByte = StringsToBytes(SelectData);
             if (IntByte.Length == 2)
             {
-                MessageBox.Show(BitConverter.ToInt16(IntByte, 0).ToString(), "整数值");
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show(BitConverter.ToInt16(IntByte, 0).ToString(), "整数值");
+                else
+                    MessageBox.Show(BitConverter.ToInt16(IntByte, 0).ToString(), "Integer value");
             }
             else
             {
-                MessageBox.Show(BitConverter.ToInt32(IntByte, 0).ToString(), "整数值");
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show(BitConverter.ToInt32(IntByte, 0).ToString(), "整数值");
+                else
+                    MessageBox.Show(BitConverter.ToInt16(IntByte, 0).ToString(), "Integer value");
             }
         }
         /// <summary>
@@ -209,7 +224,11 @@ namespace LeafSoft.Units
         {
             string[] SelectData = txtData.SelectedText.Trim().Split(' ');//获取选中部分文本
             byte[] IntByte = StringsToBytes(SelectData);
-            MessageBox.Show(BitConverter.ToSingle(IntByte, 0).ToString(), "单精度浮点数值");
+
+            if (LanguageSet.Language == "0")
+                MessageBox.Show(BitConverter.ToSingle(IntByte, 0).ToString(), "单精度浮点数值");
+            else
+                MessageBox.Show(BitConverter.ToDouble(IntByte, 0).ToString(), "Single precision");
         }
         /// <summary>
         /// 8字节转换为双精度浮点数
@@ -220,7 +239,10 @@ namespace LeafSoft.Units
         {
             string[] SelectData = txtData.SelectedText.Trim().Split(' ');//获取选中部分文本
             byte[] IntByte = StringsToBytes(SelectData);
-            MessageBox.Show(BitConverter.ToDouble(IntByte, 0).ToString(), "双精度浮点数值");
+            if (LanguageSet.Language == "0")
+                MessageBox.Show(BitConverter.ToDouble(IntByte, 0).ToString(), "双精度浮点数值");
+            else
+                MessageBox.Show(BitConverter.ToDouble(IntByte, 0).ToString(), "Double precision");
         }
 
         /// <summary>
@@ -258,7 +280,10 @@ namespace LeafSoft.Units
         {
             if(string.IsNullOrEmpty(str))
             {
-                MessageBox.Show("查询的字符不能为空！","提示");
+                if(LanguageSet.Language == "0")
+                    MessageBox.Show("查询的字符不能为空！","提示");
+                else
+                    MessageBox.Show("The character of the query cannot be empty！", "Tips");
                 return;
             }
             index = txtData.Text.IndexOf(str, index);
@@ -267,7 +292,10 @@ namespace LeafSoft.Units
                 index = 0;
                 txtData.SelectionStart = 0;
                 txtData.SelectionLength = 0;
-                MessageBox.Show("已搜索到结尾.","提示");
+                if(LanguageSet.Language == "0")
+                    MessageBox.Show("已搜索到结尾!","提示");
+                else
+                    MessageBox.Show("Searched for end！", "Tips");
                 return;
             }
             txtData.SelectionStart = index;

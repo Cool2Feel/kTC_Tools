@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetUDPClient));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MS_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.MS_Clearn = new System.Windows.Forms.ToolStripMenuItem();
             this.nmServerPort = new System.Windows.Forms.NumericUpDown();
             this.lstConn = new System.Windows.Forms.ListBox();
             this.txtServerIP = new System.Windows.Forms.TextBox();
@@ -43,30 +45,34 @@
             // 
             // contextMenuStrip1
             // 
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MS_Delete});
+            this.MS_Delete,
+            this.MS_Clearn});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // MS_Delete
             // 
+            resources.ApplyResources(this.MS_Delete, "MS_Delete");
             this.MS_Delete.Name = "MS_Delete";
-            this.MS_Delete.Size = new System.Drawing.Size(100, 22);
-            this.MS_Delete.Text = "删除";
             this.MS_Delete.Click += new System.EventHandler(this.MS_Delete_Click);
+            // 
+            // MS_Clearn
+            // 
+            resources.ApplyResources(this.MS_Clearn, "MS_Clearn");
+            this.MS_Clearn.Name = "MS_Clearn";
+            this.MS_Clearn.Click += new System.EventHandler(this.MS_Clearn_Click);
             // 
             // nmServerPort
             // 
-            this.nmServerPort.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nmServerPort.Location = new System.Drawing.Point(49, 35);
+            resources.ApplyResources(this.nmServerPort, "nmServerPort");
             this.nmServerPort.Maximum = new decimal(new int[] {
             65535,
             0,
             0,
             0});
             this.nmServerPort.Name = "nmServerPort";
-            this.nmServerPort.Size = new System.Drawing.Size(56, 23);
-            this.nmServerPort.TabIndex = 20;
             this.nmServerPort.Value = new decimal(new int[] {
             6000,
             0,
@@ -75,62 +81,38 @@
             // 
             // lstConn
             // 
-            this.lstConn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.lstConn, "lstConn");
             this.lstConn.ContextMenuStrip = this.contextMenuStrip1;
             this.lstConn.DisplayMember = "Name";
-            this.lstConn.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lstConn.FormattingEnabled = true;
-            this.lstConn.ItemHeight = 17;
-            this.lstConn.Location = new System.Drawing.Point(0, 69);
             this.lstConn.Name = "lstConn";
             this.lstConn.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstConn.Size = new System.Drawing.Size(172, 157);
-            this.lstConn.TabIndex = 19;
             // 
             // txtServerIP
             // 
-            this.txtServerIP.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtServerIP.Location = new System.Drawing.Point(50, 4);
+            resources.ApplyResources(this.txtServerIP, "txtServerIP");
             this.txtServerIP.Name = "txtServerIP";
-            this.txtServerIP.Size = new System.Drawing.Size(111, 23);
-            this.txtServerIP.TabIndex = 16;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(2, 7);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 17);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "服务端:";
             // 
             // btnConn
             // 
-            this.btnConn.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnConn.Location = new System.Drawing.Point(112, 34);
+            resources.ApplyResources(this.btnConn, "btnConn");
             this.btnConn.Name = "btnConn";
-            this.btnConn.Size = new System.Drawing.Size(49, 24);
-            this.btnConn.TabIndex = 18;
-            this.btnConn.Text = "添加";
             this.btnConn.UseVisualStyleBackColor = true;
             this.btnConn.Click += new System.EventHandler(this.btnConn_Click);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(6, 38);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 17);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "端口:";
             // 
             // NetUDPClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.nmServerPort);
             this.Controls.Add(this.lstConn);
@@ -139,7 +121,6 @@
             this.Controls.Add(this.btnConn);
             this.Controls.Add(this.label2);
             this.Name = "NetUDPClient";
-            this.Size = new System.Drawing.Size(174, 229);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nmServerPort)).EndInit();
             this.ResumeLayout(false);
@@ -157,5 +138,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnConn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem MS_Clearn;
     }
 }

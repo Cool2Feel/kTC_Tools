@@ -9,7 +9,7 @@ using System.Drawing;
 namespace LeafSoft.LeafControl
 {
 
-    public partial class CMDTextBox : TextBox
+    public partial class CMDTextBox : RichTextBox
     {
         public event Lib.LeafEvent.DataSendHandler DataSend;
 
@@ -37,9 +37,12 @@ namespace LeafSoft.LeafControl
                     this.SelectionStart = this.Text.Length;
                 }
                 */
-                if (DataSend(new UTF8Encoding().GetBytes(e.KeyChar.ToString())) == false)
+                if (e.KeyChar != (char)Keys.Back)
                 {
-                    e.Handled = true;
+                    if (DataSend(new UTF8Encoding().GetBytes(e.KeyChar.ToString())) == false)
+                    {
+                        e.Handled = true;
+                    }
                 }
             }
         }

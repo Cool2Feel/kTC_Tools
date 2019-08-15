@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeafSoft.Lib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,18 @@ namespace LeafSoft
         public frmAWOL()
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(frmAWOL));
+                //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("");
+                //ApplyResource();
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(frmAWOL));
+                //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+                //ApplyResource();
+            }
         }
         public frmAWOL(Model.WOL wol)
         {
@@ -32,7 +45,10 @@ namespace LeafSoft
             string mac = TextMac.Text;
             if (!r.IsMatch(mac))
             {
-                MessageBox.Show("输入的 MAC 地址无效!", "提示");
+                if(LanguageSet.Language == "0")
+                    MessageBox.Show("输入的 MAC 地址无效!", "提示");
+                else
+                    MessageBox.Show("Invalid MAC address entered!", "Tips");
                 return;
             }
             string name = TextName.Text;
@@ -40,7 +56,10 @@ namespace LeafSoft
             Regex regex = new Regex("^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}$");
             if(!regex.IsMatch(ip) || (ip == "0.0.0.0"))
             {
-                MessageBox.Show("输入的 IP 地址无效!", "提示");
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show("输入的 IP 地址无效!", "提示");
+                else
+                    MessageBox.Show("Invalid IP address entered!", "提示");
                 TextIp.Text = "";
                 return;
             }

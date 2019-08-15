@@ -29,6 +29,14 @@ namespace LeafSoft
         public frmGetMac()
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(frmGetMac));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(frmGetMac));
+            }
             //GetAllIPAndMac();
         }
 
@@ -144,7 +152,10 @@ namespace LeafSoft
             catch (Exception Mye)
             {
                 //Mac = "获取远程主机的MAC错误：" +  Mye.Message;
-                MessageBox.Show("获取远程主机的MAC错误：" + Mye.Message,"提示");
+                if(LanguageSet.Language == "0")
+                    MessageBox.Show("获取远程主机的MAC错误：" + Mye.Message,"提示");
+                else
+                    MessageBox.Show("Get the MAC error of the remote host：" + Mye.Message, "Tips");
             }
             if (Mac == "00:00:00:00:00:00")
                 Mac = "";
@@ -176,7 +187,10 @@ namespace LeafSoft
                 string mac = TextMac.Text;
                 if (!r.IsMatch(mac))
                 {
-                    MessageBox.Show("输入一个无效的 MAC 地址!", "提示");
+                    if(LanguageSet.Language == "0")
+                        MessageBox.Show("输入的 MAC 地址无效!", "提示");
+                    else
+                        MessageBox.Show("Invalid MAC address entered!", "提示");
                     return;
                 }
                 string name = TextName.Text;
@@ -184,7 +198,10 @@ namespace LeafSoft
                 Regex regex = new Regex("^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}$");
                 if (!regex.IsMatch(ip))
                 {
-                    MessageBox.Show("输入一个无效的 IP 地址!", "提示");
+                    if(LanguageSet.Language == "0")
+                        MessageBox.Show("输入的 IP 地址无效!", "提示");
+                    else
+                        MessageBox.Show("Invalid IP address entered!", "提示");
                     return;
                 }
                 NewWOL = new Model.WOL(mac, name, ip);
@@ -201,7 +218,10 @@ namespace LeafSoft
             Regex regex = new Regex("^[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}$");
             if (!regex.IsMatch(ip))
             {
-                MessageBox.Show("输入一个无效的 IP 地址!", "提示");
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show("输入的 IP 地址无效!", "提示");
+                else
+                    MessageBox.Show("Invalid IP address entered!", "提示");
                 return;
             }
             TextMac.Text = GetMacAddress(ip);
@@ -214,7 +234,10 @@ namespace LeafSoft
             Regex regex = new Regex(@"^([A-Fa-f0-9][A-Fa-f0-9]:[A-Fa-f0-9][A-Fa-f0-9]:[A-Fa-f0-9][A-Fa-f0-9]:[A-Fa-f0-9][A-Fa-f0-9]:[A-Fa-f0-9][A-Fa-f0-9]:[A-Fa-f0-9][A-Fa-f0-9])$");
             if (!regex.IsMatch(mac))
             {
-                MessageBox.Show("输入一个无效的 MAC 地址!", "提示");
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show("输入的 MAC 地址无效!", "提示");
+                else
+                    MessageBox.Show("Invalid MAC address entered!", "提示");
                 return;
             }
             TextIp.Text = GetIPAddress(mac);

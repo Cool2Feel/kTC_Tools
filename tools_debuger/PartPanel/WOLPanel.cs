@@ -16,9 +16,8 @@ namespace LeafSoft.PartPanel
     public partial class WOLPanel : UserControl
     {
         BindingList<Model.WOL> lstWOL = new BindingList<Model.WOL>();
-        List<string> ipList = new List<string>();
+        //List<string> ipList = new List<string>();
         private IniFiles settingFile;//配置文件
-
         /// <summary>
         /// 是否在唤醒状态
         /// </summary>
@@ -28,6 +27,14 @@ namespace LeafSoft.PartPanel
         {
             InitializeComponent();
             dgWOL.AutoGenerateColumns = false;
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(WOLPanel));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(WOLPanel));
+            }
             /*
             IPHostEntry ipHostEntry = Dns.GetHostEntry(Dns.GetHostName());
             foreach (IPAddress ip in ipHostEntry.AddressList)
@@ -53,10 +60,19 @@ namespace LeafSoft.PartPanel
                 WOL.AquilaWolLibrary.WakeUp(MacTextBox.Text);
 
                 LogHelper.WriteLog("WOL Date: " + MacTextBox.Text);
-                MessageBox.Show("已发送唤醒数据信息！", "提示");
+
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show("已发送唤醒数据信息！", "提示");
+                else
+                    MessageBox.Show("Wakeup data message sent！", "Tips");
             }
             else
-                MessageBox.Show("请输入正确的MAC地址进行唤醒！","提示");
+            {
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show("请输入正确的MAC地址进行唤醒！", "提示");
+                else
+                    MessageBox.Show("Please enter the correct MAC address to wake up！", "Tips");
+            }
         }
 
         private static void SendWakeOnLanPacket(byte[] mac)
@@ -90,7 +106,7 @@ namespace LeafSoft.PartPanel
             //
             client.Send(packet, packet.Length);
         }
-        private static void SendWakeOnLanPacket(byte[] mac,string ip)
+        private static void SendWakeOnLanPacket(byte[] mac, string ip)
         {
             //
             // WOL 包通过 UDP 255.255.255.0:40000 发送。
@@ -121,7 +137,7 @@ namespace LeafSoft.PartPanel
             //
             client.Send(packet, packet.Length);
         }
-        
+
         //private GetMac GM;
         private void btMac_Click(object sender, EventArgs e)
         {
@@ -136,7 +152,11 @@ namespace LeafSoft.PartPanel
 
         private void dgWOL_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            dgWOL.Rows[e.RowIndex].Cells[4].Value = "唤醒";
+            if (LanguageSet.Language == "0")
+                dgWOL.Rows[e.RowIndex].Cells[4].Value = "唤醒";
+            else
+                dgWOL.Rows[e.RowIndex].Cells[4].Value = "wake";
+            dgWOL.Rows[e.RowIndex].Cells[0].Value = false;
         }
 
         private byte[] MacToBytes(string macString)
@@ -171,22 +191,28 @@ namespace LeafSoft.PartPanel
             {//点击了唤醒按钮 
                 string macString = dgWOL.Rows[e.RowIndex].Cells[1].Value.ToString();
                 string ipString = dgWOL.Rows[e.RowIndex].Cells[3].Value.ToString();
-                byte[] macByte = MacToBytes(macString);
-                if (null != macByte)
+                //byte[] macByte = MacToBytes(macString);
+                if (null != macString)
                 {
-                    SendWakeOnLanPacket(macByte, ipString);
+
+                    WOL.AquilaWolLibrary.WakeUp(macString);
+                    WOL.AquilaWolLibrary.WakeUp(macString, ipString);
+                    //SendWakeOnLanPacket(macByte, ipString);
                     LogHelper.WriteLog("WOL Date: " + macString);
-                    MessageBox.Show("已发送唤醒数据信息！", "提示");
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show("已发送唤醒数据信息！", "提示");
+                    else
+                        MessageBox.Show("Wakeup data message sent！", "Tips");
                 }
             }
         }
 
         private void dgWOL_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.ColumnIndex == 1 && e.RowIndex >= 0)
             {
                 string macString = dgWOL.Rows[e.RowIndex].Cells[1].Value.ToString();
-                if(macString != "")
+                if (macString != "")
                 {
                     MacTextBox.Text = macString;
                 }
@@ -203,14 +229,21 @@ namespace LeafSoft.PartPanel
             {
                 lstWOL.RemoveAt(dgWOL.SelectedRows[0].Index);
             }
+            else
+            {
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show("没有选中需要删除的设备对象！", "提示");
+                else
+                    MessageBox.Show("Device object that needs to be deleted is not selected！", "Tips");
+            }
         }
 
         private bool CheckSelectSend()
         {
-            for (int i = 0; i < lstWOL.Count; i++)
+            for (int i = 0; i < dgWOL.Rows.Count; i++)
             {
-                object cbxValue = dgWOL.Rows[i].Cells[0].Value;
-                if (cbxValue is bool && cbxValue.Equals(true))
+                //object cbxValue = dgWOL.Rows[i].Cells[0].Value;
+                if ((Convert.ToBoolean(dgWOL.Rows[i].Cells[0].Value) == true))
                 {
                     return true;
                 }
@@ -227,18 +260,25 @@ namespace LeafSoft.PartPanel
         {
             if (AutoSend == false)
             {
-                btAllsend.Text = "停止唤醒";
-                dgWOL.Enabled = false;
+                if (LanguageSet.Language == "0")
+                    btAllsend.Text = "停止唤醒";
+                else
+                    btAllsend.Text = "Stop wake";
                 AutoSend = true;
                 if (CheckSelectSend())
                 {
+                    dgWOL.Enabled = false;
+                    this.Cursor = Cursors.AppStarting;
                     Thread ThTestL = new Thread(new ThreadStart(TWakeSend));
                     ThTestL.IsBackground = true;
                     ThTestL.Start();
                 }
                 else
                 {
-                    MessageBox.Show("没有发送的指令选项", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (LanguageSet.Language == "0")
+                        MessageBox.Show("没有勾选需要唤醒的设备！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                        MessageBox.Show("Unchecked devices that need to be woken up！", "error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     StopWakeSend();
                 }
             }
@@ -252,28 +292,29 @@ namespace LeafSoft.PartPanel
         {
             try
             {
-                while (AutoSend)
+                //while (AutoSend)
                 {
-                    for (int i = 0; i < lstWOL.Count; i++)
+                    for (int i = 0; i < dgWOL.Rows.Count; i++)
                     {
                         if (AutoSend)
                         {
                             this.Invoke(new MethodInvoker(delegate
                             {
-                                object cbxValue = dgWOL.Rows[i].Cells[0].Value;
-                                if (cbxValue is bool && cbxValue.Equals(true))
+                                if ((Convert.ToBoolean(dgWOL.Rows[i].Cells[0].Value) == true))
                                 {
                                     string macString = dgWOL.Rows[i].Cells[1].Value.ToString();
                                     string ipString = dgWOL.Rows[i].Cells[3].Value.ToString();
                                     byte[] macByte = MacToBytes(macString);
                                     if (null != macByte)
                                     {
-                                        SendWakeOnLanPacket(macByte, ipString);
-
+                                        //SendWakeOnLanPacket(macByte, ipString);
+                                        WOL.AquilaWolLibrary.WakeUp(macString);
+                                        WOL.AquilaWolLibrary.WakeUp(macString, ipString);
                                         LogHelper.WriteLog("WOL Date: " + macString);
                                     }
                                 }
                             }));
+                            Thread.Sleep(200);
                         }
                         else
                         {
@@ -284,6 +325,10 @@ namespace LeafSoft.PartPanel
             }
             catch
             { }
+            this.Invoke(new MethodInvoker(delegate
+            {
+                StopWakeSend();
+            }));
         }
 
         /// <summary>
@@ -292,8 +337,18 @@ namespace LeafSoft.PartPanel
         private void StopWakeSend()
         {
             AutoSend = false;
-            btAllsend.Text = "一键唤醒";
+            this.Cursor = Cursors.Default;
             dgWOL.Enabled = true;
+            if (LanguageSet.Language == "0")
+            {
+                btAllsend.Text = "一键唤醒";
+                MessageBox.Show("已对所以选中的设备进行唤醒操作！", "提示");
+            }
+            else
+            {
+                btAllsend.Text = "wake-up";
+                MessageBox.Show("The selected device has been woken up！", "Tips");
+            }
         }
 
         private void btAdd_Click(object sender, EventArgs e)
@@ -305,22 +360,12 @@ namespace LeafSoft.PartPanel
             }
         }
 
-        private void panel2_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_MouseLeave(object sender, EventArgs e)
-        {
-            btDelete.Enabled = true;
-            btAllsend.Enabled = true;
-        }
-
         #region 加载和保存
-        private void Load_Inifile()
+        public void Load_Inifile()
         {
             try
             {
+                settingFile = new IniFiles(Application.StartupPath + "\\WOL\\WOL.ini");
                 //string s = settingFile.ReadString("SETTING", "COM", "COM1");
                 int count = settingFile.ReadInteger("SETTING", "COUNT", 0);
                 lstWOL.Clear();
@@ -333,7 +378,7 @@ namespace LeafSoft.PartPanel
                         {
                             string[] str = data.Split(',');
                             //byte[] byteArray = Encoding.Default.GetBytes(str[1]);
-                            Model.WOL cmd = new Model.WOL(str[0],str[1],str[2]);
+                            Model.WOL cmd = new Model.WOL(str[0], str[1], str[2]);
                             lstWOL.Add(cmd);
                             //Console.Write(data);
                         }
@@ -371,8 +416,8 @@ namespace LeafSoft.PartPanel
         }
         private void WOLPanel_Load(object sender, EventArgs e)
         {
-            settingFile = new IniFiles(Application.StartupPath + "\\WOL\\WOL.ini");
-            Load_Inifile();
+            
+            //Load_Inifile();
         }
 
         public void WOL_Saved_default()
@@ -388,7 +433,7 @@ namespace LeafSoft.PartPanel
         /// <param name="e"></param>
         private void bt_Eidt_Click(object sender, EventArgs e)
         {
-            if (dgWOL.SelectedRows.Count >= 0)
+            if (dgWOL.SelectedRows.Count > 0)
             {
                 frmAWOL fCmd = new frmAWOL(lstWOL[dgWOL.SelectedRows[0].Index]);
                 if (fCmd.ShowDialog() == DialogResult.OK)
@@ -397,11 +442,18 @@ namespace LeafSoft.PartPanel
                     lstWOL[dgWOL.SelectedRows[0].Index] = fCmd.NewWOL;
                 }
             }
+            else
+            {
+                if(LanguageSet.Language == "0")
+                    MessageBox.Show("没有选中需要编辑的设备对象！", "提示");
+                else
+                    MessageBox.Show("Device object to be edited is not selected！", "Tips");
+            }
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            if (lstWOL.Count <= 0)
+            if (lstWOL.Count <= 0 && dgWOL.SelectedRows.Count > 0)
             {
                 MS_eidt.Enabled = false;
                 MS_delete.Enabled = false;
@@ -422,32 +474,62 @@ namespace LeafSoft.PartPanel
         bool all_select = false;
         private void MS_select_Click(object sender, EventArgs e)
         {
-            if (all_select)
+            try
             {
-                for (int i = 0; i < dgWOL.Rows.Count; i++)
+                dgWOL.EndEdit();
+                if (all_select)
                 {
-                    if ((Convert.ToBoolean(dgWOL.Rows[i].Cells[0].Value) == true))
+                    for (int i = 0; i < dgWOL.Rows.Count; i++)
                     {
-                        dgWOL.Rows[i].Cells[0].Value = "False";
+                        //Console.WriteLine(dgWOL.Rows[i].Cells[0].Value);
+                        if ((Convert.ToBoolean(dgWOL.Rows[i].Cells[0].Value) == true))
+                        {
+                            dgWOL.Rows[i].Cells[0].Value = "False";
+                        }
+                        else
+                            continue;
                     }
-                    else
-                        continue;
+                    all_select = false;
                 }
-                all_select = false;
+                else
+                {
+                    for (int i = 0; i < dgWOL.Rows.Count; i++)
+                    {
+                        if ((Convert.ToBoolean(dgWOL.Rows[i].Cells[0].Value) == false))
+                        {
+                            dgWOL.Rows[i].Cells[0].Value = "True";
+                        }
+                        else
+                            continue;
+                    }
+                    all_select = true;
+                }
+                dgWOL.Refresh();
             }
-            else
+            catch
+            { }
+        }
+
+        private void dgWOL_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (this.dgWOL.IsCurrentCellDirty)
             {
-                for (int i = 0; i < dgWOL.Rows.Count; i++)
+                this.dgWOL.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+            Console.WriteLine(dgWOL.Rows[0].Cells[0].Value);
+        }
+
+        private void dgWOL_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == 1 && e.RowIndex >= 0)
+            {
+                string macString = dgWOL.Rows[e.RowIndex].Cells[1].Value.ToString();
+                if (macString != "")
                 {
-                    if ((Convert.ToBoolean(dgWOL.Rows[i].Cells[0].Value) == false))
-                    {
-                        dgWOL.Rows[i].Cells[0].Value = "True";
-                    }
-                    else
-                        continue;
+                    MacTextBox.Text = macString;
                 }
-                all_select = true;
             }
         }
+        
     }
 }

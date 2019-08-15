@@ -63,7 +63,7 @@ namespace LeafSoft.LeafControl
                                 {
                                     sb.AppendFormat("{0:x2} ", data[i]);
                                 }
-                                this.Text = sb.ToString().Trim().ToUpper();
+                                this.Text = sb.ToString().ToUpper();
                             }
                             break;
                         case EnumType.DataEncode.ASCII:
@@ -238,7 +238,7 @@ namespace LeafSoft.LeafControl
                         Cmd = new Model.CMD(EnumType.DataEncode.Hex, data);
                         break;
                     case EnumType.DataEncode.ASCII:
-                        data = new ASCIIEncoding().GetBytes(this.Text.Trim());
+                        data = new ASCIIEncoding().GetBytes(this.Text);
                         Cmd = new Model.CMD(EnumType.DataEncode.ASCII, data);
                         break;
                     case EnumType.DataEncode.UTF8:

@@ -12,10 +12,18 @@ namespace LeafSoft
     public partial class frmCMD : Form
     {
         public Model.CMD NewCMD = null;
-
+        
         public frmCMD(Model.CMD cmd)
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(frmCMD));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(frmCMD));
+            }
             txtContent.SetCMD(cmd);
             SetType(txtContent.EncodeType);
             ami_Tips.Text = cmd.Tips;
@@ -24,6 +32,14 @@ namespace LeafSoft
         public frmCMD()
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(frmCMD));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(frmCMD));
+            }
             SetType(EnumType.DataEncode.Hex);
         }
 

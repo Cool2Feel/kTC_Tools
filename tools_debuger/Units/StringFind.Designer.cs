@@ -29,44 +29,37 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StringFind));
             this.Tofindstr = new CCWin.SkinControl.SkinWaterTextBox();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
             this.SuspendLayout();
             // 
             // Tofindstr
             // 
-            this.Tofindstr.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Tofindstr.Location = new System.Drawing.Point(7, 10);
+            resources.ApplyResources(this.Tofindstr, "Tofindstr");
             this.Tofindstr.Name = "Tofindstr";
-            this.Tofindstr.Size = new System.Drawing.Size(139, 26);
-            this.Tofindstr.TabIndex = 1;
             this.Tofindstr.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.Tofindstr.WaterText = "查找...";
+            this.Tofindstr.WaterText = "Find...";
             // 
             // skinButton1
             // 
+            resources.ApplyResources(this.skinButton1, "skinButton1");
             this.skinButton1.BackColor = System.Drawing.Color.Transparent;
             this.skinButton1.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButton1.DownBack = null;
-            this.skinButton1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton1.Location = new System.Drawing.Point(163, 11);
             this.skinButton1.MouseBack = null;
             this.skinButton1.Name = "skinButton1";
             this.skinButton1.NormlBack = null;
-            this.skinButton1.Size = new System.Drawing.Size(54, 24);
-            this.skinButton1.TabIndex = 0;
-            this.skinButton1.Text = "查找";
             this.skinButton1.UseVisualStyleBackColor = false;
             this.skinButton1.Click += new System.EventHandler(this.skinButton1_Click);
             // 
             // StringFind
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.skinButton1);
             this.Controls.Add(this.Tofindstr);
             this.Name = "StringFind";
-            this.Size = new System.Drawing.Size(225, 50);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -25,6 +25,17 @@ namespace LeafSoft.PartPanel
         public AdbPanel()
         {
             InitializeComponent();
+            settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
+
+            string lan = settingFile.ReadString("SETTING", "Language", "1");
+            if (lan == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(AdbPanel));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(AdbPanel));
+            }
             m_SyncContext = SynchronizationContext.Current;
             settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
         }
@@ -143,10 +154,15 @@ namespace LeafSoft.PartPanel
             string cmdStr = txtCustomCmd.Text.Trim();
             if(!string.IsNullOrEmpty(cmdStr))
             {
-                ShowSendCmdInfo(cmdStr);
-                cmdHelp.SendAdbCmd(cmdStr);
+                try
+                {
+                    ShowSendCmdInfo(cmdStr);
+                    cmdHelp.SendAdbCmd(cmdStr);
 
-                LogHelper.WriteLog("ADB Send Date: " + cmdStr);
+                    LogHelper.WriteLog("ADB Send Date: " + cmdStr);
+                }
+                catch
+                { }
             }
         }
 
@@ -194,7 +210,7 @@ namespace LeafSoft.PartPanel
         {
             if (txtCustomPath.Text != "")
             {
-                string spath = "E:\\Log\\";
+                string spath = pullPath;
                 if (!Directory.Exists(spath))
                 {
                     try
@@ -207,20 +223,26 @@ namespace LeafSoft.PartPanel
                         DirectoryInfo directoryInfo = new DirectoryInfo("C:\\Log\\");
                         directoryInfo.Create();
                         spath = "C:\\Log\\";
-                        MessageBox.Show("E盘路径不存在，已修改到C:\\Log\\","提示");
+                        MessageBox.Show("E盘路径不存在，已自动默认修改到C:\\Log\\","提示");
                     }
                 }
                 string cmdStr = CmdAdbInfo.adb_root;
-                ShowSendCmdInfo(cmdStr);
-                cmdHelp.SendAdbCmd(cmdStr);
-                cmdStr = CmdAdbInfo.adb_remount;
-                ShowSendCmdInfo(cmdStr);
-                cmdHelp.SendAdbCmd(cmdStr);
+                try
+                {
+                    ShowSendCmdInfo(cmdStr);
+                    cmdHelp.SendAdbCmd(cmdStr);
+                    cmdStr = CmdAdbInfo.adb_remount;
+                    ShowSendCmdInfo(cmdStr);
+                    cmdHelp.SendAdbCmd(cmdStr);
 
-                cmdStr = CmdAdbInfo.adb_pull + " " + txtCustomPath.Text.Trim() + " " + spath;
-                ShowSendCmdInfo(cmdStr);
-                cmdHelp.SendAdbCmd(cmdStr);
-
+                    cmdStr = CmdAdbInfo.adb_pull + " " + txtCustomPath.Text.Trim() + " " + spath;
+                    ShowSendCmdInfo(cmdStr);
+                    cmdHelp.SendAdbCmd(cmdStr);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 LogHelper.WriteLog("ADB Send Date: " + cmdStr);
             }
         }
@@ -230,6 +252,15 @@ namespace LeafSoft.PartPanel
             string s = settingFile.ReadString("SETTING", "ADB", "");
             txtCustomIP.Text = s;
             pullPath = settingFile.ReadString("SETTING", "PULL", "E:\\Log\\");
+            string lan = settingFile.ReadString("SETTING", "Language", "1");
+            if (lan == "0")
+            {
+                linkLabel1.Text = "pull到本地: " + pullPath;
+            }
+            else
+            {
+                linkLabel1.Text = "pull to local: " + pullPath;
+            }
         }
 
         public void Save_ConfigAdb()

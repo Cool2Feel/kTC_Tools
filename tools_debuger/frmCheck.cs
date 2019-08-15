@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeafSoft.Lib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,14 @@ namespace LeafSoft
         public frmCheck()
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(frmCheck));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(frmCheck));
+            }
         }
 
         #region 校验码计算

@@ -14,6 +14,7 @@ using System.Configuration;
 using LeafSoft.Lib;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace LeafSoft
 {
@@ -26,6 +27,7 @@ namespace LeafSoft
         private Popup _pop;
         private ColorPopup _popControl;
         private IniFiles settingFile;//配置文件
+        //private string language = "0";
         #endregion
         public MainForm()
         {
@@ -42,10 +44,75 @@ namespace LeafSoft
 
             tabPage10.Parent = null;
             tabPage10.Hide();
+
+            string lan = settingFile.ReadString("SETTING", "Language", "1");
+            string language = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+            switch (language)
+            {
+                case "zh-CN":
+                    lan = "0";
+                    break;
+                case "en-US":
+                    lan = "1";
+                    break;
+                default:
+                    lan = "1";
+                    break;
+            }
+            if (lan == "0")
+            {
+                //language = "0";
+                LanguageSet.Language = "0";
+                LanguageSet.SetLang("", this, typeof(MainForm));
+                this.Text = Lib.AppInfor.AssemblyCompany + Lib.AppInfor.AssemblyTitle + "[v" + Lib.AppInfor.AssemblyVersion + "]";
+            }
+            else
+            {
+                //language = "1";
+                LanguageSet.Language = "1";
+                LanguageSet.SetLang("en-US", this, typeof(MainForm));
+                this.Text = Lib.AppInfor.AssemblyCompany + "-Communication debugging tool" + "[v" + Lib.AppInfor.AssemblyVersion + "]";
+            }
             //Console.WriteLine(Screen.AllScreens.Count() + ":" + Screen.FromControl(this).DeviceName);
             //materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey600, Primary.BlueGrey900, Primary.BlueGrey100, Accent.LightBlue200, TextShade.WHITE);
 
         }
+        #region 插拔串口
+
+        // 系统消息常量
+        public const int WM_DEVICE_CHANGE = 0x219;             //设备改变           
+        public const int DBT_DEVICEARRIVAL = 0x8000;          //设备插入
+        public const int DBT_DEVICE_REMOVE_COMPLETE = 0x8004; //设备移除
+        /// <summary>
+        /// 串口插拔的消息处理
+        /// </summary>
+        /// <param name="m"></param>
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_DEVICE_CHANGE)        // 捕获USB设备的拔出消息WM_DEVICECHANGE
+            {
+                switch (m.WParam.ToInt32())
+                {
+                    case DBT_DEVICE_REMOVE_COMPLETE:    // USB拔出      
+                        {
+                            this.comPanel3.Configer.ChangePort();
+                            //MessageBox.Show("串口已拔出！", "Tips");
+                        }
+                        break;
+                    case DBT_DEVICEARRIVAL:             // USB插入获取对应串口名称
+                        {
+                            this.comPanel3.Configer.ChangePort();
+                            //MessageBox.Show("串口插入！", "Tips");
+                        }
+                        break;
+                }
+            }
+            base.WndProc(ref m);
+        }
+
+
+        #endregion
+
         #region 主题背景
         private void materialRaisedButton1_Click(object sender, System.EventArgs e)
         {
@@ -101,7 +168,7 @@ namespace LeafSoft
                         break;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
@@ -199,7 +266,10 @@ namespace LeafSoft
         {
             ComPanel tp = new ComPanel();
             tp.Dock = DockStyle.Fill;
-            CreateNewTest(tp, "串口通讯[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.com1);
+            if (LanguageSet.Language == "0")
+                CreateNewTest(tp, "串口通讯[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.com1);
+            else
+                CreateNewTest(tp, "Serial communication[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.com1);
         }
 
         private void materialFlatButton_tcps_Click(object sender, EventArgs e)
@@ -235,7 +305,10 @@ namespace LeafSoft
         {
             SocketMonitor nwin = new SocketMonitor();
             nwin.Dock = DockStyle.Fill;
-            CreateNewTest(nwin, "Socket通信监视器[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.monitor_socket_icon);
+            if (LanguageSet.Language == "0")
+                CreateNewTest(nwin, "Socket 通信监视器[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.monitor_socket_icon);
+            else
+                CreateNewTest(nwin, "Socket Communication monitor[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.monitor_socket_icon);
         }
 
 
@@ -243,7 +316,11 @@ namespace LeafSoft
         {
             ComMonitor nwin = new ComMonitor();
             nwin.Dock = DockStyle.Fill;
-            CreateNewTest(nwin, "串口通信监视器[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.monitor_com_icon);
+            if (LanguageSet.Language == "0")
+                CreateNewTest(nwin, "串口通信监视器[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.monitor_com_icon);
+            else
+                CreateNewTest(nwin, "Serial communication monitor[" + DateTime.Now.ToString("HHmmss") + "]", Properties.Resources.monitor_com_icon);
+
         }
 
         #endregion
@@ -278,7 +355,36 @@ namespace LeafSoft
             _popControl = new ColorPopup(this);
             _pop = new Popup(_popControl);
             this.comPanel3.Configer.Init_ConfigCom();
+            this.wolPanel1.Load_Inifile();
             naviBar1.Collapsed = true;
+            AnimateWindow(this.Handle, 800, AW_SLIDE + AW_CENTER);
+        }
+
+        private void ApplyResource()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            foreach (Control ctl in this.Controls)
+            {
+                resources.ApplyResources(ctl, ctl.Name);
+            }
+            foreach (Control ctl in naviBar1.Controls)
+            {
+                resources.ApplyResources(ctl, ctl.Name);
+            }
+            foreach (Control ctl in naviGroup_new.Controls)
+            {
+                resources.ApplyResources(ctl, ctl.Name);
+            }
+            foreach (Control ctl in naviGroup_calc.Controls)
+            {
+                resources.ApplyResources(ctl, ctl.Name);
+            }
+            foreach (Control ctl in materialTabControl1.Controls)
+            {
+                resources.ApplyResources(ctl, ctl.Name);
+            }
+
+            resources.ApplyResources(materialRaisedButton2, materialRaisedButton2.Name);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -291,10 +397,49 @@ namespace LeafSoft
             this.udpClientPanel3.DataSender.CMD_Saved_default();
             this.wolPanel1.WOL_Saved_default();
             this.adbPanel1.Save_ConfigAdb();
+            settingFile.WriteString("SETTING", "Language", LanguageSet.Language);
             //this.pingPanel3.OutPutForm_FormClosing();
             LogHelper.WriteLog("Multi-tool Stop: Closed...");
+            HideFXCenter(this.Handle, 400);
             System.Environment.Exit(0);
         }
+        #endregion
+        #region 窗体关闭效果
+
+        #region 私有方法
+        [DllImportAttribute("user32.dll")]
+        private static extern bool AnimateWindow(IntPtr whnd, int dwtime, int dwflag);
+        #endregion
+        /*
+        1. AW_SLIDE : 使用滑动类型, 默认为该类型. 当使用 AW_CENTER 效果时, 此效果被忽略
+        2. AW_ACTIVE: 激活窗口, 在使用了 AW_HIDE 效果时不可使用此效果
+        3. AW_BLEND: 使用淡入效果
+        4. AW_HIDE: 隐藏窗口
+        5. AW_CENTER: 与 AW_HIDE 效果配合使用则效果为窗口几内重叠,  单独使用窗口向外扩展.
+        6. AW_HOR_POSITIVE : 自左向右显示窗口
+        7. AW_HOR_NEGATIVE: 自右向左显示窗口
+        8. AW_VER_POSITVE: 自顶向下显示窗口
+        9. AW_VER_NEGATIVE : 自下向上显示窗口
+        */
+        public const Int32 AW_HOR_POSITIVE = 0x00000001;
+        public const Int32 AW_HOR_NEGATIVE = 0x00000002;
+        public const Int32 AW_VER_POSITIVE = 0x00000004;
+        public const Int32 AW_VER_NEGATIVE = 0x00000008;
+        public const Int32 AW_CENTER = 0x00000010;
+        public const Int32 AW_HIDE = 0x00010000;
+        public const Int32 AW_ACTIVATE = 0x00020000;
+        public const Int32 AW_SLIDE = 0x00040000;
+        public const Int32 AW_BLEND = 0x00080000;
+
+        /// <summary>
+        /// 由边界向中心扩展渐进关闭窗口
+        /// </summary>
+        public static void HideFXCenter(IntPtr wnd, int dwtime)
+        {
+            AnimateWindow(wnd, dwtime, AW_CENTER | AW_HIDE | AW_SLIDE);
+
+        }
+
         #endregion
 
     }

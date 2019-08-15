@@ -15,7 +15,7 @@ namespace LeafSoft.Units
     {
         BindingList<Model.CMD> lstCMD = new BindingList<Model.CMD>();
         private IniFiles settingFile;//配置文件
-
+        //private string lan;
         public event LeafEvent.DataSendHandler EventDataSend;
 
         /// <summary>
@@ -27,11 +27,26 @@ namespace LeafSoft.Units
         {
             InitializeComponent();
 
+            settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
             dgCMD.AutoGenerateColumns = false;
             lstCMD.Add(new Model.CMD(EnumType.DataEncode.ASCII, new ASCIIEncoding().GetBytes("Test!")));
             dgCMD.DataSource = lstCMD;
             //byte[] data = new byte[] { 0xFF, 0xFD, 0x18, 0x0D };
             //lstCMD.Add(new Model.CMD(EnumType.DataEncode.Hex, data));
+            
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(DataSend));
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("");
+                ApplyResource();
+            }
+            else
+            {
+
+                LanguageSet.SetLang("en-US", this, typeof(DataSend));
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+                ApplyResource();
+            }
         }
 
         private void dgCMD_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -58,7 +73,10 @@ namespace LeafSoft.Units
         private void dgCMD_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             dgCMD.Rows[e.RowIndex].Cells[3].Value = lstCMD[e.RowIndex].Tips;
-            dgCMD.Rows[e.RowIndex].Cells[4].Value = "发送";
+            if (LanguageSet.Language == "0")
+                dgCMD.Rows[e.RowIndex].Cells[4].Value = "发送";
+            else
+                dgCMD.Rows[e.RowIndex].Cells[4].Value = "send";
         }
 
         /// <summary>
@@ -82,7 +100,7 @@ namespace LeafSoft.Units
         /// <param name="e"></param>
         private void MS_Edit_Click(object sender, EventArgs e)
         {
-            if (dgCMD.SelectedRows.Count >= 0)
+            if (dgCMD.SelectedRows.Count > 0)
             {
                 frmCMD fCmd = new frmCMD(lstCMD[dgCMD.SelectedRows[0].Index]);
                 if (fCmd.ShowDialog() == DialogResult.OK)
@@ -99,7 +117,7 @@ namespace LeafSoft.Units
         /// <param name="e"></param>
         private void MS_Delete_Click(object sender, EventArgs e)
         {
-            if (dgCMD.SelectedRows.Count >= 0)
+            if (dgCMD.SelectedRows.Count > 0)
             {
                 lstCMD.RemoveAt(dgCMD.SelectedRows[0].Index);
             }
@@ -127,7 +145,11 @@ namespace LeafSoft.Units
         {
             if (AutoSend == false)
             {
-                btnAutoSend.Text = "停止循环";
+                if (LanguageSet.Language == "0")
+                    btnAutoSend.Text = "停止循环";
+                else
+                    btnAutoSend.Text = "Stop loop";
+                btnAutoSend.ForeColor = Color.Red;
                 dgCMD.Enabled = false;
                 nmDelay.Enabled = false;
                 AutoSend = true;
@@ -139,7 +161,10 @@ namespace LeafSoft.Units
                 }
                 else
                 {
-                    MessageBox.Show("没有发送的指令选项", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if(LanguageSet.Language == "0")
+                        MessageBox.Show("没有发送的指令选项!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                        MessageBox.Show("No command option sent!", "error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     StopAutoSend();
                 }
             }
@@ -203,7 +228,11 @@ namespace LeafSoft.Units
         private void StopAutoSend()
         {
             AutoSend = false;
-            btnAutoSend.Text = "循环发送";
+            if (LanguageSet.Language == "0")
+                btnAutoSend.Text = "循环发送";
+            else
+                btnAutoSend.Text = "Cyclic send";
+            btnAutoSend.ForeColor = Color.Black;
             dgCMD.Enabled = true;
             nmDelay.Enabled = true;
         }
@@ -315,7 +344,8 @@ namespace LeafSoft.Units
             }
             catch(Exception x)
             {
-                Console.WriteLine(x.Message);
+                LogHelper.WriteLog(x.Message);
+                //Console.WriteLine(x.Message);
             }
             
         }
@@ -334,20 +364,47 @@ namespace LeafSoft.Units
             else if (tab == "udpClientPanel3" || tab == "UDPClientPanel" || tab == "udpServerPanel3" || tab == "UDPServerPanel")
                 Load_Inifile("UDP");
             else
-                Load_Inifile("COM"); 
+                Load_Inifile("COM");
+
         }
+
+        private void ApplyResource()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataSend));
+            foreach (Control ctl in this.Controls)
+            {
+                resources.ApplyResources(ctl, ctl.Name);
+            }
+            foreach (Control ctl in contextMenuStrip1.Controls)
+            {
+                resources.ApplyResources(ctl, ctl.Name);
+            }
+            resources.ApplyResources(MS_Add, MS_Add.Name);
+            resources.ApplyResources(MS_Edit, MS_Edit.Name);
+            resources.ApplyResources(MS_Delete, MS_Delete.Name);
+            resources.ApplyResources(MS_Select, MS_Select.Name);
+            resources.ApplyResources(MS_Saved, MS_Saved.Name); 
+            resources.ApplyResources(MS_Input, MS_Input.Name);
+            resources.ApplyResources(MS_SaveAs, MS_SaveAs.Name);
+            resources.ApplyResources(IsAutoSend, IsAutoSend.Name);
+            resources.ApplyResources(CType, CType.Name);
+            resources.ApplyResources(CMDText, CMDText.Name);
+            resources.ApplyResources(CMDTips, CMDTips.Name);
+            resources.ApplyResources(btnSend, btnSend.Name);
+        }
+
         public void CMD_Saved_default()
         {
             settingFile = new IniFiles(Application.StartupPath + "\\IniFile\\setting.ini");
             string tab = this.Parent.Name;
             if (tab == "comPanel3" || tab == "ComPanel")
-                Load_Inifile("COM");
+                Save_Inifile("COM");
             else if (tab == "tcpServerPanel3" || tab == "TCPServerPanel")
-                Load_Inifile("TCPS");
+                Save_Inifile("TCPS");
             else if (tab == "tcpClientPanel3" || tab == "TCPClientPanel")
-                Load_Inifile("TCPC");
+                Save_Inifile("TCPC");
             else if (tab == "udpClientPanel3" || tab == "UDPClientPanel")
-                Load_Inifile("UDP");
+                Save_Inifile("UDP");
             else
                 Save_Inifile("COM");
         }
@@ -408,13 +465,13 @@ namespace LeafSoft.Units
                 settingFile = new IniFiles(filename);
                 string tab = this.Parent.Name;
                 if (tab == "comPanel3" || tab == "ComPanel")
-                    Load_Inifile("COM");
+                    Save_Inifile("COM");
                 else if (tab == "tcpServerPanel3" || tab == "TCPServerPanel")
-                    Load_Inifile("TCPS");
+                    Save_Inifile("TCPS");
                 else if (tab == "tcpClientPanel3" || tab == "TCPClientPanel")
-                    Load_Inifile("TCPC");
+                    Save_Inifile("TCPC");
                 else if (tab == "udpClientPanel3" || tab == "UDPClientPanel")
-                    Load_Inifile("UDP");
+                    Save_Inifile("UDP");
                 else
                     Save_Inifile("COM");
             }
@@ -423,11 +480,12 @@ namespace LeafSoft.Units
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            if(lstCMD.Count <= 0)
+            if(lstCMD.Count <= 0 && dgCMD.SelectedRows.Count <= 0)
             {
                 MS_Edit.Enabled = false;
                 MS_Delete.Enabled = false;
                 MS_Saved.Enabled = false;
+                MS_Select.Enabled = false;
                 //MS_Input.Enabled = false;
                 MS_SaveAs.Enabled = false;
             }
@@ -436,6 +494,7 @@ namespace LeafSoft.Units
                 MS_Edit.Enabled = true;
                 MS_Delete.Enabled = true;
                 MS_Saved.Enabled = true;
+                MS_Select.Enabled = true;
                 //.Enabled = true;
                 MS_SaveAs.Enabled = true;
             }
@@ -486,7 +545,7 @@ namespace LeafSoft.Units
         {
             if (e.RowIndex >= 0 && lstCMD.Count > 0)
             {
-                e.ToolTipText = "提示：" + lstCMD[e.RowIndex].Tips;
+                e.ToolTipText = "tips：" + lstCMD[e.RowIndex].Tips;
             }
         }
 
@@ -499,6 +558,38 @@ namespace LeafSoft.Units
             }
             else
                 e.Handled = false;
+        }
+
+        bool all_select = false;
+        private void MS_Select_Click(object sender, EventArgs e)
+        {
+            if (all_select)
+            {
+                for (int i = 0; i < dgCMD.Rows.Count; i++)
+                {
+                    if ((Convert.ToBoolean(dgCMD.Rows[i].Cells[0].Value) == true))
+                    {
+                        dgCMD.Rows[i].Cells[0].Value = "False";
+                    }
+                    else
+                        continue;
+                }
+                all_select = false;
+            }
+            else
+            {
+                for (int i = 0; i < dgCMD.Rows.Count; i++)
+                {
+                    if ((Convert.ToBoolean(dgCMD.Rows[i].Cells[0].Value) == false))
+                    {
+                        dgCMD.Rows[i].Cells[0].Value = "True";
+                    }
+                    else
+                        continue;
+                }
+                all_select = true;
+            }
+            dgCMD.Refresh();
         }
     }
 }

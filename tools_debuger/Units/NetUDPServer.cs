@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using LeafSoft.Model;
+using LeafSoft.Lib;
 
 namespace LeafSoft.Units
 {
@@ -21,7 +22,8 @@ namespace LeafSoft.Units
         BindingList<string> lstClient = new BindingList<string>();
 
         public event Lib.LeafEvent.DataReceivedHandler DataReceived;
-        
+
+        //private IniFiles settingFile;//配置文件
         /// <summary>
         /// 监听状态
         /// </summary>
@@ -33,6 +35,14 @@ namespace LeafSoft.Units
         public NetUDPServer()
         {
             InitializeComponent();
+            if (LanguageSet.Language == "0")
+            {
+                LanguageSet.SetLang("", this, typeof(NetUDPServer));
+            }
+            else
+            {
+                LanguageSet.SetLang("en-US", this, typeof(NetUDPServer));
+            }
             //cbxLocalIP.SelectedIndex = 0;
             if (this.DesignMode == false)
             {
@@ -81,11 +91,17 @@ namespace LeafSoft.Units
             nmLocalPort.Enabled = !isListen;
             if (isListen)
             {
-                btnListen.Text = "停止";
+                if (LanguageSet.Language == "0")
+                    btnListen.Text = "停止";
+                else
+                    btnListen.Text = "Stop";
             }
             else
             {
-                btnListen.Text = "监听";  
+                if (LanguageSet.Language == "0")
+                    btnListen.Text = "监听";
+                else
+                    btnListen.Text = "Listen";
             }
         }
        
@@ -113,7 +129,10 @@ namespace LeafSoft.Units
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -147,7 +166,10 @@ namespace LeafSoft.Units
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (LanguageSet.Language == "0")
+                            MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
                 }
@@ -155,7 +177,10 @@ namespace LeafSoft.Units
             }
             else
             {
-                MessageBox.Show("无可用客户端", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show("无可用客户端", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("No client available", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -169,19 +194,16 @@ namespace LeafSoft.Units
         {
             if (lstConn.SelectedItems.Count > 0)
             {
-                if (lstConn.SelectedItems.Count > 0)
+                List<string> WaitRemove = new List<string>();
+                for (int i = 0; i < lstConn.SelectedItems.Count; i++)
                 {
-                    List<string> WaitRemove = new List<string>();
-                    for (int i = 0; i < lstConn.SelectedItems.Count; i++)
-                    {
-                        WaitRemove.Add((string)lstConn.SelectedItems[i]);
-                    }
-                    foreach (string client in WaitRemove)
-                    {
-                        lstClient.Remove(client);
-                    }
-                    BindLstClient();
+                    WaitRemove.Add((string)lstConn.SelectedItems[i]);
                 }
+                foreach (string client in WaitRemove)
+                {
+                    lstClient.Remove(client);
+                }
+                BindLstClient();
             }
         }
 
@@ -214,7 +236,10 @@ namespace LeafSoft.Units
             catch (ObjectDisposedException ex){}
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (LanguageSet.Language == "0")
+                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
                 if (userver.NetWork.Client != null)
@@ -232,6 +257,37 @@ namespace LeafSoft.Units
             if (udpserver.NetWork != null)
             {
                 udpserver.NetWork.Close();
+            }
+        }
+
+        private void MS_Clearn_Click(object sender, EventArgs e)
+        {
+            if (lstConn.Items.Count > 0)
+            {
+                List<string> WaitRemove = new List<string>();
+                for (int i = 0; i < lstConn.Items.Count; i++)
+                {
+                    WaitRemove.Add((string)lstConn.Items[i]);
+                }
+                foreach (string client in WaitRemove)
+                {
+                    lstClient.Remove(client);
+                }
+                BindLstClient();
+            }
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            if (lstConn.Items.Count > 0)
+            {
+                MS_Delete.Enabled = true;
+                MS_Clearn.Enabled = true;
+            }
+            else
+            {
+                MS_Delete.Enabled = false;
+                MS_Clearn.Enabled = false;
             }
         }
     }
